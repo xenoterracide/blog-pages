@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functions on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/functions/index.xml</link>
+    <description>Recent content in Functions on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/functions/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>empty() function for postgresql in sql</title>
+      <link>http://blog.xenoterracide.com/post/empty-function-for-postgresql-in-sql/</link>
+      <pubDate>Wed, 20 Jan 2010 13:00:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/empty-function-for-postgresql-in-sql/</guid>
+      <description>&lt;p&gt;In PostgreSQL the ASCII NULL or empty string &lt;code&gt;\0&lt;/code&gt; is seen as NOT NULL. This is because postgres developers consider any characters data. I know there are better discussions on it but I can&amp;rsquo;t find them right now. Unfortunately the programming language you are using probably doesn&amp;rsquo;t see it the same way. There&amp;rsquo;s a good chance that initialized variables are set to &lt;code&gt;\0&lt;/code&gt; and so when you try to insert from your language to a NOT NULL field with variables that are seen as undefined in your language, postgres accepts it, and now you have fields that you probably consider to have no data but are NOT NULL.&lt;br /&gt;&lt;br /&gt;My function possibly would be better called empty_or_whitespace but in my mind any text field that contains only whitespace is empty, and I&amp;rsquo;d rather have 1 function and 1 regex deal with both than have 2 functions have to be called on every insert/update.&lt;br /&gt;&lt;br /&gt;Here is the gist&lt;br /&gt;&lt;script src=&#34;http://gist.github.com/281093.js&#34;&gt;&lt;/script&gt;&lt;br /&gt;It returns true if an empty string is found. It really requires a knowledge of SQL, PostgreSQL&amp;rsquo;s &lt;a href=&#34;http://www.postgresql.org/docs/current/interactive/sql-createfunction.html&#34;&gt;CREATE FUNCTION&lt;/a&gt;, and Regular Expressions, to understand. Thanks to the wonderfully helpful PostgreSQL community with perfecting it.&lt;br /&gt;&lt;br /&gt;In order to use it to keep ASCII NULLS and fields that someone has just entered whitespace into you need to add it to your table as a constraint.&lt;br /&gt;&lt;br /&gt;Here&amp;rsquo;s an example create table gist using it.&lt;br /&gt;&lt;script src=&#34;http://gist.github.com/281118.js&#34;&gt;&lt;/script&gt;&lt;br /&gt;remember it returns true on null&amp;rsquo;s and whitespace so you have to say NOT emtpy( field ).&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

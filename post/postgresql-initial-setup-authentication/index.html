@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="PostgreSQL initial setup (authentication)" />
+<meta property="og:description" content="If you followed my last initial setup post on creating users and are running a default install of postgres you currently should be able to access the database on your cli. However, many distributions do not install postgres in a default manner. A great many distributions make the default authentication for sockets ident sameuser. This is technically much more secure than trust which is the default. However, you may find yourself locked out of your database on the local cli if you make the database name different." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/postgresql-initial-setup-authentication/" />
+
+
+
+<meta property="article:published_time" content="2009-08-24T01:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-08-24T01:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="PostgreSQL initial setup (authentication)"/>
+<meta name="twitter:title" content="PostgreSQL initial setup (authentication)"/>
+<meta name="twitter:description" content="If you followed my last initial setup post on creating users and are running a default install of postgres you currently should be able to access the database on your cli. However, many distributions do not install postgres in a default manner. A great many distributions make the default authentication for sockets ident sameuser. This is technically much more secure than trust which is the default. However, you may find yourself locked out of your database on the local cli if you make the database name different."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "PostgreSQL initial setup (authentication)",
+  "url": "http://blog.xenoterracide.com/post/postgresql-initial-setup-authentication/",
+  "wordCount": "341",
+  
+  
+  "datePublished": "2009-08-24T01:00:00&#43;00:00",
+  
+  
+  "dateModified": "2009-08-24T01:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "database,security,authentication,postgresql"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/postgresql-initial-setup-authentication/">
+
+    <title>PostgreSQL initial setup (authentication) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/postgresql-initial-setup-authentication/">PostgreSQL initial setup (authentication)</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-08-24T01:00:00Z">Mon Aug 24, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/database" rel="tag">database</a>, <a href="/tags/security" rel="tag">security</a>, <a href="/tags/authentication" rel="tag">authentication</a>, <a href="/tags/postgresql" rel="tag">postgresql</a>
+
+</p>
+  </header>
+  <p>If you followed my <a href="http://xenoterracide.blogspot.com/2009/03/postgresql-initial-setup-users-and.html">last initial setup</a> post on creating users and are running a default install of postgres you currently should be able to access the database on your cli. However, many distributions do not install postgres in a default manner. A great many distributions make the default authentication for sockets <code>ident sameuser</code>. This is technically much more secure than <code>trust</code> which is the default. However, you may find yourself locked out of your database on the local cli if you make the database name different. I personally was confused about this after first encountering this setting.<br /><br />So, we don&rsquo;t want <code>trust</code> but we want to use a db username other than our shell login, most likely because we have more than one database. There are several options but I personally think <code>ident</code> is a good one. However, since we don&rsquo;t want to use the same shell login name we have to modify <code>pg_ident.conf</code> and <code>pg_hba.conf</code>, locations vary by distribution.<br /><br />In <code>pg_ident.conf</code> you have to create a line with the following formatting.<br /><br /><code># MAPNAME     IDENT-USERNAME    PG-USERNAME</code><br /><br />I think it&rsquo;s mostly straightforward. In case it isn&rsquo;t, MAPNAME is an arbitrary identifier, sameuser is actually the mapname in <code>ident sameuser</code> A quick example from mine would be<br /><br /><code>devel xenoterracide webdev</code>where my unix username is xenoterracide but I created the database user webdev. If you wanted you could add another devel mapname with another user or the same unix account different db account, or even a different unix account same db account, etc.<br /><br />After you add all the various mappings you need to add or change the ident in pg_hba.conf. You can only have one method per type/database/user/address combination. so in pg_hba.conf you want to change <br /><br /><code> local all all <trust or ident sameuser></code> to <code>local all all ident devel</code><br /><br />If you want postgres to ask for a password use <code>md5</code> instead of <code>ident</code> further information can be found at <a href="http://www.postgresql.org/docs/current/interactive/auth-methods.html">http://www.postgresql.org/docs/current/interactive/auth-methods.html</a>.<br /><br />if you have any problems you might want to see <a href="http://xenoterracide.blogspot.com/2010/01/postgresql-initial-setup-authentication.html">part 2</a>.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpostgresql-initial-setup-authentication%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpostgresql-initial-setup-authentication%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpostgresql-initial-setup-authentication%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpostgresql-initial-setup-authentication%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

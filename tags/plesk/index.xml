@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plesk on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/plesk/index.xml</link>
+    <description>Recent content in Plesk on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/plesk/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Adding and Deleting subdomains with Plesk on the Command Line</title>
+      <link>http://blog.xenoterracide.com/post/adding-and-deleting-subdomains-with-plesk-on-the-command-line/</link>
+      <pubDate>Fri, 29 Apr 2011 07:31:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/adding-and-deleting-subdomains-with-plesk-on-the-command-line/</guid>
+      <description>&lt;p&gt;Plesk has the disadvantage that everything is done through the&lt;br /&gt;database. So we can&amp;rsquo;t just modify Bind&amp;rsquo;s Zone files.&lt;br /&gt;&lt;br /&gt;To add an A record of a subdomain you have to do the following:&lt;br /&gt;&lt;br /&gt;&lt;code&gt;/usr/local/psa/bin/dns -a domain.tld -a subdomain -ip 127.0.0.1&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;the first -a is for add to zone which is why it must specify the top&lt;br /&gt;level domen, the second is for A record, and must not contain the full&lt;br /&gt;domain only the subdomain. If you use the full domain&lt;br /&gt;subdomain.domain.tld you will end up with a record like&lt;br /&gt;subdomain.domain.tld.domain.tld because plesk does not allow you to&lt;br /&gt;terminate with a .. Thank you plesk for a shitty interface. The record&lt;br /&gt;this create&amp;rsquo;s looks like&lt;br /&gt;&lt;br /&gt;&lt;code&gt;subdomain.domain.tld. IN A 127.0.0.1&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;To delete this record you would use the following&lt;br /&gt;&lt;br /&gt;&lt;code&gt;/usr/local/psa/bin/dns -d domain.tld -a subdomain -ip 127.0.0.1&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;you&amp;rsquo;ll note that it&amp;rsquo;s the exact same thing except you replace the&lt;br /&gt;first -a which is for add, with -d for delete.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Continuous Integration with Wercker and Maven" />
+<meta property="og:description" content="I&rsquo;m going to walk you through getting mvn test running in wercker, on the new docker based api.
+First let&rsquo;s talk about what Wercker &nbsp;is and why you&rsquo;d want to use it. Wercker a continuous integration and deployment web application. It will all you to run any language or stack. It currently is free for both private and public repositories; I am hopeful that once it comes out of beta it will maintain reasonable pricing for small personal private projects (Most CI&rsquo;s are ridiculously priced for hobby projects)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/" />
+
+
+
+<meta property="article:published_time" content="2015-06-20T14:40:00&#43;00:00"/>
+<meta property="article:modified_time" content="2015-06-20T14:40:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Continuous Integration with Wercker and Maven"/>
+<meta name="twitter:title" content="Continuous Integration with Wercker and Maven"/>
+<meta name="twitter:description" content="I&rsquo;m going to walk you through getting mvn test running in wercker, on the new docker based api.
+First let&rsquo;s talk about what Wercker &nbsp;is and why you&rsquo;d want to use it. Wercker a continuous integration and deployment web application. It will all you to run any language or stack. It currently is free for both private and public repositories; I am hopeful that once it comes out of beta it will maintain reasonable pricing for small personal private projects (Most CI&rsquo;s are ridiculously priced for hobby projects)."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Continuous Integration with Wercker and Maven",
+  "url": "http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/",
+  "wordCount": "609",
+  
+  
+  "datePublished": "2015-06-20T14:40:00&#43;00:00",
+  
+  
+  "dateModified": "2015-06-20T14:40:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "wercker,ironman,continous integration,maven,java"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/">
+
+    <title>Continuous Integration with Wercker and Maven | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/">Continuous Integration with Wercker and Maven</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-06-20T14:40:00Z">Sat Jun 20, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/wercker" rel="tag">wercker</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/continous-integration" rel="tag">continous integration</a>, <a href="/tags/maven" rel="tag">maven</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  <p>I&rsquo;m going to walk you through getting mvn test running in wercker, on the new docker based api.<br /><br />First let&rsquo;s talk about what <a href="http://wercker.com/">Wercker </a>&nbsp;is and why you&rsquo;d want to use it. Wercker a continuous integration and deployment web application. It will all you to run any language or stack. It currently is free for both private and public repositories; I am hopeful that once it comes out of beta it will maintain reasonable pricing for small personal private projects (Most CI&rsquo;s are ridiculously priced for hobby projects). It can deploy to any platform.<br /><div><br /></div><div>So where does it fall apart? well although it seems reasonably well documented I&rsquo;ve only rarely gotten something right on the first try using its documentation. This largely revolves around the fact that its YAML parser seems more sensitive to whitespace than a standard YAML parser, and their examples aren&rsquo;t properly spaced, and the validator doesn&rsquo;t report the right line/position of the error. That being said I&rsquo;m going to tell you how to get up and running fast. Also they seem to have a problem keeping their platform up to date, the 1.0 platform only offers an Ubuntu base that is a few years old already. The 2.0 platform is based on docker, so it takes care of that, but has some problems such as it can&rsquo;t process the Dockerfile itself.<br /><br />All this said Wercker accomplishes my need of having a continuous integration environment that is cheap enough to work for both my open source and my private hobby projects, no matter what language I might use.</div><div><br /></div><div>To get started you&rsquo;re going to need a Bitbucket or Github account as well as a wercker account, and a git repo. Before creating the &ldquo;application&rdquo; on Wercker let&rsquo;s actually create our application in a git repo. All you need is a git repo from which you can run <code>mvn test</code> at the root. To make this simple, <a href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-simple">here is a spring boot sample project</a>, you can clone that, and copy the directory I linked into a new project, and create a new git repo and upload it to your git host. <a href="https://bitbucket.org/xenoterracide/werker-maven-spring-boot-example/src">Here&rsquo;s a fully configured sample project I made</a></div><div><br /></div><div>So what we&rsquo;re going to focus on is the <code>wercker.yml</code>, create that file at the root of your git repo. the first thing the file will need is a box, the box is the docker image your code runs in, and will deploy. For this we&rsquo;ll choose the <a href="https://registry.hub.docker.com/_/maven/">maven docker image</a>, all you need to do is put <code>box: maven:latest</code> at the top of the file. After that we need to add build steps. build steps are individual units of work you need to do to build your project. There are ways to write script steps or complicated custom steps, but those are for another article. We&rsquo;re just going to add the <a href="https://bitbucket.org/xenoterracide/wercker-step-maven">maven build step I wrote</a> that works for 1, and 2.0 Though it works better for 1 as it supports caching dependendencies and I haven&rsquo;t figured out if that&rsquo;s possible in 2. Below is the completed wercker.yml, steps has a 2 space indentation, the step name has a 4 space indentation and a -, and goals has an 8 space indentation, as mentioned spacing is very important.</div><div><script src="https://bitbucket.org/xenoterracide/werker-maven-spring-boot-example/src/e4fddd5494d895173d3181914cbf43beff768e25/wercker.yml?embed=t"></script></div><div>That&rsquo;s it, now go log into Wercker, click create -&gt; application and follow the instructions, when you&rsquo;re done you should be able to push commits, and wercker will run mvn test for you. Here&rsquo;s what <a href="https://app.wercker.com/#applications/54befcb456767b4663000750">our sample</a> looks like when you&rsquo;re done. That&rsquo;s it, simple right? have fun wercking with continuous integration on your projects.</div><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fcontinuous-integration-with-wercker-and-maven%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fcontinuous-integration-with-wercker-and-maven%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fcontinuous-integration-with-wercker-and-maven%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fcontinuous-integration-with-wercker-and-maven%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

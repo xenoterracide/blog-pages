@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overlay on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/overlay/index.xml</link>
+    <description>Recent content in Overlay on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/overlay/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>merged java-overlay</title>
+      <link>http://blog.xenoterracide.com/post/merged-java-overlay/</link>
+      <pubDate>Sat, 21 Feb 2009 23:24:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/merged-java-overlay/</guid>
+      <description>&lt;p&gt;Java in Gentoo is horribly out of date, and from what I&amp;rsquo;ve seen of the java overlay, it doesn&amp;rsquo;t improve the situation much, but it&amp;rsquo;s still better than without it. I&amp;rsquo;ve merged it into regen2.org, since this was I think the most painful merge since the first I ever did, I may have made mistakes on some ebuilds, let me know if you experience problems.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mpd overlay</title>
+      <link>http://blog.xenoterracide.com/post/mpd-overlay/</link>
+      <pubDate>Sun, 18 Jan 2009 10:42:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/mpd-overlay/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m adding the MPD overlay courtesy of Rullzer who&amp;rsquo;s kind enough to merge and maintain it in tree. Nothing big here, just some more up to date ebuilds, and more clients for MPD.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Funtoo gets the new Perl</title>
+      <link>http://blog.xenoterracide.com/post/funtoo-gets-the-new-perl/</link>
+      <pubDate>Fri, 09 Jan 2009 08:45:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/funtoo-gets-the-new-perl/</guid>
+      <description>&lt;p&gt;Soon, Dan Robbins will be merging my perl-experimental branch which contains the perl-experimental overlay. This overlay contains a handful of packages, the most important of which is perl-5.10.0 which has been out for about a year now and Gentoo still hasn&amp;rsquo;t put in portage. One nuisance of the perl-experimental overlay is they don&amp;rsquo;t use changelogs which means if you want to know what&amp;rsquo;s going on with a package from this you&amp;rsquo;ll have to check out git log as well as the changelog. I feel this is a minor issue, in the long run we should migrate all package logs to git&amp;rsquo;s internal logging facility.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;I&amp;rsquo;ve been testing perl-5.10.0 for a week or so now with few problems, and none which I&amp;rsquo;ve found to be un-resolvable. It&amp;rsquo;s entirely possible that there are packages I don&amp;rsquo;t use that will break on 5.10. When we merge perl-experimental it will be hardmasked at first, and we&amp;rsquo;re looking for people to test for a couple of weeks before we move it to the testing branch, so we can iron out any problems which we weren&amp;rsquo;t able to account for.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;upgrading to perl-5.10&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;So, in theory, all you have to do is run&lt;br /&gt;&lt;br /&gt;&lt;code&gt;perl-cleaner all&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;after unmasking and emerging dev-lang/perl and sys-devel/libperl. In practice however, I found this didn&amp;rsquo;t work. it seemed to only find packages in world which needed upgrading, so between me and one other person, we came up with this little one liner to fix packages were built against perl-5.8&lt;br /&gt;&lt;br /&gt;&lt;code&gt;locate 5.8.8 | grep ^/usr/ | grep -v ^/usr/portage | xargs equery belongs | uniq | sed -e s/^/\=/ | xargs emerge &amp;ndash;oneshot&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;once you&amp;rsquo;ve run perl-cleaner and the one-liner, you should be completely upgraded.&lt;br /&gt;&lt;br /&gt;Issues specific to perl-5.10 can be reported on the Gentoo bugtracker, in the &lt;a href=&#34;http://bugs.gentoo.org/show_bug.cgi?id=206455&#34;&gt;perl 5.10 bug&lt;/a&gt; or to us on #funtoo.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sunrise&#39;s over Funtoo</title>
+      <link>http://blog.xenoterracide.com/post/sunrises-over-funtoo/</link>
+      <pubDate>Tue, 06 Jan 2009 14:49:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/sunrises-over-funtoo/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.gentoo.org/proj/en/sunrise/&#34;&gt;Sunrise&lt;/a&gt; a &lt;a href=&#34;http://www.gentoo.org/&#34;&gt;Gentoo&lt;/a&gt; &lt;a href=&#34;http://www.gentoo.org/proj/en/overlays/userguide.xml&#34;&gt;overlay&lt;/a&gt; is being added to &lt;a href=&#34;http://funtoo.org/&#34;&gt;Funtoo&lt;/a&gt;. So if you&amp;rsquo;ve got layman tracking sunrise and you&amp;rsquo;re using funtoo you&amp;rsquo;ll be able to delete sunrise from your overlays as I&amp;rsquo;ll be merging sunrise&amp;rsquo;s reviewed ebuilds daily.&lt;br /&gt;&lt;br /&gt;The hardest part of the whole process was merging package.mask, use.local.desc and categories. Since this is new be on the lookout for bugs or problems.&lt;br /&gt;&lt;br /&gt;Want to add an overlay to funtoo yourself? First, it&amp;rsquo;ll have to  be a git or svn overlay. If it&amp;rsquo;s git you can skip steps involving git svn.&lt;br /&gt;&lt;br /&gt;&lt;code&gt;git svn clone uri://mysvnuri.tld&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;this imports an entire svn repository into git and will take a while, sunrise had import over 7000 commits. Next check to see if any changes need to be made to the structure of the overlay, in sunrise&amp;rsquo;s case it&amp;rsquo;s not branched properly&amp;hellip; they had a subdirectory structure including reviewed and non-reviewed ebuilds, I had to remove that so the top level directory was that of a portdir for merging. if it&amp;rsquo;s already in a nice portdir format move to the next step.&lt;br /&gt;&lt;br /&gt;start by cd-ing into your funtoo portdir checkout, then run &lt;code&gt;git pull uri://mygit-svn-cloned-repo&lt;/code&gt;, this will attempt to merge the 2 and most likely you will have conflicts. Resolve ebuild, and changelog conflicts first, these are easiest with git mergetool, imho, but don&amp;rsquo;t try to use that to merge manifests. Instead of merging manifests just regenerate them with ebuild ebuildWithScrewedManifest digest. once you&amp;rsquo;ve resolved all conflicts run &lt;code&gt;git commit&lt;/code&gt;. That&amp;rsquo;s it your done. you&amp;rsquo;ve now merged an overlay into your local funtoo tree. If you&amp;rsquo;d like to see it in funtoo you&amp;rsquo;ll have to talk to Dan Robbins. He&amp;rsquo;s on #funtoo on freenode regularly.&lt;br /&gt;&lt;br /&gt;Enjoy!&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

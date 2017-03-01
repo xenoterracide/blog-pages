@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Perl Syntax Wishlist" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/tags/perl-syntax-wishlist/" />
+
+
+
+<meta property="og:updated_time" content="2012-06-11T06:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/tags/perl-syntax-wishlist/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2012-06-11T06:00:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/tags/perl-syntax-wishlist/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/tags/perl-syntax-wishlist/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-role-support/">Perl Core Syntax Wishlist: Role Support</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-06-11T06:00:00Z">Mon Jun 11, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-syntax-wishlist" rel="tag">perl syntax wishlist</a>
+
+</p>
+  </header>
+  I want to see Role&rsquo;s added, even PHP got Traits before Perl. It doesn&rsquo;t have to be a huge thing, in fact all I want is the composition aspect. Let me do this: 
+
+package MyRole {
+sub foo { return &lsquo;test&rsquo; }
+}
+package MyClass {
+with &lsquo;MyRole&rsquo;;
+&hellip;
+}
+MyClass-&gt;new-&gt;foo;
+
+ I don&rsquo;t really want or need anything else right now, just that would be fine. We should have interfaces too, but they aren&rsquo;t really required just to support Role&rsquo;s.
+  <a href='http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-role-support/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/">Perl Core Syntax Wishlist: Class support</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-05-28T06:00:00Z">Mon May 28, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-syntax-wishlist" rel="tag">perl syntax wishlist</a>
+
+</p>
+  </header>
+  I would like to see the class keyword become part of Perl, but unlike some I don&rsquo;t want it simply because it&rsquo;s nicer syntax. I&rsquo;d like it to behave differently from package. I&rsquo;d basically like to see this 
+
+class MyClass {
+method foo { return $self-&gt;{foo} }
+method info { return load_class(&lsquo;Class::Info&rsquo;)-&gt;new }
+}
+
+to be the equivalent of 
+
+{
+use strict;
+use warnings;
+use utf8; # so our class can be named with utf8
+  <a href='http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-die-should-die/">Perl Core Syntax Wishlist: die should die</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-05-14T06:00:00Z">Mon May 14, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/exceptions" rel="tag">exceptions</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-syntax-wishlist" rel="tag">perl syntax wishlist</a>
+
+</p>
+  </header>
+  I hate die it is, in my humble opinion, one of the worst parts of perl. I really wish it would be deprecated, and removed, or at least replaced with something that would tell you were the code that was die-ing was being called. Replace its implementation with that of Carp&rsquo;s croak or confess and I&rsquo;d be happy. Better yet, let&rsquo;s just get real exception support and deprecate die (even if that&rsquo;s never removed deprecation just make that real big on its pod).
+  <a href='http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-die-should-die/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-an-exception-stack/">Perl Core Syntax Wishlist: an Exception Stack</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-05-07T22:30:00Z">Mon May 7, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/exceptions" rel="tag">exceptions</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-syntax-wishlist" rel="tag">perl syntax wishlist</a>
+
+</p>
+  </header>
+  I have come to wish many things were part of&nbsp;Perl syntax&nbsp;that are not, and no using external modules is not enough for me. I think it&rsquo;s time Perl got the features as part of the language itself (and yes I suppose I could settle for feature.pm, and no I&rsquo;m probably not going to write them myself, I&rsquo;m not smart enough yet). The first of these is a proper exception stack. I want to be able to write:
+  <a href='http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-an-exception-stack/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

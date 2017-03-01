@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Adventures with SOAP using Perl: Part 0 ( prelude )" />
+<meta property="og:description" content="This is a prelude to a series on working with SOAP Requests using Perl. For the past 3 months I have been working on a&nbsp;Perl API&nbsp;for CyberSource&rsquo;s Simple Order API which uses SOAP (I should note, that although I believe most of the API is now stable some area&rsquo;s still need work, and thus I don&rsquo;t expect it to reach 1.0.0 anytime soon).
+First I used SOAP::Lite to do my requests, but I found it confusing to construct the requests that I needed to make." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-0--prelude-/" />
+
+
+
+<meta property="article:published_time" content="2011-10-15T15:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2011-10-15T15:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Adventures with SOAP using Perl: Part 0 ( prelude )"/>
+<meta name="twitter:title" content="Adventures with SOAP using Perl: Part 0 ( prelude )"/>
+<meta name="twitter:description" content="This is a prelude to a series on working with SOAP Requests using Perl. For the past 3 months I have been working on a&nbsp;Perl API&nbsp;for CyberSource&rsquo;s Simple Order API which uses SOAP (I should note, that although I believe most of the API is now stable some area&rsquo;s still need work, and thus I don&rsquo;t expect it to reach 1.0.0 anytime soon).
+First I used SOAP::Lite to do my requests, but I found it confusing to construct the requests that I needed to make."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Adventures with SOAP using Perl: Part 0 ( prelude )",
+  "url": "http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-0--prelude-/",
+  "wordCount": "340",
+  
+  
+  "datePublished": "2011-10-15T15:00:00&#43;00:00",
+  
+  
+  "dateModified": "2011-10-15T15:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Business::CyberSource,SOAP,ironman,perl"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-0--prelude-/">
+
+    <title>Adventures with SOAP using Perl: Part 0 ( prelude ) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-0--prelude-/">Adventures with SOAP using Perl: Part 0 ( prelude )</a></h2>
+    <p class="blog-post-meta"><time datetime="2011-10-15T15:00:00Z">Sat Oct 15, 2011</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/businesscybersource" rel="tag">Business::CyberSource</a>, <a href="/tags/soap" rel="tag">SOAP</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>
+
+</p>
+  </header>
+  <p>This is a prelude to a series on working with SOAP Requests using Perl.  For the past 3 months I have been working on a&nbsp;<a href="https://metacpan.org/module/Business::CyberSource">Perl API</a>&nbsp;for <a href="http://www.cybersource.com/developers/develop/integration_methods/simple_order_and_soap_toolkit_api/">CyberSource&rsquo;s Simple Order API</a> which uses SOAP (I should note, that although I believe most of the API is now stable some area&rsquo;s still need work, and thus I don&rsquo;t expect it to reach 1.0.0 anytime soon).<br /><br />First I used <a href="https://metacpan.org/module/SOAP::Lite">SOAP::Lite</a> to do my requests, but I found it confusing to construct the requests that I needed to make. I even discovered a bug that lead to the current ( 0.714 ) release of SOAP::Lite.<br /><br />Next I started using <a href="https://metacpan.org/module/SOAP::Data::Builder">SOAP::Data::Builder</a> to make it easier to build my SOAP::Lite requests. This was good, but frustrating that I had to add my data in a specific order.<br /><br />Finally I came upon&nbsp;<a href="https://metacpan.org/module/XML::Compile::SOAP">XML::Compile::SOAP</a>. A glance at it&rsquo;s API which used a hash to build requests seemed much better. however, it took me a few weeks and some help from&nbsp;Mark Overmeer (the author) and an update to&nbsp;<a href="https://metacpan.org/module/XML::Compile::SOAP::WSS">XML::Compile::SOAP::WSS</a>&nbsp;to get it to work.<br /><br />If you&rsquo;re planning on starting a new project that requires SOAP I definitely recommend using&nbsp;<a href="https://metacpan.org/module/XML::Compile::SOAP">XML::Compile::SOAP</a>&nbsp;if you have a <code>.wsdl</code> and a <code>.xsd</code> to work with.<br /><br />I will be covering all 3 of these methods in Parts 1, 2 and 3 of the series.<br /><br />To get started we&rsquo;ll need a SOAP Server since I haven&rsquo;t been able to find any reliable public services. To do this you can install&nbsp;<a href="https://metacpan.org/module/XML::Compile::SOAP::Daemon">XML::Compile::SOAP::Daemon</a>&nbsp;(which probably could use some Plack/PSGI love ). You&rsquo;ll want to grab a copy of the namesservice example that is in XML::Compile::SOAP::Daemon, I have provided a <a href="https://gist.github.com/1971856">patched copy in a gist</a> . Once you&rsquo;ve done that you can do <code>perl server.pl</code> . Now you should have a Server running on&nbsp;<a href="http://localhost:8877/">http://localhost:8877</a>&nbsp;which we can use for testing our client examples.<br /><br />Please be advised, these tutorials will not be explain XML, XSD, WSDL, or SOAP, but simply the Perl interfaces. <p><strong>UPDATE:</strong> Here is <a href="http://www.xenoterracide.com/2011/10/adventures-with-soap-using-perl-part-1.html">Part 1 ( SOAP::Lite )</a></p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-0--prelude-%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-0--prelude-%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-0--prelude-%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-0--prelude-%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="--sync should be sync" />
+<meta property="og:description" content="emerge sync never should have become emerge &ndash;sync, of course 2 years ago I thought it was the right thing, it isn&rsquo;t though, live and learn. sync is currently an argument with the syntax of an option.
+What&rsquo;s the difference?
+An argument is what the command, or executable operates on. Some examples
+cp file0 file1 copies file0 to file1.
+ls list the current working directory
+ls dir0 lists directory dir0" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/--sync-should-be-sync/" />
+
+
+
+<meta property="article:published_time" content="2008-12-21T15:32:00&#43;00:00"/>
+<meta property="article:modified_time" content="2008-12-21T15:32:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="--sync should be sync"/>
+<meta name="twitter:title" content="--sync should be sync"/>
+<meta name="twitter:description" content="emerge sync never should have become emerge &ndash;sync, of course 2 years ago I thought it was the right thing, it isn&rsquo;t though, live and learn. sync is currently an argument with the syntax of an option.
+What&rsquo;s the difference?
+An argument is what the command, or executable operates on. Some examples
+cp file0 file1 copies file0 to file1.
+ls list the current working directory
+ls dir0 lists directory dir0"/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "--sync should be sync",
+  "url": "http://blog.xenoterracide.com/post/--sync-should-be-sync/",
+  "wordCount": "270",
+  
+  
+  "datePublished": "2008-12-21T15:32:00&#43;00:00",
+  
+  
+  "dateModified": "2008-12-21T15:32:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Portage"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/--sync-should-be-sync/">
+
+    <title>&ndash;sync should be sync | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/--sync-should-be-sync/">&ndash;sync should be sync</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T15:32:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  <p>emerge sync never should have become emerge &ndash;sync, of course 2 years ago I thought it was the right thing, it isn&rsquo;t though, live and learn. sync is currently an argument with the syntax of an option.<br /><br /><br /><br /><em>What&rsquo;s the difference?</em><br /><br />An argument is what the command, or executable operates on. Some examples<br /><br /><code>cp file0 file1</code> copies file0 to file1.<br /><br /><code>ls</code> list the current working directory<br /><br /><code>ls dir0</code> lists directory dir0<br /><br /><br /><br /><em>Right, so how is &ndash;sync an argument and not an option?</em><br /><br />Options effect how commands operate on arguments. For example<br /><br /><code>cp file0 file1</code> will overwrite file1 if it exists.<br /><br /><code>cp &ndash;interactive file0 file1</code> will prompt to overwrite if file1 exists.<br /><br /><code>ls -R</code> will list any files and directories off the current working directory recursively.<br /><br /><code>ls -R dir0</code> will list any files and directories off dir0 recursively.<br /><br /><br /><br /><em>I still don&rsquo;t understand why sync isn&rsquo;t an option, it isn&rsquo;t a file so wouldn&rsquo;t it be an option?</em><br /><br />Well that&rsquo;s basically what I used to think, not a file not an argument. It&rsquo;s not true to understand better I suggest picking up a version control system (e.g. svn) and seeing how you can have arguments that aren&rsquo;t files. Example<br /><br /><code>svn checkout -r 1346</code> checkout revision 1346<br /><br />See the -r switch is an option that operates on the checkout argument to the svn command.<br /><br /><br /><br /><em>Starting to get it&hellip;</em><br /><br />&ndash;sync currently doesn&rsquo;t affect any target, doesn&rsquo;t change a thing but isn&rsquo;t a &lsquo;default&rsquo; either (some options are just there for explicitness and are in effect unless another option is there.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f--sync-should-be-sync%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f--sync-should-be-sync%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f--sync-should-be-sync%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f--sync-should-be-sync%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Interface Driven Design" />
+<meta property="og:description" content="What is Interface Driven Design?Interface Driven Design simply means that you should design your software around a flexible, easy to use, easy to understand interface. This is easy to achieve if your objects are of SOLID design. There is a simple table and reference link if you&rsquo;re not familiar with the principles. My Work is SOLID alreadyThen you&rsquo;re on the right track but it&rsquo;s not enough if you don&rsquo;t fully marry the concept to best practices." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/interface-driven-design/" />
+
+
+
+<meta property="article:published_time" content="2012-11-03T05:37:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-11-03T05:37:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Interface Driven Design"/>
+<meta name="twitter:title" content="Interface Driven Design"/>
+<meta name="twitter:description" content="What is Interface Driven Design?Interface Driven Design simply means that you should design your software around a flexible, easy to use, easy to understand interface. This is easy to achieve if your objects are of SOLID design. There is a simple table and reference link if you&rsquo;re not familiar with the principles. My Work is SOLID alreadyThen you&rsquo;re on the right track but it&rsquo;s not enough if you don&rsquo;t fully marry the concept to best practices."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Interface Driven Design",
+  "url": "http://blog.xenoterracide.com/post/interface-driven-design/",
+  "wordCount": "1203",
+  
+  
+  "datePublished": "2012-11-03T05:37:00&#43;00:00",
+  
+  
+  "dateModified": "2012-11-03T05:37:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Business::CyberSource,object oriented design,ironman,perl,Interfaces"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/interface-driven-design/">
+
+    <title>Interface Driven Design | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/interface-driven-design/">Interface Driven Design</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-11-03T05:37:00Z">Sat Nov 3, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/businesscybersource" rel="tag">Business::CyberSource</a>, <a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/interfaces" rel="tag">Interfaces</a>
+
+</p>
+  </header>
+  <p><h2>What is Interface Driven Design?</h2><p>Interface Driven Design simply means that you should design your software around a flexible, easy to use, easy to understand interface. This is easy to achieve if your objects are of <a href="http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID</a> design. There is a simple table and reference link if you&rsquo;re not familiar with the principles. </p><h2>My Work is SOLID already</h2><p>Then you&rsquo;re on the right track but it&rsquo;s not enough if you don&rsquo;t fully marry the concept to best practices. I&rsquo;ve seen quite a bit of work that&rsquo;s SOLID enough but fails to provide good interfaces. </p><h2>Why is this so important?</h2><p>Getting your interfaces correct is important because someone should be able to replace your code with new code, or subclassed code and it should still work. </p><h3>Example: LWP::UserAgent and Mojo::Useragent</h3><p>These two libraries do exactly the same thing, they provide an HTTP Client. However, they do not conform to the same interface. This means That if you&rsquo;re using Mojolicious to write a web application, but require an external library to interface with a remote API, because its interface will make your development easier, you cannot change it&rsquo;s use of LWP::UserAgent to Mojo::Useragent. Now you&rsquo;ve added another dependency and complexity to your application. </p><h3>Example: DBI</h3><p>DBI is an example of a common interface to many different database drivers that do similar things, but underlyingly with different syntax. This allows you to use a common interface and ignore the differences in implementation between, say DBD::mysql and DBD::Pg. </p><h2>How do I get there?</h2><p>To begin, and as a general rule your interface should conform to style choices in the language you&rsquo;re using. Meaning that in Perl you should use <code>$obj-&gt;foo<em>bar</code> not <code>$obj-&gt;getFooBar</code> as it is the style most objects use. <h3>Domain Driven Design</h3><p>The first thing I suggest doing is design your initial interface using Domain Driven Design. Look at the common language used to describe the thing that you&rsquo;re building, and name your package, classes, methods, functions, after words from the common language. You&rsquo;re writing a new HTTP client? you probably have some concept of POST, so <code>$client-&gt;post</code> makes a lot of sense. If you&rsquo;re writing a billing system you may have some concept of Invoice-&gt;process. When doing Domain Driven Design your Interface should be easy to understand by an Expert in that domain (regardless of whether they are technically savvy ). Example if I told a Billing expert I was writing the code for Invoice-&gt;process they probably would have no idea what the internals meant, but they should easily understand the purpose and a general idea of what it actually does. (note: having an Invoice object might be bad, as an invoice is a request for payment on a Sale, and a receipt is a record of, therefore they are just views on a Sale, but that&rsquo;s a more complex notion) </p><h3>Pure Fabrication</h3><p>Unfortunately sometimes what you&rsquo;re creating has no real world equivalent (actually HTTP is an example that is now more of its own domain). So you&rsquo;re making it up as you go. In this case you need to create objects that are a &lt;a href=&ldquo;<a href="http://en.wikipedia.org/wiki/GRASP">http://en.wikipedia.org/wiki/GRASP</a></em>(object-oriented_design)#Pure_Fabrication&rdquo;&gt;Pure Fabrication</a>. When creating interfaces for these I suggest looking to patterns, simple interfaces, and the interfaces for similar things in other projects, or languages. Use names that are as descriptive as you can get. </p><h3>Existing Interfaces</h3><p>You want to do this whenever there is an existing implementation that&rsquo;s not good enough, but has a decent interface. Perfect examples are DBI and LWP. They both have  good interfaces, but there&rsquo;s a chance that the implementation isn&rsquo;t good enough (or you have need of a nonexistant driver).</p><p>An example with be AnyEvent::HTTP::LWP::UserAgent. If you&rsquo;re using AnyEvent you&rsquo;ll probably know you don&rsquo;t want LWP&rsquo;s blocking interface, but unfortunately the library you need to use uses LWP, what a dilemma. You could rewrite the library entirely to use AnyEvent::HTTP, but this will be both tedious and error prone. However, Anyevent::HTTP::LWP::UserAgent provides an LWP Interface, this means that you can simply substitute it in the library (hopefully the library made this easy by following the Inversion of Control Principle to be discussed in a future post). </p><p>Like AnyEvent::HTTP::LWP::UserAgent you may need to build a Facade interface that mimicks another interface. It would be better to start with this interface, but then again sometimes that&rsquo;s not ideal either. </p><h3>Combinations</h3><p>Sometimes you have to combine all of these strategies. Business::OnlinePayment::CyberSource (BOPC) and Business::CyberSource ( things I&rsquo;m responsible for ) are good examples. Business::CyberSource was written because BOPC 2.x was no longer maintained and relied on a proprietary library which was not 64 bit compatible. I decided that I did not like the Business::OnlinePayment interface (and still don&rsquo;t to be honest ) and so set out to create a new one. </p><p>My first attempts was in retrospect focussed more on creating a perlish API than a Model driven API. In the long run this caused significant pain and resulted in some bad code. As of version 0.7.x (in TRIAL) Business::CyberSource&rsquo;s API is modeled after the remote API that CyberSource provides, and as such it has become much easier for me to provide access to new remote API features. Because I have continued work on ensuring that my Interface only relies on it&rsquo;s own interfaces it should now be trivial to replace any single piece of Business::CyberSources API. Don&rsquo;t want to use my request objects? you could simply pass an object that can serialize to a hashref that looks like what XML::Compile::SOAP expects. Any Expert at CyberSource should be able to read and understand my API (not tested), where they might not understand BOPC&rsquo;s. Unfortunately to get to this point I&rsquo;ve had to break my interface several times. </p><p>Later due to new business concerns we had  a need to conform to Business::OnlinePayments Interface, and so we rewrote BOPC to use Business::CyberSource as the backend. It does not provide access to all of the features, but it can be used in anything that knows how to use a Business::OnlinePayment API. I would have preferred to have this done sooner, but due to tuits and business constraints it was put off. </p><p>If you read the Source of either of these you will find a few fabrications, such as the use of Factories. </p><h2>Interface as a Language Feature</h2><p>Many languages support specifying the interface via a language feature. If your language supports this you should take advantage of it. Unfortunately Perl&rsquo;s simple <code>can</code> support really isn&rsquo;t enough, and Moose&rsquo;s Interface as Role support doesn&rsquo;t really work due to ordering issues. (I implemented the interface but unfortunately due to ordering my implementation is runtime and happens comes after the compiletime requirement ). I will say though that I believe it is more important to provide the actual calling convention in a dynamic language like Perl, than use of an actual interface. At least with Moose I feel that an interface is (generally) as concrete as the isa for the class, and so I don&rsquo;t bother checking them, they are an implementation detail. </p><h2>Conclusion</h2><p>Ultimately the goal is to create easy interfaces to understand, use, and properly reflective of the problem. By doing so you also make concrete implementations easy to update and reuse without breaking your clients. </p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finterface-driven-design%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finterface-driven-design%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finterface-driven-design%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finterface-driven-design%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

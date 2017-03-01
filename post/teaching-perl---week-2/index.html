@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Teaching Perl - Week 2" />
+<meta property="og:description" content="Week 0Week 1 (part 1)Week 1 (part 2)Guess the NumberSo our little game is exceptionally mediocre and not very fun. Head First Programming: A Learner&#39;s Guide to Programming Using the Python Languagesuggests we give the game player some help by telling them if the number is lower or Higher.
+use feature &lsquo;say&rsquo;;
+use strict;
+use warnings;
+say &ldquo;welcome&rdquo;;
+say &ldquo;Guess the number: &ldquo;;
+my $guess = readline(*STDIN);
+if ( $guess == 5 ) {" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/teaching-perl---week-2/" />
+
+
+
+<meta property="article:published_time" content="2010-04-18T22:15:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-04-18T22:15:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Teaching Perl - Week 2"/>
+<meta name="twitter:title" content="Teaching Perl - Week 2"/>
+<meta name="twitter:description" content="Week 0Week 1 (part 1)Week 1 (part 2)Guess the NumberSo our little game is exceptionally mediocre and not very fun. Head First Programming: A Learner&#39;s Guide to Programming Using the Python Languagesuggests we give the game player some help by telling them if the number is lower or Higher.
+use feature &lsquo;say&rsquo;;
+use strict;
+use warnings;
+say &ldquo;welcome&rdquo;;
+say &ldquo;Guess the number: &ldquo;;
+my $guess = readline(*STDIN);
+if ( $guess == 5 ) {"/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Teaching Perl - Week 2",
+  "url": "http://blog.xenoterracide.com/post/teaching-perl---week-2/",
+  "wordCount": "1338",
+  
+  
+  "datePublished": "2010-04-18T22:15:00&#43;00:00",
+  
+  
+  "dateModified": "2010-04-18T22:15:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "baker,ironman,perl,teaching perl,curriculum"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/teaching-perl---week-2/">
+
+    <title>Teaching Perl - Week 2 | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/teaching-perl---week-2/">Teaching Perl - Week 2</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-04-18T22:15:00Z">Sun Apr 18, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/baker" rel="tag">baker</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/teaching-perl" rel="tag">teaching perl</a>, <a href="/tags/curriculum" rel="tag">curriculum</a>
+
+</p>
+  </header>
+  <p><ul><li><a href="http://xenoterracide.blogspot.com/2010/04/teaching-perl-part-0-preface.html">Week 0</a></li><li><a href="http://xenoterracide.blogspot.com/2010/04/teaching-perl-week-1-part1.html">Week 1 (part 1)</a></li><li><a href="http://xenoterracide.blogspot.com/2010/04/teaching-perl-week-1-part2.html">Week 1 (part 2)</a></li></ul><h2>Guess the Number</h2>So our little game is exceptionally mediocre and not very fun. <a target="_blank"  href="http://www.amazon.com/Head-First-Programming-Learners-Language/dp/0596802374?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Head First Programming: A Learner&#39;s Guide to Programming Using the Python Language</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596802374" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> suggests we give the game player some help by telling them if the number is lower or Higher.<script src="http://gist.github.com/370592.js"></script><noscript><pre><code><br />use feature &lsquo;say&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br />say &ldquo;Guess the number: &ldquo;;<br />my $guess = readline(*STDIN);<br /><br />if ( $guess == 5 ) {<br />        say &ldquo;You Win!&rdquo;;<br />}<br />elsif ( $guess &gt; 5 ) {<br />        say &ldquo;Too high&rdquo;;<br />}<br />else {<br />        say &ldquo;Too low&rdquo;;<br />}<br />say &ldquo;Game over!&rdquo;;<br /></code></pre></noscript><br /><br />This game is a lot less challenging, and still not very good. So one one of the problems is it exits instead of letting it try till we get it right. So lets change that.<script src="http://gist.github.com/370613.js"></script><noscript><pre><code>use feature &lsquo;say&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br />my $guess = 0;<br />until ( $guess == 5 ) {<br />        say &ldquo;Guess the number: &ldquo;;<br />        $guess = readline(*STDIN);<br /><br />        if ( $guess == 5 ) {<br />                say &ldquo;You Win!&rdquo;;<br />        }<br />        elsif ( $guess &gt; 5 ) {<br />                say &ldquo;Too high&rdquo;;<br />        }<br />        else {<br />                say &ldquo;Too low&rdquo;;<br />        }<br />}<br />say &ldquo;Game over!&rdquo;;<br /></code></pre></noscript><br /><br />This one is going to show your students something they likely haven&rsquo;t seen before. An <code><a href="http://perldoc.perl.org/perlsyn.html#Statement-Modifiers">until</a></code> statement. <code>until</code> is logically equivalent to <code>while not</code> or in this case you could write <code>while ( $guess != 5 ) {&hellip;}</code> and have it do exactly the same thing.<br /><br />We&rsquo;ve got some bad practices in this code it lacks useful comments and uses a magic number. Also the instructions aren&rsquo;t clear if you don&rsquo;t know how the program is written. Let&rsquo;s add that stuff next.<script src="http://gist.github.com/370622.js"></script><noscript><pre><code>#!/usr/bin/env perl<br /># guess a number game<br />use feature &lsquo;say&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br />my $winning_num = 5;<br /><br />my $guess = 0; #initialize outside of loop so loop executes properly<br />until ( $guess == $winning_num ) {<br /><br />        say &ldquo;Guess a number between 1 and 10: &ldquo;;<br />        # get the number from the user<br />        $guess = readline(*STDIN);<br /><br />        # check to see if we have a winner, or the guess is too high, or low.<br />        if ( $guess == $winning_num ) {<br />                say &ldquo;You Win!&rdquo;;<br />        }<br />        elsif ( $guess &gt; $winning_num ) {<br />                say &ldquo;Too high&rdquo;;<br />        }<br />        else {<br />                say &ldquo;Too low&rdquo;;<br />        }<br />}<br />say &ldquo;Game over!&rdquo;;</code></pre></noscript><br />So this code is too simple for comments, but I&rsquo;ve tried to show what I think some good ones would be. Usually &lsquo;novice&rsquo; books say use meaningful comments but don&rsquo;t show any. Students then end up writing comments like <code># initialize local variable guess to 0</code>. That&rsquo;s not useful the code obviously says that. Instead comments should say, what a larger chunk of is trying to do, or why it&rsquo;s doing it that way.<br /><br />In <a target="_blank"  href="http://www.amazon.com/Head-First-Programming-Learners-Language/dp/0596802374?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Head First Programming: A Learner&#39;s Guide to Programming Using the Python Language</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596802374" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> the author uses the variable <code>secret</code> where I&rsquo;ve used <code>$winning_num</code> because he ends up using a random number generator (we will in a moment), however, this is not a very descriptive name. <code>$winning_num</code> is a better name because it&rsquo;s more descriptive of what the number actually is. He also skips removing the &lsquo;magic numbers&rsquo; step which is probably why the variable name used is poor.<br /><br />So let&rsquo;s make the winning number random.<script src="http://gist.github.com/370650.js"></script><noscript><pre><code>use feature &lsquo;say&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br /># generate the winning number between 1 and 10<br />my $winning_num = int( rand(10) );<br /><br />my $guess = 0; #initialize outside of loop so loop executes properly<br />until ( $guess == $winning_num ) {<br /><br />        say &ldquo;Guess a number between 1 and 10: &ldquo;;<br />        # get the number from the user<br />        $guess = readline(*STDIN);<br /><br />        # check to see if we have a winner, or the guess is to high, or low.<br />        if ( $guess == $winning_num ) {<br />                say &ldquo;You Win!&rdquo;;<br />        }<br />        elsif ( $guess &gt; $winning_num ) {<br />                say &ldquo;Too high&rdquo;;<br />        }<br />        else {<br />                say &ldquo;Too low&rdquo;;<br />        }<br />}<br />say &ldquo;Game over!&rdquo;;</code></pre></noscript><br /><br />There we go&hellip; Now are number is random. &hellip; &hellip; &hellip; notice the logic error yet? no? go read the <a href="http://perldoc.perl.org/functions/rand.html">rand</a> documentation. Got it now? ok simply put this generates 10 total possible random numbers starting at 0, e.g 0-9. Our code isn&rsquo;t broken but it&rsquo;s not doing what we want. But the docs don&rsquo;t say how to generate a range&hellip; how can I do that? run <code>perldoc -q random</code> this will return perlfaq4 we&rsquo;re looking for <a href="http://perldoc.perl.org/perlfaq4.html#How-do-I-get-a-random-number-between-X-and-Y%3f">How do I get a random number between X and Y?</a>. That tells us how to fix it&hellip; our code should now look something like.<script src="http://gist.github.com/370661.js"></script><noscript><pre><code>use feature &lsquo;say&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br /># generate the winning number between 1 and 10<br /># see perlfaq4 for algorithm details<br />my $winning_num = 1 + int( rand( (10-1)+1 ) );<br /><br />my $guess = 0; #initialize outside of loop so loop executes properly<br />until ( $guess == $winning_num ) {<br /><br />        say &ldquo;Guess a number between 1 and 10: &ldquo;;<br />        # get the number from the user<br />        $guess = readline(*STDIN);<br /><br />        # check to see if we have a winner, or the guess is to high, or low.<br />        if ( $guess == $winning_num ) {<br />                say &ldquo;You Win!&rdquo;;<br />        }<br />        elsif ( $guess &gt; $winning_num ) {<br />                say &ldquo;Too high&rdquo;;<br />        }<br />        else {<br />                say &ldquo;Too low&rdquo;;<br />        }<br />}<br />say &ldquo;Game over!&rdquo;;</code></pre></noscript><br /><br />we could just put 10 in rand in this case but that&rsquo;s not as flexible. You&rsquo;ll also note I commented on why we did it that way. Kind of a way of making sure no one goes back to the other way, it also tells people why we did it this way.<br /><br />If you&rsquo;ve used another language you might ask, &ldquo;Why not use a switch case?&rdquo;. Most instructors and books say &ldquo;perl doesn&rsquo;t have a switch case&rdquo;. Even <a href="http://perldoc.perl.org/perlintro.html#Conditional-and-looping-constructs">perl intro</a> still falsely states that <blockquote>&ldquo;Perl has most of the usual conditional and looping constructs except for case/switch (but if you really want it, there is a Switch module in Perl 5.8 and newer, and on CPAN.&rdquo;</blockquote>. That&rsquo;s even worse! Switch.pm has been in core for a while now&hellip; but is deprecated an you should <strong>NOT</strong> use it. since perl 5.10.0 perl has had a <a href="http://perldoc.perl.org/perlsyn.html#Switch-statements">Switch statement</a>, so let&rsquo;s rewrite our code using that.<script src="http://gist.github.com/370673.js"></script><noscript><pre><code>use feature &lsquo;say&rsquo;;<br />use feature &lsquo;switch&rsquo;;<br />use strict;<br />use warnings;<br /><br />say &ldquo;welcome&rdquo;;<br /><br /># generate the winning number between 1 and 10<br /># see perlfaq4 for algorithm details<br />my $winning_num = 1 + int( rand( (10-1)+1 ) );<br /><br />my $guess = 0; #initialize outside of loop so loop executes properly<br />until ( $guess == $winning<em>num ) {<br /><br />        say &ldquo;Guess a number between 1 and 10: &ldquo;;<br />        # get the number from the user<br />        $guess = readline(*STDIN);<br /><br />        # check to see if we have a winner, or the guess is to high, or low.<br />        given( $guess ) {<br />                when ( $</em> &gt; $winning<em>num ) {<br />                        say &ldquo;Too high&rdquo;;<br />                }<br />                when ( $</em> &lt; $winning_num ) {<br />                        say &ldquo;Too low&rdquo;;<br />                }<br />                when ( $winning<em>num ) {<br />                        say &ldquo;You Win!&rdquo;;<br />                }<br />        }<br />}<br />say &ldquo;Game over!&rdquo;;</code></pre></noscript><br /><br />Note the use of <code>use feature &lsquo;switch&rsquo;;</code> make sure you use this instead of <code>use Switch;</code> which will use the now deprecated Switch.pm module.<br /><br />You can shorten <code>use feature &lsquo;say&rsquo;; use feature &lsquo;switch&rsquo;;</code> to <code>use feature qw(say switch);</code>.<br /><br />Beside&rsquo;s introducing switch/case this introduces the default argument <code>$</em></code> and smart matching.<br /><br />You&rsquo;ll also note that I changed the algorithm but my comments didn&rsquo;t change.<br /><br />As you can see <a href="http://en.wikipedia.org/wiki/There's_more_than_one_way_to_do_it">TIMTOWTDI</a>.<br /><br /><h2>Homework</h2>What else is wrong with our game? how could we fix it? How could we prevent the problem from being reintroduced? How can we be sure that our random problem is actually fixed? and make sure that it&rsquo;s not reintroduced? Can you think of any other ways we can write this program? or any other improvements? write the program so that it has 3 difficulty levels easy, medium, hard with  ranges 1-10,1-100,1-1000 respectively. Blog these to Iron Man.<br /><br />Optional: if you have <a target="_blank"  href="http://www.amazon.com/Programming-Principles-Practice-Using-C/dp/0321543726?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Programming: Principles and Practice Using C++</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0321543726" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> have your students do Drill 1 from chapter 3 (obviously in perl not c++).<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tree on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/tree/index.xml</link>
+    <description>Recent content in Tree on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/tree/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Looking for tree maintainers</title>
+      <link>http://blog.xenoterracide.com/post/looking-for-tree-maintainers/</link>
+      <pubDate>Tue, 21 Apr 2009 20:01:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/looking-for-tree-maintainers/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;d like to see multiple people merging the tree, with best case scenario being that it happens more than once a day. worst case status quo. I&amp;rsquo;m willing to write the scripts and teach anyone how to do it. I just ask that you can read an ebuild (to some degree) and have good judgement, or at least not too embarrassed to ask. Most ebuild merges are IUSE, KEYWORDS, and cvs line. the rest is really almost automated, merge (del package.mask) merge (fix ebuilds), repoman manifest, gen_metadata, commit, push. This will allow me to focus on other things hopefully, and make the distro better quality.&lt;br /&gt;&lt;br /&gt;email the &lt;a href=&#34;http://groups.google.com/group/regen2-dev&#34;&gt;dev list&lt;/a&gt; if you&amp;rsquo;re interested.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tree hasn&#39;t been updated - why</title>
+      <link>http://blog.xenoterracide.com/post/tree-hasnt-been-updated---why/</link>
+      <pubDate>Thu, 12 Mar 2009 12:54:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/tree-hasnt-been-updated---why/</guid>
+      <description>&lt;p&gt;So 2 days ago, when I went to sync to gentoo I didn&amp;rsquo;t get any updates. I&amp;rsquo;m not really sure why as the process seemed to go alright. It could have something to do with the next bit.&lt;br /&gt;&lt;br /&gt;My System appeared to have been compromised. Syslog-ng was disabled and all logs post dec 30 2008 were removed. So i&amp;rsquo;ve spent the better part of yesterday/today reinstalling my system. Tree should be synced and merged tonight.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>regen2 maintaining it&#39;s own openrc</title>
+      <link>http://blog.xenoterracide.com/post/regen2-maintaining-its-own-openrc/</link>
+      <pubDate>Sun, 22 Feb 2009 20:50:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/regen2-maintaining-its-own-openrc/</guid>
+      <description>&lt;p&gt;So openrc was updated recently, and I noticed it, I decided it was time to find out why drobbins had created his own version. so I viewed them, ultimately I decided that drobbins had made too many changes but the gentoo ebuild had its own issues. So I modified the Gentoo ebuild to use EAPI 2, removed all of the live ebuild code that shouldn&amp;rsquo;t be in it, updated the branding, and we&amp;rsquo;re ready to rock.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>split package.mask</title>
+      <link>http://blog.xenoterracide.com/post/split-package.mask/</link>
+      <pubDate>Sat, 21 Feb 2009 23:30:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/split-package.mask/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s been a problem with ${PORTDIR}/profiles/package.mask since I added sunrise, I didn&amp;rsquo;t realize at the time the problem wouldn&amp;rsquo;t be adding atoms, it would be keeping track of when they should be removed. I&amp;rsquo;ve decided that the best way to do it is to use portages &amp;lsquo;directory concatenation&amp;rsquo; feature, I turned package.mask into a directory, it now contains a file for each overlay that has a package.mask, and one for gentoo.org and regen2.org. This will make it much easier to keep track of removals. They originals are being merged in from a package.mask &amp;lsquo;overlay&amp;rsquo; on regen2&amp;rsquo;s github account. Let me know if anything is now masked that shouldn&amp;rsquo;t be or unmasked that shouldn&amp;rsquo;t be.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>open letter to Dan Robbins - merge regen2</title>
+      <link>http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/</link>
+      <pubDate>Wed, 11 Feb 2009 06:15:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/</guid>
+      <description>&lt;p&gt;I had an interesting conversation with thewtex on #funtoo yesterday. My conclusion is, this divergence of tree&amp;rsquo;s is stupid. We should be working on a common base, at least common enough that users could relatively easily merge our tree&amp;rsquo;s. My tree is currently ahead of yours in content by 3 sunrise merges, 1 mpd, and the 2 merges of the python overlay. Your users can&amp;rsquo;t easily get these updates.&lt;br /&gt;&lt;br /&gt;Due to the fact that we have irreconcilable views on what patches we allow, the fork must remain. However, users don&amp;rsquo;t have to suffer for it. The solution is to base funtoo.org on regen2.org. I can&amp;rsquo;t base regen2.org on funtoo.org because I have stricter QA policies, however those policies shouldn&amp;rsquo;t negatively affect funtoo, I can continue to cherry-pick patches that you wish to put into funtoo, so they end up in regen2 as well.&lt;br /&gt;&lt;br /&gt;This will require that you, trust me enough to merge the tree. I will be handling the gentoo and overlay merges. You will simply merge my tree daily.&lt;br /&gt;&lt;br /&gt;In order to resolve the differences of the tree as they stand I suggest creating a funtoo.org2 branch that&amp;rsquo;s based on regen2.org and discontinuing the maintenance of funtoo.org. cherry-pick any patches I haven&amp;rsquo;t applied to regen2 (I can point out which ones) and apply any other changes you need to. The other option is to merge my tree, this will be painful and arduous for you, but require no work on the part of your users.&lt;br /&gt;&lt;br /&gt;This resolves many problems. 1 you won&amp;rsquo;t have to deal with the main tree or overlays, 2 you won&amp;rsquo;t have to run your patches by me and can do what you want, 3 users get the best of both worlds, 4 developers can choose to email you inline patches, or send me pull requests. Everyone should go home happy from this.&lt;br /&gt;&lt;br /&gt;what say you?&lt;br /&gt;&lt;br /&gt;P.S. I will not have it said that I want a rift in the community, I want whats best for all kinds of users and the status quo is not.&lt;br /&gt;&lt;br /&gt;EDIT: in short the answer is no. drobbins doesn&amp;rsquo;t want to merge my tree, as it&amp;rsquo;s supposedly untrusted, he also doesn&amp;rsquo;t want to cherry-pick patches out of my tree.  I don&amp;rsquo;t want to spend time merging the overlays just for Funtoo, on top of merging them for Regen2. Apparently my bug fixes, and version bumps aren&amp;rsquo;t good enough for Funtoo.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>mpd overlay</title>
+      <link>http://blog.xenoterracide.com/post/mpd-overlay/</link>
+      <pubDate>Sun, 18 Jan 2009 10:42:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/mpd-overlay/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m adding the MPD overlay courtesy of Rullzer who&amp;rsquo;s kind enough to merge and maintain it in tree. Nothing big here, just some more up to date ebuilds, and more clients for MPD.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

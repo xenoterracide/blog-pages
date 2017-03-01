@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Perl Core Syntax Wishlist: Class support" />
+<meta property="og:description" content="I would like to see the class keyword become part of Perl, but unlike some I don&rsquo;t want it simply because it&rsquo;s nicer syntax. I&rsquo;d like it to behave differently from package. I&rsquo;d basically like to see this 
+
+class MyClass {
+method foo { return $self-&gt;{foo} }
+method info { return load_class(&lsquo;Class::Info&rsquo;)-&gt;new }
+}
+
+to be the equivalent of 
+
+{
+use strict;
+use warnings;
+use utf8; # so our class can be named with utf8" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/" />
+
+
+
+<meta property="article:published_time" content="2012-05-28T06:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-05-28T06:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Perl Core Syntax Wishlist: Class support"/>
+<meta name="twitter:title" content="Perl Core Syntax Wishlist: Class support"/>
+<meta name="twitter:description" content="I would like to see the class keyword become part of Perl, but unlike some I don&rsquo;t want it simply because it&rsquo;s nicer syntax. I&rsquo;d like it to behave differently from package. I&rsquo;d basically like to see this 
+
+class MyClass {
+method foo { return $self-&gt;{foo} }
+method info { return load_class(&lsquo;Class::Info&rsquo;)-&gt;new }
+}
+
+to be the equivalent of 
+
+{
+use strict;
+use warnings;
+use utf8; # so our class can be named with utf8"/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Perl Core Syntax Wishlist: Class support",
+  "url": "http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/",
+  "wordCount": "271",
+  
+  
+  "datePublished": "2012-05-28T06:00:00&#43;00:00",
+  
+  
+  "dateModified": "2012-05-28T06:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,perl,perl syntax wishlist"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/">
+
+    <title>Perl Core Syntax Wishlist: Class support | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/perl-core-syntax-wishlist-class-support/">Perl Core Syntax Wishlist: Class support</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-05-28T06:00:00Z">Mon May 28, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-syntax-wishlist" rel="tag">perl syntax wishlist</a>
+
+</p>
+  </header>
+  <p>I would like to see the <code>class</code> keyword become part of Perl, but unlike some I don&rsquo;t want it simply because it&rsquo;s nicer syntax. I&rsquo;d like it to behave differently from <code>package</code>. I&rsquo;d basically like to see this <script src="https://gist.github.com/2632369.js"> </script><noscript><pre><br /><code><br />class MyClass {<br />   method foo { return $self-&gt;{foo} }<br />   method info { return load_class(&lsquo;Class::Info&rsquo;)-&gt;new }<br />}<br /></code><br /></pre>to be the equivalent of <pre><br /><code><br />{<br />   use strict;<br />   use warnings;<br />   use utf8; # so our class can be named with utf8<br />   package MyClass {<br />      use namespace::autoclean;<br />      use Scalar::Util qw( blessed );<br />      # use Class::Load qw( load<em>class );<br />      # or similar for a feature that I&rsquo;m hoping will be in Class::Load in the future<br />      # for now I&rsquo;ll show with require<br /><br />      sub new { # or something better, point is that there&rsquo;s a default simple constructor<br />          my $class = shift;<br />          my $self  = ref $</em>[0] eq &lsquo;HASH&rsquo; ? $<em>[0] : { @</em> };<br /><br />          bless $self, $class;<br />          return $self;<br />      }<br />      sub foo { my $self = shift; return $self-&gt;{foo} }<br /><br />      sub info { #doesn&rsquo;t actually do what I&rsquo;m really suggesting<br />          my $self = shift;<br />          require Class::Info;<br />          return  Class::Info-&gt;new;<br />      }<br />   }<br />}<br /><br />MyClass-&gt;new-&gt;foo;<br /></code><br /></pre></noscript>I&rsquo;m sure smarter people than I could think of a few more things that might be nice to have by default in all classes. I would like to note that method signatures is not that big of a deal to me, unless of course you want to give me named variables in the signature besides just auto shifting off self, e.g. <code>method foo ( $bar  ) { return $self-&gt;{foo} if $bar }</code><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fperl-core-syntax-wishlist-class-support%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fperl-core-syntax-wishlist-class-support%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fperl-core-syntax-wishlist-class-support%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fperl-core-syntax-wishlist-class-support%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

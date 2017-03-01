@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Teaching Perl - Week 3 - Prelude Commentary" />
+<meta property="og:description" content="So I think that Head First Programming: A Learner&#39;s Guide to Programming Using the Python Languageis a great guideline to teach any programming course, esp a 10 week course as it has 10 chapters. We&rsquo;re one week behind. Arguably you could merge week 2 into week 1 and I may do just that in a rewrite of this series. In fact I&rsquo;d suggest you do just that. But for now I&rsquo;m going to continue on and we&rsquo;ll see what people think once I reach the end." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/teaching-perl---week-3---prelude-commentary/" />
+
+
+
+<meta property="article:published_time" content="2010-05-02T13:22:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-05-02T13:22:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Teaching Perl - Week 3 - Prelude Commentary"/>
+<meta name="twitter:title" content="Teaching Perl - Week 3 - Prelude Commentary"/>
+<meta name="twitter:description" content="So I think that Head First Programming: A Learner&#39;s Guide to Programming Using the Python Languageis a great guideline to teach any programming course, esp a 10 week course as it has 10 chapters. We&rsquo;re one week behind. Arguably you could merge week 2 into week 1 and I may do just that in a rewrite of this series. In fact I&rsquo;d suggest you do just that. But for now I&rsquo;m going to continue on and we&rsquo;ll see what people think once I reach the end."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Teaching Perl - Week 3 - Prelude Commentary",
+  "url": "http://blog.xenoterracide.com/post/teaching-perl---week-3---prelude-commentary/",
+  "wordCount": "202",
+  
+  
+  "datePublished": "2010-05-02T13:22:00&#43;00:00",
+  
+  
+  "dateModified": "2010-05-02T13:22:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,perl,teaching perl,curriculum"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/teaching-perl---week-3---prelude-commentary/">
+
+    <title>Teaching Perl - Week 3 - Prelude Commentary | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/teaching-perl---week-3---prelude-commentary/">Teaching Perl - Week 3 - Prelude Commentary</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-05-02T13:22:00Z">Sun May 2, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/teaching-perl" rel="tag">teaching perl</a>, <a href="/tags/curriculum" rel="tag">curriculum</a>
+
+</p>
+  </header>
+  <p>So I think that <a target="_blank"  href="http://www.amazon.com/Head-First-Programming-Learners-Language/dp/0596802374?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Head First Programming: A Learner&#39;s Guide to Programming Using the Python Language</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596802374" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> is a great guideline to teach any programming course, esp a 10 week course as it has 10 chapters. We&rsquo;re one week behind. Arguably you could merge week 2 into week 1 and I may do just that in a rewrite of this series. In fact I&rsquo;d suggest you do just that. But for now I&rsquo;m going to continue on and we&rsquo;ll see what people think once I reach the end. No reason I can&rsquo;t rewrite this series, especially since it&rsquo;s not really planned I&rsquo;m just writing it on the fly.<br /><br />Although this book is a good guideline (note: I&rsquo;m also concerned that if I follow it&rsquo;s examples to the letter all the time I might violate fair use), chapter 2 annoys me, it&rsquo;s on textual data and uses html scraping as an example. However, it completely ignores html parsers and any other sane way of doing it. So I had to find a better example and I think I have with parsing PKGBUILD&rsquo;s, which are sort of a microformat bash script.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-3---prelude-commentary%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-3---prelude-commentary%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-3---prelude-commentary%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-3---prelude-commentary%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

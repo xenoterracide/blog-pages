@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/" />
+
+
+
+<meta property="og:updated_time" content="2008-12-21T17:40:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/post/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2008-12-21T17:40:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/sync-target-support/">sync target support</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T17:40:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pms" rel="tag">pms</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  Here I explain why emerge &ndash;sync should return to it&rsquo;s original sync form.
+I think emerge sync should have the ability to have a target. Currently emerge &ndash;sync has a target of the SYNC variable in make.conf or the default hardcoded. However, git support is being added to portage. git is a very powerful tool, and the Funtoo project uses it to manage it&rsquo;s full portage tree. git doesn&rsquo;t work like rsync, it&rsquo;s not so straight forward as rsync uri, which is effectively what emerge sync is doing.
+  <a href='http://blog.xenoterracide.com/post/sync-target-support/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/--sync-should-be-sync/">&ndash;sync should be sync</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T15:32:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  emerge sync never should have become emerge &ndash;sync, of course 2 years ago I thought it was the right thing, it isn&rsquo;t though, live and learn. sync is currently an argument with the syntax of an option.
+What&rsquo;s the difference?
+An argument is what the command, or executable operates on. Some examples
+cp file0 file1 copies file0 to file1.
+ls list the current working directory
+ls dir0 lists directory dir0
+  <a href='http://blog.xenoterracide.com/post/--sync-should-be-sync/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/types-of-use-flags/">types of use flags</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-19T15:03:00Z">Fri Dec 19, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  Ok so I have yet another idea for portage and other portage like package managers. actually this is probably more aimed at EAPI. Different types of USE flags. The 2 I&rsquo;m thinking of off the top of my head could be described as volatile and non-volatile. Basically a use flag marked volatile means a package needs to be recompiled if it gets changed one marked non-volatile most likely just pulls in another dependency or copies files such as documentation.
+  <a href='http://blog.xenoterracide.com/post/types-of-use-flags/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/download-book-the-ruining-of-a-good-feature/">Download Book, The Ruining of a Good Feature</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-12T13:57:00Z">Fri Dec 12, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/rant" rel="tag">rant</a>, <a href="/tags/safaribooksonline" rel="tag">safaribooksonline</a>
+
+</p>
+  </header>
+  1-3 Months ago Safari Books finally started allowing you to download full books in pdf. It used to be that you had to download chapters of books in pdf. This was annoying even if you had tokens to do it. Tokens are Safari Books way of making sure we aren&rsquo;t pirating en masse, you get 5 tokens a month and can only keep 3 months worth. So now we can download full books how nice?
+  <a href='http://blog.xenoterracide.com/post/download-book-the-ruining-of-a-good-feature/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/">Regen2 development has officially begun</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-11T04:30:00Z">Thu Dec 11, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/linux" rel="tag">Linux</a>, <a href="/tags/gentoo" rel="tag">Gentoo</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  That&rsquo;s right I&rsquo;m putting my money where my mouth is. It&rsquo;s small but the first 2 packages when into the regen2 tree this morning. They are MySQL 5.1.30 which was added because the gentoo maintainer refused to add it do to instability. I agree that it is unstable, but we have ~M Hard Masked packages for that reason. It has been added as ~M. The other app added is qsynergy, the ebuild was already on portage and I know it to be good so I added it to the tree, I&rsquo;ll probably stabilize it in a few weeks.
+  <a href='http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/postgresql-edit-and-syntax-highlighting/">PostgreSQL \edit and Syntax Highlighting</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-11-29T10:35:00Z">Sat Nov 29, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/psql" rel="tag">psql</a>, <a href="/tags/tips" rel="tag">tips</a>, <a href="/tags/vim" rel="tag">vim</a>, <a href="/tags/postgresql" rel="tag">postgresql</a>
+
+</p>
+  </header>
+  If you&rsquo;ve ever used \edit with PostgreSQL you&rsquo;ve probably noticed that it&rsquo;s not using syntax highlighting that your favorite editor most likely supports. I&rsquo;ve wondered why this is for a while, Postgres uses vim on my system which supports robust highlighting among other things.
+I had a few things suggested to me, such as setting putting settings in my .vimrc, most of which would have forced filetype=sql on files that weren&rsquo;t sql, and would have been active outside of psql.
+  <a href='http://blog.xenoterracide.com/post/postgresql-edit-and-syntax-highlighting/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/finally-linux-gets-something-first/">Finally Linux gets something first</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-11-17T12:56:00Z">Mon Nov 17, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/linux" rel="tag">Linux</a>, <a href="/tags/flash" rel="tag">flash</a>, <a href="/tags/adobe" rel="tag">adobe</a>
+
+</p>
+  </header>
+  &hellip; and it&rsquo;s something we didn&rsquo;t build. We get lots of things first but we usually build them. We never get proprietary software first. At best we get proprietary software the same day. Generally we get it months later. However, today linux takes another giant step towards being the dominant next OS, we are the first to receive 64-bit flash from adobe. Windows isn&rsquo;t getting it, Mac OS X isn&rsquo;t getting it, we are.
+  <a href='http://blog.xenoterracide.com/post/finally-linux-gets-something-first/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/the-motherboard-i-want-doesnt-exist/">The Motherboard I want doesn&rsquo;t exist</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-11-08T05:04:00Z">Sat Nov 8, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware" rel="tag">hardware</a>, <a href="/tags/intel" rel="tag">intel</a>
+
+</p>
+  </header>
+  My Desktop is dieing and needs to be replaced. So I&rsquo;m working on researching the parts I&rsquo;d need to replace it. As any good IT person knows, the motherboard is the most important decision to make when building a computer. Theirs a good chance that someone reading this will cry out I&rsquo;m wrong. The reason the Motherboard is the most important decision is it dictates the potential of the whole computer.
+  <a href='http://blog.xenoterracide.com/post/the-motherboard-i-want-doesnt-exist/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/accept-input-from-stdin/">accept input from stdin</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-10-30T02:11:00Z">Thu Oct 30, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pms" rel="tag">pms</a>
+
+</p>
+  </header>
+  if possible emerge-ng should be able to accept input from .
+e.g. cat packagelist | emergeng
+thus far neither portage nore pkgcore have this capability.&ndash;
+This work by Caleb Cushing is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+  <a href='http://blog.xenoterracide.com/post/accept-input-from-stdin/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/minimum-permissions-and-privilegdges/">minimum permissions and privilegdges</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-10-29T00:53:00Z">Wed Oct 29, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pms" rel="tag">pms</a>
+
+</p>
+  </header>
+  I like security&hellip; which means I should be able to run portage as portage (user) and have the umask be 077, or perhaps 027. Unfortunately the last time I checked portage could handle these restrictive permissions (I forget if it was these exactly) except for one set&hellip; java. In a perfect ebuild world all ebuilds would be able to be installed under a very restrictive umask.
+Should regen2 ever come to fruition this should be fixed.
+  <a href='http://blog.xenoterracide.com/post/minimum-permissions-and-privilegdges/'>Read more →</a>
+</article> 
+
+
+
+
+<nav class="blog-pagination">
+  
+  <a class="btn btn-outline-primary" href="/post/page/14/" role="button">Previous page</a>
+  <a class="btn btn-outline-primary" href="/post/page/16/" role="button">Next page</a>
+  
+  
+  
+</nav>
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

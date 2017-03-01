@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cfug on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/cfug/index.xml</link>
+    <description>Recent content in Cfug on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/cfug/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Git Presentation</title>
+      <link>http://blog.xenoterracide.com/post/git-presentation/</link>
+      <pubDate>Mon, 11 May 2009 16:27:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/git-presentation/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m doing a git presentation and the &lt;a href=&#34;http://coldfusion.org&#34;&gt;Lansing Coldfusion User Group&lt;/a&gt; tomorrow night. Anyone who wants to is welcome to &lt;a href=&#34;http://coldfusion.org/directions.cfm&#34;&gt;come&lt;/a&gt; Below are the slides for the presentation.&lt;br /&gt;&lt;br /&gt;&lt;iframe src=&#39;http://docs.google.com/EmbedSlideshow?docid=dffs9ch6_59vhtvddd2&#39; frameborder=&#39;0&#39; width=&#39;410&#39; height=&#39;342&#39;&gt;&lt;/iframe&gt;&lt;br /&gt;&lt;br /&gt;EDIT: I don&amp;rsquo;t know why but google doesn&amp;rsquo;t show all slides formatted right in mini mode. It&amp;rsquo;s cut off some of the text and overlapped some things.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

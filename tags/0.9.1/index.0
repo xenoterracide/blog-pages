@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="0.9.1.0" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/tags/0.9.1/index.0/" />
+
+
+
+<meta property="og:updated_time" content="2009-04-22T00:45:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/tags/0.9.1/index.0/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2009-04-22T00:45:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/tags/0.9.1/index.0/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/tags/0.9.1.0/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/regen2-0.9.1.0-released/">Regen2 0.9.1.0 Released</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-04-22T00:45:00Z">Wed Apr 22, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/release" rel="tag">release</a>, <a href="/tags/0.9.1.0" rel="tag">0.9.1.0</a>
+
+</p>
+  </header>
+  Release Highlightsvanilla-sources-2.6.28.9
+gcc-4.3.3
+glibc-2.9_20081201-r2
+openrc-0.4.3-r1
+baselayout-2.0.0-r2
+git-1.6.2.3
+perl-5.10.0
+bash-4.0_p17
+app-sh/dash is now included in the tarball, in the next major release I hope to make it /bin/sh please test and report any bugs with doing this. apache2 and mysql are known to have issues. openrc works fine, the average desktop system should work.
+Known Issues
+emerge &ndash;sync will not clone the tree if it does not exist in portage 2.1
+  <a href='http://blog.xenoterracide.com/post/regen2-0.9.1.0-released/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

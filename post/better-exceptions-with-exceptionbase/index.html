@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Better Exceptions with Exception::Base" />
+<meta property="og:description" content="So I&rsquo;ve done some complaining and explaining about what I&rsquo;d like to see in regards to Exceptions in Perl. I Mostly explained what I wanted for catching Exceptions, and a little on throwing Exception objects, but not really how those objects should behave. I&rsquo;ve looked at and tried various exception modules, including croak, confess, and Throwable. I basically spent time one day reading the manuals of most of the exception objects on CPAN." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/better-exceptions-with-exceptionbase/" />
+
+
+
+<meta property="article:published_time" content="2012-05-21T06:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-05-21T06:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Better Exceptions with Exception::Base"/>
+<meta name="twitter:title" content="Better Exceptions with Exception::Base"/>
+<meta name="twitter:description" content="So I&rsquo;ve done some complaining and explaining about what I&rsquo;d like to see in regards to Exceptions in Perl. I Mostly explained what I wanted for catching Exceptions, and a little on throwing Exception objects, but not really how those objects should behave. I&rsquo;ve looked at and tried various exception modules, including croak, confess, and Throwable. I basically spent time one day reading the manuals of most of the exception objects on CPAN."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Better Exceptions with Exception::Base",
+  "url": "http://blog.xenoterracide.com/post/better-exceptions-with-exceptionbase/",
+  "wordCount": "517",
+  
+  
+  "datePublished": "2012-05-21T06:00:00&#43;00:00",
+  
+  
+  "dateModified": "2012-05-21T06:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "exceptions,ironman,perl"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/better-exceptions-with-exceptionbase/">
+
+    <title>Better Exceptions with Exception::Base | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/better-exceptions-with-exceptionbase/">Better Exceptions with Exception::Base</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-05-21T06:00:00Z">Mon May 21, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/exceptions" rel="tag">exceptions</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>
+
+</p>
+  </header>
+  <p>So I&rsquo;ve done some <a href="http://www.xenoterracide.com/2012/05/perl-core-syntax-wishlist-die-should.html">complaining</a> and <a href="http://www.xenoterracide.com/2012/05/perl-core-syntax-wishlist-exception.html">explaining</a> about what I&rsquo;d like to see in regards to Exceptions in Perl. I Mostly explained what I wanted for catching Exceptions, and a little on throwing Exception objects, but not really how those objects should behave. I&rsquo;ve looked at and tried various exception modules, including <a href="http://perldoc.perl.org/Carp.html">croak, confess</a>, and <a href="https://metacpan.org/module/Throwable">Throwable</a>.  I basically spent time one day reading the manuals of most of the exception objects on CPAN. Most of them didn&rsquo;t allow me to easily for the exceptions I needed (meaning they required more work than I thought I should do for one or two exceptions ). Among these modules I found <a href="https://metacpan.org/module/Exception::Base">Exception::Base</a>, which appears to do everything I need (though I still wish for something like it in core, with shinier syntax).  Of course wee need to be able to throw simple Exceptions, preferably ones that can stringify, and are easily matched in a switch or if statement. <a href="https://metacpan.org/module/Exception::Base">Exception::Base</a> can do all of that, and it even boolifies to true. <script src="https://gist.github.com/2657327.js"> </script><noscript><pre><br /><code><br />use Try::Tiny;<br />use Exception::Base;<br /><br />try {<br />    if ( 0 ) {<br />        Exception::Base-&gt;throw( message =&gt; &lsquo;this sucks&rsquo;, value =&gt; 0 );<br />    }<br /><br />    if ( 1 ) {<br />        Exception::Base-&gt;throw( message =&gt; &lsquo;this really sucks&rsquo;, value =&gt; 1 );<br />    }<br />}<br />catch {<br />    given ( $_ ) {<br />        when ( $_ == 0 ) {<br />            say $<em>;<br />        }<br />        when ( $</em> == 1 ) {<br />            say $_;<br />        }<br />    }<br />}<br /></code><br /></pre></noscript> A really big thing I wanted was a class I could easily add attributes to without writing a whole new package/pm and subclassing it there. I wanted this because I really wanted to be able to have 2 kinds of messages, one for programmers, and one for users, but truthfully I only had one class where I needed this flexibility (at the time). It is also occasionally useful to have attributes that describe something, e.g. would be really useful in moose attribute exceptions, to be able to have an object where you could catch the exception and get the attribute name without parsing. Fortunately <a href="https://metacpan.org/module/Exception::Base">Exception::Base</a> can do this too. <script src="https://gist.github.com/2657880.js"> </script><noscript><pre><br /><code><br /><br />use 5.014;<br />use warnings;<br /><br />use Try::Tiny;<br />use Exception::Base (<br />    &lsquo;My::Exception&rsquo; =&gt; {<br />        has =&gt; [ qw( usermsg logmsg attr ) ],<br />        string<em>attributes =&gt; [ qw( usermsg logmsg ) ],<br />    },<br />);<br /><br />try {<br />        My::Exception-&gt;throw(<br />            value =&gt; 1,<br />            attr    =&gt; &lsquo;bad&rsquo;,<br />            logmsg  =&gt; &lsquo;really obscure and technical&rsquo;,<br />            usermsg =&gt; &lsquo;this message is useless&rsquo;<br />        );<br />}<br />catch {<br />    warn $</em>;<br />    say $<em>-&gt;usermsg;    <br /><br />    say &lsquo;this is really bad&rsquo; if $</em>-&gt;attr eq &lsquo;bad&rsquo;;<br />}<br /></code><br /></pre></noscript> You&rsquo;ll notice if you run this script that in the warn, both <code>usermsg</code> and <code>logmsg</code> are printed because they are both <code>string_attributes</code>. You&rsquo;ll also notice that <code>attr</code> isn&rsquo;t printed at all, but that we can look at it directly to make other decisions.  <a href="https://metacpan.org/module/Exception::Base">Exception::Base</a> has other features such as setting the <code>verbosity</code> so you can go from a <code>croak</code> level message to a full stacktrace. It also allows you to <code>ignore_package</code>s so that the exception does not appear to be thrown from that package. This is similar to <code>@CARP_NOT</code>.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbetter-exceptions-with-exceptionbase%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbetter-exceptions-with-exceptionbase%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbetter-exceptions-with-exceptionbase%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbetter-exceptions-with-exceptionbase%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Funtoo Newsletter on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/funtoo-newsletter/index.xml</link>
+    <description>Recent content in Funtoo Newsletter on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/funtoo-newsletter/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Funtoo News</title>
+      <link>http://blog.xenoterracide.com/post/funtoo-news/</link>
+      <pubDate>Fri, 23 Jan 2009 14:18:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/funtoo-news/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve decided I&amp;rsquo;m going to start posting a sort of weekly newsletter (I&amp;rsquo;m not committing to weekly though) merely to document anything I feel important that happened, or is about to, but isn&amp;rsquo;t quite important enough for it&amp;rsquo;s own post.&lt;br /&gt;&lt;br /&gt;&lt;a href=&#34;http://ra.fnord.at/&#34;&gt;RA&lt;/a&gt; (ra&amp;ndash; on #funtoo) or &lt;a href=&#34;mailto:r_a@lavabit.com&#34;&gt;r_a@lavabit.com&lt;/a&gt; submitted quite a few patches this week including 1 that fixes many of my major borkage on non-latin1 changelog breaks. He&amp;rsquo;s become a regular contributor and I&amp;rsquo;d like to thank him.&lt;br /&gt;&lt;br /&gt;perl-5.10 will be unmasked this evening, if you haven&amp;rsquo;t read it yet, read my &lt;a href=&#34;http://xenoterracide.blogspot.com/2009/01/funtoo-gets-new-perl.html&#34;&gt;post&lt;/a&gt; on upgrading, you&amp;rsquo;ll need it, because this is more than just an install and forget, other packages need to be rebuilt, and perl-cleaner revdep-rebuild doesn&amp;rsquo;t find them all. Good news is I&amp;rsquo;ve been running 5.10 since the beginning of the month no problems since the beginning.&lt;br /&gt;&lt;br /&gt;I pushed samba 3.2.7 into the tree this week, gentoo&amp;rsquo;s been sitting on it for a while, it&amp;rsquo;s hard masked, but seems to build fine, I don&amp;rsquo;t operate on a windows network though so can&amp;rsquo;t say how well it works.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

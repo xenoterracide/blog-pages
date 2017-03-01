@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="open letter to Dan Robbins - merge regen2" />
+<meta property="og:description" content="I had an interesting conversation with thewtex on #funtoo yesterday. My conclusion is, this divergence of tree&rsquo;s is stupid. We should be working on a common base, at least common enough that users could relatively easily merge our tree&rsquo;s. My tree is currently ahead of yours in content by 3 sunrise merges, 1 mpd, and the 2 merges of the python overlay. Your users can&rsquo;t easily get these updates.
+Due to the fact that we have irreconcilable views on what patches we allow, the fork must remain." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/" />
+
+
+
+<meta property="article:published_time" content="2009-02-11T06:15:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-02-11T06:15:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="open letter to Dan Robbins - merge regen2"/>
+<meta name="twitter:title" content="open letter to Dan Robbins - merge regen2"/>
+<meta name="twitter:description" content="I had an interesting conversation with thewtex on #funtoo yesterday. My conclusion is, this divergence of tree&rsquo;s is stupid. We should be working on a common base, at least common enough that users could relatively easily merge our tree&rsquo;s. My tree is currently ahead of yours in content by 3 sunrise merges, 1 mpd, and the 2 merges of the python overlay. Your users can&rsquo;t easily get these updates.
+Due to the fact that we have irreconcilable views on what patches we allow, the fork must remain."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "open letter to Dan Robbins - merge regen2",
+  "url": "http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/",
+  "wordCount": "416",
+  
+  
+  "datePublished": "2009-02-11T06:15:00&#43;00:00",
+  
+  
+  "dateModified": "2009-02-11T06:15:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Regen2,tree,Funtoo"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/">
+
+    <title>open letter to Dan Robbins - merge regen2 | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/open-letter-to-dan-robbins---merge-regen2/">open letter to Dan Robbins - merge regen2</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-02-11T06:15:00Z">Wed Feb 11, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/tree" rel="tag">tree</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>
+
+</p>
+  </header>
+  <p>I had an interesting conversation with thewtex on #funtoo yesterday. My conclusion is, this divergence of tree&rsquo;s is stupid. We should be working on a common base, at least common enough that users could relatively easily merge our tree&rsquo;s. My tree is currently ahead of yours in content by 3 sunrise merges, 1 mpd, and the 2 merges of the python overlay. Your users can&rsquo;t easily get these updates.<br /><br />Due to the fact that we have irreconcilable views on what patches we allow, the fork must remain. However, users don&rsquo;t have to suffer for it. The solution is to base funtoo.org on regen2.org. I can&rsquo;t base regen2.org on funtoo.org because I have stricter QA policies, however those policies shouldn&rsquo;t negatively affect funtoo, I can continue to cherry-pick patches that you wish to put into funtoo, so they end up in regen2 as well.<br /><br />This will require that you, trust me enough to merge the tree. I will be handling the gentoo and overlay merges. You will simply merge my tree daily.<br /><br />In order to resolve the differences of the tree as they stand I suggest creating a funtoo.org2 branch that&rsquo;s based on regen2.org and discontinuing the maintenance of funtoo.org. cherry-pick any patches I haven&rsquo;t applied to regen2 (I can point out which ones) and apply any other changes you need to. The other option is to merge my tree, this will be painful and arduous for you, but require no work on the part of your users.<br /><br />This resolves many problems. 1 you won&rsquo;t have to deal with the main tree or overlays, 2 you won&rsquo;t have to run your patches by me and can do what you want, 3 users get the best of both worlds, 4 developers can choose to email you inline patches, or send me pull requests. Everyone should go home happy from this.<br /><br />what say you?<br /><br />P.S. I will not have it said that I want a rift in the community, I want whats best for all kinds of users and the status quo is not.<br /><br />EDIT: in short the answer is no. drobbins doesn&rsquo;t want to merge my tree, as it&rsquo;s supposedly untrusted, he also doesn&rsquo;t want to cherry-pick patches out of my tree.  I don&rsquo;t want to spend time merging the overlays just for Funtoo, on top of merging them for Regen2. Apparently my bug fixes, and version bumps aren&rsquo;t good enough for Funtoo.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fopen-letter-to-dan-robbins---merge-regen2%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fopen-letter-to-dan-robbins---merge-regen2%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fopen-letter-to-dan-robbins---merge-regen2%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fopen-letter-to-dan-robbins---merge-regen2%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="~arch will be testing again not stable" />
+<meta property="og:description" content="I think the idea of a meta distro on top of a stable base is the way to go, let people choose just what they want on bleeding edge. I like my kernel, gcc, and perl solid, sometimes I want firefox&rsquo;s beta&rsquo;s but that doesn&rsquo;t mean I want the rest of the system like that. At some point gentoo&rsquo;s ~arch became more stable that stable, this needs to end. Even if it means making stable a bit more unstable." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/arch-will-be-testing-again-not-stable/" />
+
+
+
+<meta property="article:published_time" content="2009-03-24T05:29:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-03-24T05:29:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="~arch will be testing again not stable"/>
+<meta name="twitter:title" content="~arch will be testing again not stable"/>
+<meta name="twitter:description" content="I think the idea of a meta distro on top of a stable base is the way to go, let people choose just what they want on bleeding edge. I like my kernel, gcc, and perl solid, sometimes I want firefox&rsquo;s beta&rsquo;s but that doesn&rsquo;t mean I want the rest of the system like that. At some point gentoo&rsquo;s ~arch became more stable that stable, this needs to end. Even if it means making stable a bit more unstable."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "~arch will be testing again not stable",
+  "url": "http://blog.xenoterracide.com/post/arch-will-be-testing-again-not-stable/",
+  "wordCount": "439",
+  
+  
+  "datePublished": "2009-03-24T05:29:00&#43;00:00",
+  
+  
+  "dateModified": "2009-03-24T05:29:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Regen2"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/arch-will-be-testing-again-not-stable/">
+
+    <title>~arch will be testing again not stable | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/arch-will-be-testing-again-not-stable/">~arch will be testing again not stable</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-03-24T05:29:00Z">Tue Mar 24, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>
+
+</p>
+  </header>
+  <p>I think the idea of a meta distro on top of a stable base is the way to go, let people choose just what they want on bleeding edge. I like my kernel, gcc, and perl solid, sometimes I want firefox&rsquo;s beta&rsquo;s but that doesn&rsquo;t mean I want the rest of the system like that. At some point gentoo&rsquo;s ~arch became more stable that stable, this needs to end. Even if it means making stable a bit more unstable. I&rsquo;d like to see more people running stable systems.<br /><br />~arch is going to be aimed more at things that are stable enough, and pending stable. It&rsquo;s going to become more unstable than it is in a sense because I&rsquo;m not afraid to hardmask stuff that was ~arch and is found to be broken. I&rsquo;m also not afraid to release slightly broken stuff into ~arch, for example I&rsquo;ll release a new git into ~arch without an update noperl patch which means using -perl won&rsquo;t work. I won&rsquo;t release completely broken or overtly buggy things into ~arch though, I&rsquo;m just not afraid to release with a missing patch (set) as long as it&rsquo;ll build and work in most cases and update later.<br /><br />I&rsquo;ve decided on a policy for stabilizing the kernel, first of regen2&rsquo;s kernel is vanilla-sources, if you&rsquo;re running another sources this doesn&rsquo;t apply. I will stabilize the previous kernel when the new major version is released so I will stabilize 2.6.28.x when 2.6.29 comes out, after that I will stabilize each new kernel a few days after it hits the tree (actually I may not wait), since the kernel&rsquo;s development model makes it highly unlikely that regressions will be introduced that late in the cycle. I may use a similar update scheme for other packages but it will be a package by package basis. But likely once a major version moves to stable it will be trivial to move new minor versions to stable.<br /><br />I want to know what people use? what should be stable in regen2. 2 things I won&rsquo;t stabilize right now are qt-4.5 and kde-4.2. They work well enough but have too many bugs upstream, imho (should a kde developer look at this feel free to look at my buglist on your bug tracker, prtscrn must work before I&rsquo;ll mark kde stable, but hey at least dpms works with screensaver now). Anything else goes what do you use/need that&rsquo;s in ~arch and has been there for a long time. feel free to mention in comments, the <a href="http://groups.google.com/group/regen2-dev">dev list</a> or the <a href="http://code.google.com/p/regen2/issues/list">Bug tracker</a"><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2farch-will-be-testing-again-not-stable%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2farch-will-be-testing-again-not-stable%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2farch-will-be-testing-again-not-stable%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2farch-will-be-testing-again-not-stable%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

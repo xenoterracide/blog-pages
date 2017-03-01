@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filechmod on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/filechmod/index.xml</link>
+    <description>Recent content in Filechmod on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/filechmod/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Changing default behavior of File::chmod</title>
+      <link>http://blog.xenoterracide.com/post/changing-default-behavior-of-filechmod/</link>
+      <pubDate>Sat, 06 Jul 2013 06:03:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/changing-default-behavior-of-filechmod/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://metacpan.org/module/File::chmod&#34;&gt;File::chmod&lt;/a&gt;&amp;nbsp;has been around for a long time, and is really stable, and really hasn&amp;rsquo;t changed since 1999. It is far more user friendly than the &lt;code&gt;chmod()&lt;/code&gt; &amp;nbsp;in core Perl. I recently used it for an interview test. It took me a few times to get right however because it&amp;rsquo;s default behavior in &lt;code&gt;symchmod()&lt;/code&gt; mode is to use the systems &lt;code&gt;umask&lt;/code&gt;. I find this to be very confusing behavior. I actually thought it was a bug at first, and asked for comaint since it hadn&amp;rsquo;t been updated in so long. Now that I realize it&amp;rsquo;s intentional I&amp;rsquo;m unsure how to best proceed. On one hand I believe that the most obvious behavior (mimicking unix chmod) should be the default, on the other changing something that has been around this long&amp;hellip; So I&amp;rsquo;m writing this blog post. What do you think? should I preserve the behavior? if not I&amp;rsquo;m aiming for a long deprecation cycle. Unfortunately because it used package variables for this setting, I haven&amp;rsquo;t come up with a way to deprecate code wise that won&amp;rsquo;t be annoying.&lt;br /&gt;&lt;br /&gt;Regardless of what I do with this, there&amp;rsquo;ll be a new release that has proper metadata, tests rewritten with Test::More, etc.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

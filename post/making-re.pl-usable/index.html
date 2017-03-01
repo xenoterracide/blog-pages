@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Making re.pl usable" />
+<meta property="og:description" content="For starters I&rsquo;m not a super fan of interactive shell&rsquo;s for non-system shells. I don&rsquo;t see the point as much. When I first tried Devel::REPL I didn&rsquo;t like it at all, compared to every other interactive shell I&rsquo;ve used (with the notable exception of Oracle&rsquo;s SQLPLUS, which is the worst shell ever) it was an unfriendly toy not worthy of mention. I couldn&rsquo;t go up in history, there was no tab completion, and all in all the default output was ugly no colors or formatting." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/making-re.pl-usable/" />
+
+
+
+<meta property="article:published_time" content="2010-07-25T18:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-07-25T18:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Making re.pl usable"/>
+<meta name="twitter:title" content="Making re.pl usable"/>
+<meta name="twitter:description" content="For starters I&rsquo;m not a super fan of interactive shell&rsquo;s for non-system shells. I don&rsquo;t see the point as much. When I first tried Devel::REPL I didn&rsquo;t like it at all, compared to every other interactive shell I&rsquo;ve used (with the notable exception of Oracle&rsquo;s SQLPLUS, which is the worst shell ever) it was an unfriendly toy not worthy of mention. I couldn&rsquo;t go up in history, there was no tab completion, and all in all the default output was ugly no colors or formatting."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Making re.pl usable",
+  "url": "http://blog.xenoterracide.com/post/making-re.pl-usable/",
+  "wordCount": "562",
+  
+  
+  "datePublished": "2010-07-25T18:00:00&#43;00:00",
+  
+  
+  "dateModified": "2010-07-25T18:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,perl,tips,Devel::REPL,modern perl"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/making-re.pl-usable/">
+
+    <title>Making re.pl usable | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/making-re.pl-usable/">Making re.pl usable</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-07-25T18:00:00Z">Sun Jul 25, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/tips" rel="tag">tips</a>, <a href="/tags/develrepl" rel="tag">Devel::REPL</a>, <a href="/tags/modern-perl" rel="tag">modern perl</a>
+
+</p>
+  </header>
+  <p>For starters I&rsquo;m not a super fan of interactive shell&rsquo;s for non-system shells. I don&rsquo;t see the point as much. When I first tried <a href="http://search.cpan.org/dist/Devel-REPL/lib/Devel/REPL.pm">Devel::REPL</a> I didn&rsquo;t like it at all, compared to every other interactive shell I&rsquo;ve used (with the notable exception of Oracle&rsquo;s SQLPLUS, which is the worst shell ever) it was an unfriendly toy not worthy of mention. I couldn&rsquo;t go up in history, there was no tab completion, and all in all the default output was ugly no colors or formatting. I noticed in the docs <blockquote>By default the re.pl program looks for (all of the following code goes in this file)<code>$HOME/.re.pl/repl.rc</code>, and runs whatever code is in there as if you had entered it at the REPL shell yourself.</blockquote>and that re.pl has plugins, I also noticed some strange syntax and what seemed to be overly complicated code for just getting a few things working. Sure the file supports perl, but do I really want to write full perl programs in an RC file just to use plugins?<br /><br />Well fortunately it&rsquo;s not as complex as all that. First thing you want to do is set some good perl defaults.<script src="http://gist.github.com/487175.js"> </script><noscript><pre><code>use 5.012; use warnings;</code></pre></noscript> Since this is our private shell might as well get all the current features of perl. Of course if you want to have other modules always accessible load them here to.<br /><br />Now lets get some sanity into the shell by using plugins for REPL. It&rsquo;s really much simpler than the docs say. <script src="http://gist.github.com/487180.js"> </script><noscript><pre><code>load_plugin &lsquo;PluginName&rsquo;;<br /># or<br />load_plugin qw(<br />   Plugin<br />   NextPlugin<br />   YetAnotherPlugin<br />   &hellip;<br />);</code></pre></noscript> Wow that&rsquo;s way easier than what any of the documentation describes.<br /><br />Ok let&rsquo;s look at some plugins. First if your typing isn&rsquo;t perfect you&rsquo;ve probably noticed that you can&rsquo;t use your up arrow to go back in history, to fix this you can enable Readline support by loading <a href="http://search.cpan.org/dist/Devel-REPL/lib/Devel/REPL/Plugin/ReadLineHistory.pm">Devel::REPL::Plugin::ReadlineHistory</a> like so, <script src="http://gist.github.com/487193.js"> </script><noscript><pre><code>load_plugin qw(<br />    ReadLineHistory<br />);</code></pre></noscript> This will allow you to up arrow to go back through lines you&rsquo;ve previously typed, which you can then edit just like your normal *nix shell prompt. This one thing makes re.pl about 100x less annoying.<br /><br />But I wish I had some kind of tab completion so I didn&rsquo;t have to type so much. Hey there&rsquo;s a whole set of completion plugins, lets enable those too.<script src="http://gist.github.com/487197.js"> </script><noscript><pre><code>load_plugin qw(                                                                                     <br />    Completion                                                                                      <br />    CompletionDriver::INC                                                                           <br />    CompletionDriver::LexEnv                                                                        <br />    CompletionDriver::Keywords                                                                      <br />    CompletionDriver::Methods                                                                       <br />    ReadLineHistory                                                                                 <br />);</code></pre></noscript><br /><br />So the Keywords Driver allows you to type <code>pri&lt; tab &gt;</code> and it&rsquo;ll complete <code>print</code> plus showing you <code>printf</code> just like your *nix shell. LexEnv will allow you to auto-complete your variable names and so on. There are a few more besides what I mentioned here.<br /><br />Next I&rsquo;ll mention the <a href="http://search.cpan.org/dist/Devel-REPL/lib/Devel/REPL/Plugin/Colors.pm">Colors</a> plugin. You may have noticed when you enter code such as <code> my $var = &lsquo;blah&rsquo;; say $var;</code> you get the output <pre><code>blah<br />1</code></pre>or the output text and return code. well if you enable colors the return code is now in green making it easy to distinguish between output and extra info.<br /><br />Last but not least I&rsquo;ll mention <a href="http://search.cpan.org/dist/Devel-REPL/lib/Devel/REPL/Plugin/DumpHistory.pm">DumpHistory</a>, enabling DumpHistory allows you to Dump your input history to the screen or to a file.<br /><br />Now we have a fully functioning, &lsquo;user&rsquo; friendly, perl shell.<br /><br />For your convenience here&rsquo;s my current file <script src="http://gist.github.com/487205.js"> </script><noscript><pre><code>use 5.012;<br />use warnings;<br /><br />load_plugin qw(<br />    Colors<br />    Completion<br />    CompletionDriver::INC<br />    CompletionDriver::LexEnv<br />    CompletionDriver::Keywords<br />    CompletionDriver::Methods<br />    DumpHistory<br />    History<br />    LexEnv<br />    ReadLineHistory<br />);</code></pre></noscript><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-re.pl-usable%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-re.pl-usable%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-re.pl-usable%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-re.pl-usable%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

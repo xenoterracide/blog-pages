@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Inversion of Control Principle" />
+<meta property="og:description" content="If you&rsquo;re not familiar with the term &ldquo;Inversion of Control&rdquo;( IoC ) or &ldquo;Dependency Injection&rdquo; ( DI )you may wish to start with Martin Fowler&rsquo;s post on the subject. If you&rsquo;re looking for a way to do it with Perl, Bread::Board is the way to go. This post however is about the theory behind it, and a path to grokitude if you&rsquo;re finding the concepts challenging. I should advise that I am not yet a buddha on implementation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/inversion-of-control-principle/" />
+
+
+
+<meta property="article:published_time" content="2013-01-03T21:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2013-01-03T21:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Inversion of Control Principle"/>
+<meta name="twitter:title" content="Inversion of Control Principle"/>
+<meta name="twitter:description" content="If you&rsquo;re not familiar with the term &ldquo;Inversion of Control&rdquo;( IoC ) or &ldquo;Dependency Injection&rdquo; ( DI )you may wish to start with Martin Fowler&rsquo;s post on the subject. If you&rsquo;re looking for a way to do it with Perl, Bread::Board is the way to go. This post however is about the theory behind it, and a path to grokitude if you&rsquo;re finding the concepts challenging. I should advise that I am not yet a buddha on implementation."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Inversion of Control Principle",
+  "url": "http://blog.xenoterracide.com/post/inversion-of-control-principle/",
+  "wordCount": "1402",
+  
+  
+  "datePublished": "2013-01-03T21:00:00&#43;00:00",
+  
+  
+  "dateModified": "2013-01-03T21:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Bread::Board,Dependency Injection,object oriented design,ironman,perl,Inversion of Control"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/inversion-of-control-principle/">
+
+    <title>Inversion of Control Principle | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/inversion-of-control-principle/">Inversion of Control Principle</a></h2>
+    <p class="blog-post-meta"><time datetime="2013-01-03T21:00:00Z">Thu Jan 3, 2013</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/breadboard" rel="tag">Bread::Board</a>, <a href="/tags/dependency-injection" rel="tag">Dependency Injection</a>, <a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/inversion-of-control" rel="tag">Inversion of Control</a>
+
+</p>
+  </header>
+  <p><p>If you&rsquo;re not familiar with the term &ldquo;Inversion of Control&rdquo;( IoC ) or &ldquo;Dependency Injection&rdquo; ( DI )you may wish to start with <a href="http://martinfowler.com/articles/injection.html">Martin Fowler&rsquo;s post on the subject</a>. If you&rsquo;re looking for a way to do it with Perl,  <a href="https://metacpan.org/module/Bread::Board::Manual::Concepts">Bread::Board</a> is the way to go. This post however is about the theory behind it, and a path to grokitude if you&rsquo;re finding the concepts challenging. I should advise that I am not yet a buddha on implementation. </p><h2>What is it?</h2><p>Now that you&rsquo;re familiar with an understanding of the terms that is not mine (or even if you didn&rsquo;t bother), you may be wondering what I mean by &ldquo;Inversion of Control Principle&rdquo;, seeing as how we have the Dependency Injection Pattern and Inversion of Control Containers. I&rsquo;m not sure if anyone actually uses the term &ldquo;Inversion of Control Principle&rdquo;, though google seems to suggest I am not the first. </p><p>The essence of the Inversion of Control Principle is do not attempt to control your code, let its callers control it. Give your caller as much power as you can. </p><p>This is of course not a very academic statement</p><h3>Dependency Inversion</h3><p>An important piece of the Inversion of Control Principle is the common &ldquo;Dependency  Inversion&rdquo;. It is defined as: <blockquote><ol>  <li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>  <li>Abstractions should not depend upon details. Details should depend upon abstractions.</li></ol></blockquote>In more laymans terms depend on an interface and not a concrete implementation. For the Perler&rsquo;s. Do not depend on LWP or DBI, but depend on their interface. This is covered more in my post on <a href="http://www.xenoterracide.com/2012/11/interface-driven-design.html">Interface Driven Design</a>. </p><h3>Lifecycle Inversion of Control</h3><p>A second piece of Inversion of Control is do not attempt to control your objects lifecycle. This means, do not enforce a singleton pattern, do not enforce a flyweight pattern, do not enforce an instance. Your objects should be instances always, if you want a singleton put it at the top level of your application or use a Dependency Injection framework to manage the lifecycle. Also package variables that are not constants are evil, they will bite you because they are essentially singletons. Always make your objects instances and let their client code determine their lifecycle. </p><h2>How do I do it?</h2><p>Well you don&rsquo;t have to use a fancy IoC/DI framework to do it. Those are simple tools to make life easier after you&rsquo;ve designed your software to be consumed by them. To properly invert your control you first start by letting go. Huh? yeah I know.</p><p>You start by ensuring that your software has as few concrete dependencies as possible. Like I said you depend on interfaces. Some concrete dependencies are unavoidable, but try to make them uninteresting, or architecturally significant.</p><h3>With Perl</h3><p>Start by ensuring that concrete dependencies can be easily replaced at runtime. The easiest way to accomplish this is by allowing them to be passed to your constructor. when using Moose I tend to use lazy loading defaults a lot. Here&rsquo;s an example from cybersource. <script src="https://gist.github.com/4008988.js"> </script><noscript><pre><code>sub _build_cybs_wsdl {<br />    my $self = shift;<br /> <br />    my $dir = $self-&gt;_production ? &lsquo;production&rsquo; : &lsquo;test&rsquo;;<br /> <br />    load &lsquo;File::ShareDir::ProjectDistDir&rsquo;, &lsquo;dist_file&rsquo;;<br />    return load_class(&lsquo;Path::Class::File&rsquo;)-&gt;new(<br />            dist<em>file(<br />                &lsquo;Business-CyberSource&rsquo;,<br />                $dir<br />                . &lsquo;/&rsquo;<br />                . &lsquo;CyberSourceTransaction</em>&lsquo;<br />                . $self-&gt;cybs_api_version<br />                . &lsquo;.wsdl&rsquo;<br />            )<br />        );<br />}<br /><br />has cybs_wsdl =&gt; (<br />    required  =&gt; 0,<br />    lazy      =&gt; 1,<br />    is        =&gt; &lsquo;ro&rsquo;,<br />    isa       =&gt; File,<br />    builder   =&gt; &lsquo;_build_cybs_wsdl&rsquo;,<br />);</code></pre></noscript>Although I don&rsquo;t consider it likely that anyone will ever need to use another WSDL for Cybersource, one could easily inject a new Path::Class::File to one when creating the client at the constructor. Another perfect example is the Client itself. It&rsquo;s designed to be useable as a singleton, because I never intend for someone to need to instantiate it twice, however I have not made it a singleton and internally I&rsquo;m not aware of any code that it actually is treated as such (it appears to usually be instantiated at every request ). </p><p>Prefer Class, and Object interfaces to functional ones. Here&rsquo;s some code that demonstrates why. <script src="https://gist.github.com/4009088.js"> </script><noscript><pre><code># this works<br /><br />use Class::Load 0.20 &lsquo;load_class&rsquo;;<br /><br />my $var = &lsquo;baz&rsquo;;<br /><br />my $class = &lsquo;Foo::Bar&rsquo;;<br /><br />my $result = load_class( $class )-&gt;class_method( $var ); # works wonders with -&gt;new<br /><br /># sometimes this will work, but not always. Try this with the various Dumper functions and see which ones work.<br /><br />use Module::Load &lsquo;load&rsquo;;<br /><br />my $package = &lsquo;Foo::Bar&rsquo;;<br /><br />load $package, &lsquo;function&rsquo;;<br /><br />my $result = function( $var ); # seems to only work if Foo::Bar&rsquo;s exporter works right, many packages have to be exported at compile time not runtime<br /><br /># perl doesn&rsquo;t like stuff like this or really anything where I&rsquo;ve tried substituting the package name into calling a function. at least not with strict on. This is a large reason I&rsquo;d avoid functional interfaces. They are hard to substitute at runtime. <br /><br />load( $package );<br /><br />my $function = $package . &lsquo;::&rsquo; . &lsquo;function&rsquo;;<br /><br />$function-&gt;( $var );</code></pre></noscript></p><p>I have even better real examples, such as my one in interfaces where I replaced LWP with the AnyEvent::LWP&hellip; but unfortunately that code has not been released to the public. The examples given are basically the same principle. </p><h2>Dependency Injection Frameworks</h2><p>Dependency Injection Frameworks are not required to use the Inversion of Control Principle they simply make injecting your dependencies and managing lifecycles easier. It also allows you to do concrete class substitution from one place along with deciding that objects lifecyle, and have it&rsquo;s dependencies inserted. When using a DI framework you should strive to call it only once per controller. Though a book that I&rsquo;ve read suggests this is Domain Model controller and not an MVC controller, I was unable to make a full distinction.</p> <p>This example runs particularly slow, probably due to reasons that people hate moose, however, if you remove the loop at the end you&rsquo;ll notice executing one time is about the same as ten, which means that most of this is due to class compiling and loading, actual runtime is fast (or at least, fast enough). </p> <p>The important thing to pick up is how the Order object requires a <code>payment_gateway</code> that does <code>submit</code>, but it doesn&rsquo;t know how to get that object, or what the implementation will be. Our Dependency Injection framework then simply provides that dependency as needed. It would be trivial to replace our implementation of payment gateway with a different one. </p> <p>The code is commented, to explain what it&rsquo;s doing where.</p><script src="https://gist.github.com/4053667.js"> </script><noscript><pre><code><br />use 5.014;<br />use warnings;<br />use Class::Load &lsquo;load_class&rsquo;;<br /><br />package PaymentGateway {<br />    use Moose;<br /><br />    sub submit {<br />        return int( rand(2) );<br />    }<br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /><br />package Order {<br />    use Moose;<br /><br />    sub make_payment {<br />        my $self = shift;<br /><br />        return $self-&gt;_payment_gateway-&gt;submit( $self );<br />    }<br /><br />    has _payment_gateway =&gt; (<br />        isa      =&gt; &lsquo;Object&rsquo;,<br />        is       =&gt; &lsquo;ro&rsquo;,<br />        required =&gt; 1,<br />    );<br /><br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /><br />package AppContainer {<br />    use Moose;<br />    extends &lsquo;Bread::Board::Container&rsquo;;<br /><br />    use Bread::Board; #import sugar<br /><br />    sub _build_config {<br />        my $self = shift;<br /><br />        # hardcode for example<br />        return {<br />            username   =&gt; &lsquo;foo&rsquo;,<br />            password   =&gt; &lsquo;bar&rsquo;,<br />        };<br />    }<br /><br />    has _config =&gt; (<br />        isa     =&gt; &lsquo;HashRef&rsquo;,<br />        is      =&gt; &lsquo;ro&rsquo;,<br />        lazy    =&gt; 1,<br />        builder =&gt; &lsquo;_build_config&rsquo;,<br />    );<br /><br />    sub BUILD {<br />        my $self = shift;<br /><br />        # container can take a container as a parameter. if you do this it<br />        # will simply add to the container it tooks as a paramter<br />        # this will be our root container /<br />        container $self =&gt; as {<br />            # subcontainer path to will be /model<br />            container model =&gt; as {<br /><br />                #  order uses constructor injection<br />                service order =&gt; (<br />                    class =&gt; &lsquo;Order&rsquo;,<br />                    dependencies =&gt; {<br />                        # use full path<br />                        _payment_gateway =&gt;<br />                            depends_on(&lsquo;/remote/payment_gateway&rsquo;),<br />                    },<br />                );<br />            };<br />            # another subcontainer /service<br />            container remote =&gt; as {<br />                service username   =&gt; $self-&gt;_config-&gt;{username};<br />                service password   =&gt; $self-&gt;_config-&gt;{password};<br /><br />                service payment_gateway =&gt; (<br />                    class        =&gt; &lsquo;PaymentGateway&rsquo;,<br />                    # we don&rsquo;t need more than one instance<br />                    lifecycle    =&gt; &lsquo;Singleton&rsquo;,<br />                    dependencies =&gt; {<br />                        username   =&gt; depends_on(&lsquo;username&rsquo;),<br />                        password   =&gt; depends_on(&lsquo;password&rsquo;),<br />                    },<br />                );<br />            };<br />        };<br />    }<br /><br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /><br />package Controller {<br />    # this could be any framework controller<br />    use Moose;<br /><br />    has _c =&gt; (<br />        isa  =&gt; &lsquo;Bread::Board::Container&rsquo;,<br />        is   =&gt; &lsquo;ro&rsquo;,<br />    );<br /><br />    sub process_order {<br />        my $self = shift;<br /><br />        my $order = $self-&gt;_c-&gt;resolve( service =&gt; &lsquo;/model/order&rsquo; );<br /><br />        if ( $order-&gt;make_payment ) {<br />            say &lsquo;payment succeeded&rsquo;;<br />        }<br />        else {<br />            say &lsquo;payment failed&rsquo;;<br />        }<br />    }<br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /><br />my $app = AppContainer-&gt;new({ name =&gt; &lsquo;app&rsquo; });<br /><br /># controller has not idea there&rsquo;s only one app containerr<br />my $controller = Controller-&gt;new( _c =&gt; $app );<br /><br />for ( my $i = 0; $i &lt; 10 ; $i++ ) {<br />    $controller-&gt;process_order;<br />}<br />1;<br /><br /></code></pre></noscript></p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finversion-of-control-principle%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finversion-of-control-principle%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finversion-of-control-principle%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2finversion-of-control-principle%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

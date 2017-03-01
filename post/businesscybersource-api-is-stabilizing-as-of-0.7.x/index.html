@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Business::CyberSource API is stabilizing as of 0.7.x" />
+<meta property="og:description" content="Business::CyberSource (BC) has been going through API changes for a while now. If you&rsquo;re using it you&rsquo;ve probably noticed this and wondered why? The reason behind it was when I first made it I wanted it to be extremely simple to use, and I was realistically a Junior programmer. Over the past year I learned a lot about API design and Object Oriented Programming, as well as payment gateways and credit card transaction processing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/businesscybersource-api-is-stabilizing-as-of-0.7.x/" />
+
+
+
+<meta property="article:published_time" content="2012-11-07T21:15:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-11-07T21:15:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Business::CyberSource API is stabilizing as of 0.7.x"/>
+<meta name="twitter:title" content="Business::CyberSource API is stabilizing as of 0.7.x"/>
+<meta name="twitter:description" content="Business::CyberSource (BC) has been going through API changes for a while now. If you&rsquo;re using it you&rsquo;ve probably noticed this and wondered why? The reason behind it was when I first made it I wanted it to be extremely simple to use, and I was realistically a Junior programmer. Over the past year I learned a lot about API design and Object Oriented Programming, as well as payment gateways and credit card transaction processing."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Business::CyberSource API is stabilizing as of 0.7.x",
+  "url": "http://blog.xenoterracide.com/post/businesscybersource-api-is-stabilizing-as-of-0.7.x/",
+  "wordCount": "723",
+  
+  
+  "datePublished": "2012-11-07T21:15:00&#43;00:00",
+  
+  
+  "dateModified": "2012-11-07T21:15:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Business::CyberSource,cpan,object oriented design,ironman,perl,XML::Compile::SOAP"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/businesscybersource-api-is-stabilizing-as-of-0.7.x/">
+
+    <title>Business::CyberSource API is stabilizing as of 0.7.x | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/businesscybersource-api-is-stabilizing-as-of-0.7.x/">Business::CyberSource API is stabilizing as of 0.7.x</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-11-07T21:15:00Z">Wed Nov 7, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/businesscybersource" rel="tag">Business::CyberSource</a>, <a href="/tags/cpan" rel="tag">cpan</a>, <a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/xmlcompilesoap" rel="tag">XML::Compile::SOAP</a>
+
+</p>
+  </header>
+  <p><p><a href="https://metacpan.org/module/Business::CyberSource">Business::CyberSource</a> (BC) has been going through API changes for a while now. If you&rsquo;re using it you&rsquo;ve probably noticed this and wondered why? The reason behind it was when I first made it I wanted it to be extremely simple to use, and I was realistically a Junior programmer. Over the past year I learned a lot about API design and Object Oriented Programming, as well as payment gateways and credit card transaction processing. From the first production ready release I knew that it had design problems due to a large quantity of duplicated code, but at the time I didn&rsquo;t know how to get rid of it. </p><h2>Domain Driven Design</h2><p>My first refactor used some principles I learned from <a href="http://www.amazon.com/gp/product/0321125215/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0321125215&linkCode=as2&tag=xenotsblog-20">Domain-Driven Design: Tackling Complexity in the Heart of Software</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=as2&o=1&a=0321125215" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> I changed the design of the objects to be more clear for experts in CyberSource. I also started restructuring them to more closely match the remote model. This meant making Requests and Responses to be made up of nested objects (Responses were only done as of 0.7.x). Another Change regarding this was to rename the <code>submit</code> method to <code>run_transaction</code> which is the name of the Remote Procedure call that is executed. <h2>Composite Design Pattern</h2><p>By making the Requests up of nested objects it allowed me to use the Composite Pattern from <a href="http://www.amazon.com/gp/product/0201633612/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0201633612&linkCode=as2&tag=xenotsblog-20">Design Patterns: Elements of Reusable Object-Oriented Software</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=as2&o=1&a=0201633612" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> to serialize all of the objects into a simple nested hashref that <a href="https://metacpan.org/module/XML::Compile::SOAP">XML::Compile::SOAP</a> expects. Moving to these smaller objects that could <code>serialize</code> allowed me to also add more offline tests. </p><h2>Dependency Injection in Tests</h2><p>Most of the tests for BC start out exactly the same, except for one change, the value in the amount part of the Credit Card Authorization. This is because CyberSource&rsquo;s Test API uses special amounts to allow you to test getting different responses. e.g. something like (I&rsquo;d have to look it up) 5000.05 is maybe a REJECT with a special processor code and cv code. Because of this I wired up my tests using <a href="https://metacpan.org/module/Bread::Board">Bread::Board</a> to reduce the amount of boilerplate code in all tests that require actual remote interaction. </p><h2>The Impact</h2><p>Ultimately changing my <a href="http://martinfowler.com/eaaCatalog/remoteFacade.html">Remote Facade</a> to make use of more design patterns and be designed after it&rsquo;s niche domain has allowed me to have both simpler, deduplicated, more robust, more correct, and easier to modify code. Some things were not possible in earlier versions, or would have been incredibly complex to add. Now it&rsquo;ll simply be an issue of adding a Moose attribute to add a feature present in the WSDL. Before certain calls could not return all of information that was in the actual SOAP response, now everything should be accessible. </p><h2>Possible Bugs</h2><p>One of the possible bugs of this last refactor is that I use <a href="https://metacpan.org/module/MooseX::StrictConstructor">MooseX::StrictConstructor</a> for all of my Moose objects. It is possible now that the XML::Compile::SOAP hash is simply passed to the Response Object that if a key I didn&rsquo;t account for were present that an exception would be thrown. If this is thrown on anything other than a 102 Invalid Field response, then it is a bug in BC and should be reported. I could have turned StrictConstructor off on the responses, but I believe that throwing the exceptions may ultimately make BC a better library. Also with a test suite that totals over 1400 (including generated generic ) tests, I&rsquo;m fairly confident that there will be no problems in production. </p><h2>New Debugging</h2><p>In order to aid in finding bugs and diagnosing problems when they happen cybersource now has 2 debug setting levels. These can be set by having debug be 0 (off), 1 (request/response hash), 2 (full soap payloads). These should not be turned on in production and because they will print out Credit Card numbers. </p><h2>In Trial</h2><p>Currently I&rsquo;ve left BC v0.7.5 in trial, but barring any bugs being reported, or cpan testers tests failing, I&rsquo;ll probably release v.0.7.6 as stable early early next week.</p><h2>Stable API</h2><p>I do not forsee any more major API changes in the future of BC, all of my original problems have been weeded out. This means I&rsquo;ll be able to focus on features and documentation with future work. It is possible that some changes to exceptions and error handling may happen, but I don&rsquo;t see that being a big issue. </p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbusinesscybersource-api-is-stabilizing-as-of-0.7.x%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbusinesscybersource-api-is-stabilizing-as-of-0.7.x%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbusinesscybersource-api-is-stabilizing-as-of-0.7.x%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbusinesscybersource-api-is-stabilizing-as-of-0.7.x%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

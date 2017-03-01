@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="pkgcore the victor" />
+<meta property="og:description" content="pkgcore is my pick for the next portage and codebase for emerge-ng. I admit I haven&rsquo;t let paludis have a chance (yet).
+Why haven&rsquo;t I let paludis have it&rsquo;s chance?
+The reasons are quite simple. Everytime I have tried paludis prior to this it has required extra configuration (meaning it doesn&rsquo;t work out of the box). I believe this was fixed recently. However,
+
+paludis@1208029212: [WARNING] Use of Portage configuration files will lead to sub-optimal performance and loss of functionality." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/pkgcore-the-victor/" />
+
+
+
+<meta property="article:published_time" content="2008-10-28T01:22:00&#43;00:00"/>
+<meta property="article:modified_time" content="2008-10-28T01:22:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="pkgcore the victor"/>
+<meta name="twitter:title" content="pkgcore the victor"/>
+<meta name="twitter:description" content="pkgcore is my pick for the next portage and codebase for emerge-ng. I admit I haven&rsquo;t let paludis have a chance (yet).
+Why haven&rsquo;t I let paludis have it&rsquo;s chance?
+The reasons are quite simple. Everytime I have tried paludis prior to this it has required extra configuration (meaning it doesn&rsquo;t work out of the box). I believe this was fixed recently. However,
+
+paludis@1208029212: [WARNING] Use of Portage configuration files will lead to sub-optimal performance and loss of functionality."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "pkgcore the victor",
+  "url": "http://blog.xenoterracide.com/post/pkgcore-the-victor/",
+  "wordCount": "776",
+  
+  
+  "datePublished": "2008-10-28T01:22:00&#43;00:00",
+  
+  
+  "dateModified": "2008-10-28T01:22:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "paludis,emerge-ng,pkgcore,pms"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/pkgcore-the-victor/">
+
+    <title>pkgcore the victor | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/pkgcore-the-victor/">pkgcore the victor</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-10-28T01:22:00Z">Tue Oct 28, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/paludis" rel="tag">paludis</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pkgcore" rel="tag">pkgcore</a>, <a href="/tags/pms" rel="tag">pms</a>
+
+</p>
+  </header>
+  <p>pkgcore is my pick for the next portage and codebase for emerge-ng. I admit I haven&rsquo;t let paludis have a chance (yet).<br /><br /><strong>Why haven&rsquo;t I let paludis have it&rsquo;s chance?</strong><br /><br />The reasons are quite simple. Everytime I have tried paludis prior to this it has required extra configuration (meaning it doesn&rsquo;t work out of the box). I believe this was fixed recently. However,<br /><br /><blockquote><br /><code>paludis@1208029212: [WARNING] Use of Portage configuration files will lead to sub-optimal performance and loss of functionality. Full support for Portage configuration formats is not guaranteed; issues should be reported via trac. You are strongly encouraged to migrate to a Paludis configuration.<br />paludis@1208029212: [WARNING] Use of Portage configuration files will lead to sub-optimal performance and loss of functionality. Full support for Portage configuration formats is not guaranteed; issues should be reported via trac. You are strongly encouraged to migrate to a Paludis configuration.<br />* Done cleaning write cache for ebuild format repositories<br />paludis@1208029212: [WARNING] Use of Portage configuration files will lead to sub-optimal performance and loss of functionality. Full support for Portage configuration formats is not guaranteed; issues should be reported via trac. You are strongly encouraged to migrate to a Paludis configuration.</code><br /></blockquote><br /><br />This is the end of a paludis &ndash;sync. Annoying. Paludis also has it&rsquo;s alpha releases marked as  ~arch, this is a no, no. I also found the people in #paludis on irc to be rude and unhelpful. I was annoyed at the time (so being rude myself) as gentoo kde-svn overlay was going to require paludis which means I was going to be forced to use it. Regardless I&rsquo;ve never been met with lot&rsquo;s of friendliness or help in #paludis. They are an RTFM crowd. I have been told to use paludis several times without even asking about it (as if it is the solution to all problems). So is pkgcore better? I can&rsquo;t say without a doubt that it is.<br /><br /><strong>Why is pkgcore the victor?</strong><br /><br />For starter&rsquo;s it&rsquo;s only the victor for me. paludis is a more mature product at this point and has a stronger following of fanatic&rsquo;s/zealot&rsquo;s.<br /><br />1.) pkgcore it more similar to portage.<br /><br />pkgcore was originally intended to be portage 3. This leads to a large amount of similarities and backwards compatibility.<br /><br />2.) pkgcore devs are really friendly. Sometimes patience is a virtue getting an answer on #pkgcore but most of the times I get one. This allowed me to quickly learn what I could and could not (yet) do with pkgcore, including finding a bug within a week.<br /><br />3.) pkgcore just works. I installed pkgcore and with a quick look at the site was quickly able to start doing work with it.<br /><br />4.) pkgcore installs faster. I think it took like an hour to build paludis on this machine (maybe more) pkgcore took 2 minutes tops.<br /><br />5.) pkgcore uses C. For the parts of portage that were really slow they re-wrote them in C using cpython. using both python and c leads to faster development and speed where needed.<br /><br /><strong>How do I use pkgcore</strong><br />real quick<br /><br /><code>pmaint sync</code><br /><br />this is the biggest adaption from portage, imho and I&rsquo;m not sure why it&rsquo;s not &ndash;sync or pmerge &ndash;sync (in some ways it&rsquo;s more similar to portage 2.0 syntax). This will not only sync your main gentoo tree but any repositories you&rsquo;ve intalled with layman. as of yet you still have to install them via layman, but this may change in the future.<br /><br /><code>pmerge packagename</code><br /><br />I told you this was easy. Most of the options I use work. The biggest that doesn&rsquo;t is &ndash;verbose, this seems to be default now (with &ndash;ask) so an option is no longer needed. updating world<br /><br /><code>pmerge -auDs world</code><br /><br />an -s is now needed to work with things like system and  world. It&rsquo;s for package set. My one complaint here is the &ndash;newuse doesn&rsquo;t currently work with sets. This is a bug and will be fixed in the future.<br /><br /><strong>Is <em>anything</em> wrong with pkgcore in your eyes?</strong><br /><br />well aside from the plethora of missing features (they&rsquo;ll get done, it&rsquo;s just a time thing). Documentation&hellip; I usually learn stuff by reading web documentation (or books) until I&rsquo;m comfortable enough reading man pages. The web documentation for pkgcore needs a lot of work. I may actually volunteer to help with this. I haven&rsquo;t decided yet, and it depends partially on if they want to answer all my questions as I write the docs.<br /><br />It&rsquo;d be nice if at some point pmerge could become emerge etc&hellip; (meaning reprise it&rsquo;s roll as portage 3).<br /><br />for more information on pkgcore go to <a href="http://www.pkgcore.org/trac/pkgcore">pkgcore.org</a><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpkgcore-the-victor%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpkgcore-the-victor%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpkgcore-the-victor%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fpkgcore-the-victor%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Teaching Perl - Part 0 - Preface" />
+<meta property="og:description" content="This is my 2 cents on how perl should be getting taught at my school. My school&rsquo;s curriculum sucks in general across the board. But assuming I can&rsquo;t change what classes are taught, when and what prerequisites this is how I would teach perl given the current computer science curriculum.
+Since people reading this are probably not familiar with the Fail that is Baker College (I would not choose Baker if I had to start again but credits don&rsquo;t transfer easily, so it was easier to continue on with it)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/teaching-perl---part-0---preface/" />
+
+
+
+<meta property="article:published_time" content="2010-04-13T16:10:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-04-13T16:10:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Teaching Perl - Part 0 - Preface"/>
+<meta name="twitter:title" content="Teaching Perl - Part 0 - Preface"/>
+<meta name="twitter:description" content="This is my 2 cents on how perl should be getting taught at my school. My school&rsquo;s curriculum sucks in general across the board. But assuming I can&rsquo;t change what classes are taught, when and what prerequisites this is how I would teach perl given the current computer science curriculum.
+Since people reading this are probably not familiar with the Fail that is Baker College (I would not choose Baker if I had to start again but credits don&rsquo;t transfer easily, so it was easier to continue on with it)."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Teaching Perl - Part 0 - Preface",
+  "url": "http://blog.xenoterracide.com/post/teaching-perl---part-0---preface/",
+  "wordCount": "471",
+  
+  
+  "datePublished": "2010-04-13T16:10:00&#43;00:00",
+  
+  
+  "dateModified": "2010-04-13T16:10:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "baker,ironman,perl,teaching perl,curriculum,books,school"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/teaching-perl---part-0---preface/">
+
+    <title>Teaching Perl - Part 0 - Preface | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/teaching-perl---part-0---preface/">Teaching Perl - Part 0 - Preface</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-04-13T16:10:00Z">Tue Apr 13, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/baker" rel="tag">baker</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/teaching-perl" rel="tag">teaching perl</a>, <a href="/tags/curriculum" rel="tag">curriculum</a>, <a href="/tags/books" rel="tag">books</a>, <a href="/tags/school" rel="tag">school</a>
+
+</p>
+  </header>
+  <p>This is my 2 cents on how perl should be getting taught at my school. My school&rsquo;s curriculum sucks in general across the board. But assuming I can&rsquo;t change what classes are taught, when and what prerequisites this is how I would teach perl given the current computer science curriculum.<br /><br />Since people reading this are probably not familiar with the Fail that is <a href="http://baker.edu">Baker College</a> (I would not choose Baker if I had to start again but credits don&rsquo;t transfer easily, so it was easier to continue on with it). Baker has 10 week courses, and with tech courses they are seemingly exclusively scheduled  6-10pm once per week. So this factors into how I&rsquo;ll lay this out.<br /><br />Specifically for the perl class the curriculum provides the schools crux server which is running CentOS linux or something&hellip; (I&rsquo;m not sure which distro it is atm). It does not have the prerequisite of Linux 101 though, and it&rsquo;s not in there curriculum. I don&rsquo;t believe it has <i>any</i> prerequisites other than <strong>intro to programming</strong>. It is a 300 level course, however. This means that most/all students in the course have probably taken a few C++, Visual Basic, and Java classes (there are about 6 of these classes at the 200 level and I imagine most have done at least 2 of the 6).<br /><br />The book required at Baker is currently <a target="_blank"  href="http://www.amazon.com/Perl-Example-4th-Ellie-Quigley/dp/0132381826?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Perl by Example (4th Edition)</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0132381826" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" />. I&rsquo;d suggest telling students it&rsquo;s recommended but not required (If you won&rsquo;t get in trouble) in any event you and students shouldn&rsquo;t need to use this book at all, because a great book <a target="_blank"  href="http://www.amazon.com/Beginning-Perl-Simon-Cozens/dp/1861003145?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Beginning Perl</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=1861003145" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> is <a href="http://learn.perl.org/books/beginning-perl/">free online</a>. Also the non book resources for perl are practically limitless and you should be encouraging the use of these. Some of them include<br /><ul><li><a href="http://learn.perl.org">learn.perl.org</a></li><li><a href="http://perldoc.perl.org">perldoc</a></li><li><a href="http://kobesearch.cpan.org">kobesearch.cpan.org</a> or</li><li><a href="http://search.cpan.org">search.cpan.org</a></li><li><a href="http://ironman.enlightenedperl.org/">Iron Man</a> or</li><li><a href="http://sayperl.org/">SayPerl</a> (AKA Iron Man with all posts translated)</li><li><a href="http://webchat.freenode.net/?channels=perl">Perl Channel on Freenode</a> if they need to ask for help</li></ul>You should have a copy of <a target="_blank"  href="http://www.amazon.com/Perl-Best-Practices-Damian-Conway/dp/0596001738?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Perl Best Practices</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596001738" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" />. I&rsquo;ve been told that you should read this with a grain of salt, that it&rsquo;s only like 50% accurate these days&hellip; but I think it&rsquo;s still a good place to start, and you can pick and choose what to use from it. You may also want a copy of <a target="_blank"  href="http://www.amazon.com/Intermediate-Perl-Randal-L-Schwartz/dp/0596102062?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Intermediate Perl</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596102062" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> For more advanced discussion on references and Object Oriented perl.<br /><br />You may also want a good resource as a Linux CLI reference. <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">This</a> series of tutorials was recommended to me.<br /><br />I will continue to post on the subject matter that I would cover each week, in this 10 part series (programmers count from zero ;) ). I may also discuss <a target="_blank"  href="http://www.amazon.com/Perl-Example-3rd-Ellie-Quigley/dp/0130282510?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Perl by Example (3rd Edition)</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0130282510" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> because that was the required book when I took the class, even though 4ed was out.<br /><br />Update: <a href="http://xenoterracide.blogspot.com/2010/04/teaching-perl-week-1-part1.html">Week 1 (part1)</a><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---part-0---preface%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---part-0---preface%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---part-0---preface%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---part-0---preface%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

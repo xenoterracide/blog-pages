@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Port forwarding in OpenWRT" />
+<meta property="og:description" content="So you need the outside world to have access to some box&rsquo;s on your internal network. first you should use Static DHCP to tell static the IP&rsquo;s of the computer you&rsquo;re routing to. Then you of course need to know the inbound from the outside world and the port on the computer you are forwarding too. For this example we&rsquo;ll forward WAN (Wide Area Network (or (probably) the Internet)) port 8080 to a local dev box running Apache on httpd (we assume you know how to set apache up and make sure it&rsquo;s working on the LAN(Local Area Network))." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/" />
+
+
+
+<meta property="article:published_time" content="2009-10-03T19:34:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-10-03T19:34:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Port forwarding in OpenWRT"/>
+<meta name="twitter:title" content="Port forwarding in OpenWRT"/>
+<meta name="twitter:description" content="So you need the outside world to have access to some box&rsquo;s on your internal network. first you should use Static DHCP to tell static the IP&rsquo;s of the computer you&rsquo;re routing to. Then you of course need to know the inbound from the outside world and the port on the computer you are forwarding too. For this example we&rsquo;ll forward WAN (Wide Area Network (or (probably) the Internet)) port 8080 to a local dev box running Apache on httpd (we assume you know how to set apache up and make sure it&rsquo;s working on the LAN(Local Area Network))."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Port forwarding in OpenWRT",
+  "url": "http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/",
+  "wordCount": "362",
+  
+  
+  "datePublished": "2009-10-03T19:34:00&#43;00:00",
+  
+  
+  "dateModified": "2009-10-03T19:34:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Linux,security,iptables,router,networking,openwrt"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/">
+
+    <title>Port forwarding in OpenWRT | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/">Port forwarding in OpenWRT</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-10-03T19:34:00Z">Sat Oct 3, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/linux" rel="tag">Linux</a>, <a href="/tags/security" rel="tag">security</a>, <a href="/tags/iptables" rel="tag">iptables</a>, <a href="/tags/router" rel="tag">router</a>, <a href="/tags/networking" rel="tag">networking</a>, <a href="/tags/openwrt" rel="tag">openwrt</a>
+
+</p>
+  </header>
+  <p>So you need the outside world to have access to some box&rsquo;s on your internal network. first you should use <a href="http://xenoterracide.blogspot.com/2009/07/openwrt-static-dhcp.html">Static DHCP</a> to tell static the IP&rsquo;s of the computer you&rsquo;re routing to. Then you of course need to know the inbound from the outside world and the port on the computer you are forwarding too. For this example we&rsquo;ll forward WAN (Wide Area Network (or (probably) the Internet)) port 8080  to a local dev box running Apache on httpd (we assume you know how to set apache up and make sure it&rsquo;s working on the LAN(Local Area Network)).<br /><br />edit <code>/etc/config/firewall</code>. note: /etc/firewall.user is for manual iptables commands and is basically a shell script. I only recommend this if /etc/config/firewall doesn&rsquo;t do what you want (like multiport).<br /><code><pre>config redirect<br />        option src              wan<br />        option src_dport        8080<br />        option dest             lan<br />        option dest_ip          192.168.1.3<br />        option dest_port        80<br />        option proto            tcp<br /></pre></code><br /><br />So options src and dest merely define the too and from interfaces (to be honest I&rsquo;m not sure they actually do anything. as I&rsquo;m not seeing any changes to what&rsquo;s in iptables). src_dport is what external port you want to listen on. dest_port is what you want it to go to. dest_ip is what ip you want it to go to and proto is the protocol it listens on (yes you have to specify separately for udp if what you&rsquo;re forwarding uses both tcp and udp).<br /><br />After you&rsquo;ve edited and saved the file to fit your case run <code>/etc/init.d/firewall restart</code> and it should work<br /><br />IMPORTANT: there&rsquo;s a bug in 7.x and pre 8.09.2 with 2.4-bcrm kernels and netfilter code&hellip; it &lsquo;causes port drift. if the bug is affecting you. (it did me) reboot the system. you will be able to see it with a -j LOG iptables rule. the output was thus for me <code><br />IN=eth0.1 OUT=br-lan SRC=66.98.131.131 DST=192.168.1.3 LEN=44 TOS=0x00 PREC=0x20 TTL=47 ID=63450 DF PROTO=TCP SPT=54402 DPT=82 WINDOW=5840 RES=0x00 SYN URGP=0</code> as you can see the destination port(DPT) is 82 instead of 80 like it&rsquo;s supposed to be. 8.09.2 should be out in a few weeks it&rsquo;s currently at rc2.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fport-forwarding-in-openwrt%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fport-forwarding-in-openwrt%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fport-forwarding-in-openwrt%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fport-forwarding-in-openwrt%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

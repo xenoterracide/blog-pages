@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="sync target support" />
+<meta property="og:description" content="Here I explain why emerge &ndash;sync should return to it&rsquo;s original sync form.
+I think emerge sync should have the ability to have a target. Currently emerge &ndash;sync has a target of the SYNC variable in make.conf or the default hardcoded. However, git support is being added to portage. git is a very powerful tool, and the Funtoo project uses it to manage it&rsquo;s full portage tree. git doesn&rsquo;t work like rsync, it&rsquo;s not so straight forward as rsync uri, which is effectively what emerge sync is doing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/sync-target-support/" />
+
+
+
+<meta property="article:published_time" content="2008-12-21T17:40:00&#43;00:00"/>
+<meta property="article:modified_time" content="2008-12-21T17:40:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="sync target support"/>
+<meta name="twitter:title" content="sync target support"/>
+<meta name="twitter:description" content="Here I explain why emerge &ndash;sync should return to it&rsquo;s original sync form.
+I think emerge sync should have the ability to have a target. Currently emerge &ndash;sync has a target of the SYNC variable in make.conf or the default hardcoded. However, git support is being added to portage. git is a very powerful tool, and the Funtoo project uses it to manage it&rsquo;s full portage tree. git doesn&rsquo;t work like rsync, it&rsquo;s not so straight forward as rsync uri, which is effectively what emerge sync is doing."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "sync target support",
+  "url": "http://blog.xenoterracide.com/post/sync-target-support/",
+  "wordCount": "310",
+  
+  
+  "datePublished": "2008-12-21T17:40:00&#43;00:00",
+  
+  
+  "dateModified": "2008-12-21T17:40:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Regen2,emerge-ng,pms,Portage"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/sync-target-support/">
+
+    <title>sync target support | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/sync-target-support/">sync target support</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T17:40:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pms" rel="tag">pms</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  <p><a href="http://xenoterracide.blogspot.com/2008/12/sync-should-be-sync.html">Here</a> I explain why emerge &ndash;sync should return to it&rsquo;s original sync form.<br /><br />I think emerge sync should have the ability to have a target. Currently emerge &ndash;sync has a target of the SYNC variable in make.conf or the default hardcoded. However, git support is being added to portage. git is a very powerful tool, and the <a href="http://funtoo.org">Funtoo</a> project uses it to manage it&rsquo;s full portage tree. git doesn&rsquo;t work like rsync, it&rsquo;s not so straight forward as rsync uri, which is effectively what emerge sync is doing. git supports branches. The current implementation of git in portage effectively does git pull &hellip; which is great&hellip; you know if you pull from the default.<br /><br />I don&rsquo;t, and I&rsquo;m not sure I&rsquo;d always want to, it&rsquo;d be great to be able to change tree&rsquo;s on the fly with a more distributed model. If I want to test funtoo without pulling it&rsquo;s tree into mine I could emerge sync funtoo funtoo.org, or I could switch to gentoo by doing an emerge sync rsync://rsync.gentoo.org/gentoo-portage and none of this will change the default or require configuring in make.conf. <br /><br />Biggest reason to do this is branches though. what if I have a development branch and I need to test something&hellip; I, in theory should be able to change the branch quickly. with git I will have to cd to PORTDIR then run checkout. with portages current implementation I&rsquo;ll have to reconfigure some of git and then do a sync. However, if I were able to add a target to it I could easily do emerge sync origin development or emerge sync origin master.<br /><br />The SYNC variable and maybe some GIT_BRANCH variable could still define defaults while adding a target would make development and testing easier for developers and testers respectively.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsync-target-support%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsync-target-support%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsync-target-support%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsync-target-support%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

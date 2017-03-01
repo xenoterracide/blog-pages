@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="bash and konsole" />
+<meta property="og:description" content="So I&rsquo;ve had lots of problems using a multi-tab xterminal, for the casual user I&rsquo;m sure they&rsquo;d not even notice them, or think I&rsquo;m silly, but when you spend all day in a shell they become less so. History
+one of the big problems I&rsquo;ve had is with history. see when you close a shell then it writes the history. well if you have 5 tabs open each with with a super long history they&rsquo;ll write those histories out in the order they close in." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/bash-and-konsole/" />
+
+
+
+<meta property="article:published_time" content="2010-02-16T23:06:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-02-16T23:06:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="bash and konsole"/>
+<meta name="twitter:title" content="bash and konsole"/>
+<meta name="twitter:description" content="So I&rsquo;ve had lots of problems using a multi-tab xterminal, for the casual user I&rsquo;m sure they&rsquo;d not even notice them, or think I&rsquo;m silly, but when you spend all day in a shell they become less so. History
+one of the big problems I&rsquo;ve had is with history. see when you close a shell then it writes the history. well if you have 5 tabs open each with with a super long history they&rsquo;ll write those histories out in the order they close in."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "bash and konsole",
+  "url": "http://blog.xenoterracide.com/post/bash-and-konsole/",
+  "wordCount": "387",
+  
+  
+  "datePublished": "2010-02-16T23:06:00&#43;00:00",
+  
+  
+  "dateModified": "2010-02-16T23:06:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "konsole,howto,tips,bash,tabs,shell,kde,kde4"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/bash-and-konsole/">
+
+    <title>bash and konsole | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/bash-and-konsole/">bash and konsole</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-02-16T23:06:00Z">Tue Feb 16, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/konsole" rel="tag">konsole</a>, <a href="/tags/howto" rel="tag">howto</a>, <a href="/tags/tips" rel="tag">tips</a>, <a href="/tags/bash" rel="tag">bash</a>, <a href="/tags/tabs" rel="tag">tabs</a>, <a href="/tags/shell" rel="tag">shell</a>, <a href="/tags/kde" rel="tag">kde</a>, <a href="/tags/kde4" rel="tag">kde4</a>
+
+</p>
+  </header>
+  <p>So I&rsquo;ve had lots of problems using a multi-tab xterminal, for the casual user I&rsquo;m sure they&rsquo;d not even notice them, or think I&rsquo;m silly, but when you spend all day in a shell they become less so. <br /><br /><h2>History</h2><br />one of the big problems I&rsquo;ve had is with history. see when you close a shell then it writes the history. well if you have 5 tabs open each with with a super long history they&rsquo;ll write those histories out in the order they close in. basically what happens is all the history saves at once so one of your open shells histories will be before another&rsquo;s and if each has like 50 entries it can be quite a way back. In fact I&rsquo;m sure I&rsquo;ve had it happen where parts of my history was lost. So what do you do? you have to separate them per tab. One way to do this is with gnu screen. I don&rsquo;t like screen&rsquo;s history because it records the output of the terminal as well as the command, so this wasn&rsquo;t a good solution for me. The solution is that each tab must have its own history file. Well how do we do that? before I get to it I have another problem.<br /><br /><h2>PS1, umask, and default group</h2>I also have a need to have different settings depending on what I&rsquo;m working on. If I&rsquo;m working on files that need to be read and written to by my web server they need to have a different group and umask. first I solved this by su - to a different user, then I solved it by having different bashrc&rsquo;s but neither fully solved the history problem.<br /><br /><h2>howto do it</h2>first you have to have one konsole profile for each of the different settings you need. so I have one for web development called webdev. Then you have to add an environment variable to it I&rsquo;m going to call it KONSOLE_PROFILE and set that to whatever your profile is called. Neither name really matters so long as they don&rsquo;t conflict with others. Then you need to code your bashrc (or other shell to work with it). I have a shortened sample bashrc that you can use in a <a href="http://gist.github.com/306270">gist</a><br /><script src="http://gist.github.com/306270.js"></script><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbash-and-konsole%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbash-and-konsole%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbash-and-konsole%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbash-and-konsole%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

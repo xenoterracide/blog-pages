@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dhcp on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/dhcp/index.xml</link>
+    <description>Recent content in Dhcp on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/dhcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OpenWRT static DHCP</title>
+      <link>http://blog.xenoterracide.com/post/openwrt-static-dhcp/</link>
+      <pubDate>Mon, 06 Jul 2009 02:47:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/openwrt-static-dhcp/</guid>
+      <description>&lt;p&gt;I use OpenWRT on my Linksys WRT54GL, all shell, no web interface. My basic problem is that both me and my roomate need ports forwarded from the internet to our systems. This means NAT, for nat you need to know the IP address that you&amp;rsquo;re forwarding too. I could just &amp;lsquo;static&amp;rsquo; the IP on our boxes and then set up the NAT. This is not the correct way to do things, as it would be much more difficult to keep track of who uses what IP and make sure that dnsmasq doesn&amp;rsquo;t give out our static-ed IP&amp;rsquo;s. Also when you static an IP on the client side that usually means setting dns, and remembering to unstatic it when you move. So we really want our dhcp server to give out the same IP address to a given mac address. to do this in OpenWRT you need to edit &lt;code&gt;/etc/ethers.local&lt;/code&gt; the syntax of that file is basically &lt;br /&gt;&lt;code&gt;&lt;br /&gt;mac ip&lt;br /&gt;mac ip&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;mine currently looks like this.&lt;br /&gt;&lt;br /&gt;&lt;code&gt;00:1e:8c:09:e7:13 192.168.1.2&lt;br /&gt;00:21:9b:06:4c:c9 192.168.1.3&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;These 2 computers will always get the same IP address while any other computer on the network may get a random IP address. After editing this file you need to run &lt;code&gt;/etc/init.d/luci_ethers start&lt;/code&gt; which will then generate &lt;code&gt;/etc/ethers&lt;/code&gt; which is what is actually used. You could also reboot the router but that is unnecessary.&lt;br /&gt;&lt;br /&gt;&lt;i&gt;update: it appears this has changed in OpenWRT 10.03 Backfire&lt;/i&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

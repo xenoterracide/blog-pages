@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="REST, ROA, and HATEOAS often leads to bad webservice design" />
+<meta property="og:description" content="This is not to say that they are bad, but I find that all too frequently the resulting API&rsquo;s are poorly designed due to forgetting one thing, RPC (Remote Procedure Call) is expensive. Now by RPC, I do not mean custom messaging formats such as SOAP, or XML-RPC, I mean calling a method on a remote server. Do not think that just because you are using HTTP as the message format with something like XML or JSON, that calling GET /resource, is significantly all that different from calling get_resource in a SOAP call." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/rest-roa-and-hateoas-often-leads-to-bad-webservice-design/" />
+
+
+
+<meta property="article:published_time" content="2014-04-02T04:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-04-02T04:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="REST, ROA, and HATEOAS often leads to bad webservice design"/>
+<meta name="twitter:title" content="REST, ROA, and HATEOAS often leads to bad webservice design"/>
+<meta name="twitter:description" content="This is not to say that they are bad, but I find that all too frequently the resulting API&rsquo;s are poorly designed due to forgetting one thing, RPC (Remote Procedure Call) is expensive. Now by RPC, I do not mean custom messaging formats such as SOAP, or XML-RPC, I mean calling a method on a remote server. Do not think that just because you are using HTTP as the message format with something like XML or JSON, that calling GET /resource, is significantly all that different from calling get_resource in a SOAP call."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "REST, ROA, and HATEOAS often leads to bad webservice design",
+  "url": "http://blog.xenoterracide.com/post/rest-roa-and-hateoas-often-leads-to-bad-webservice-design/",
+  "wordCount": "926",
+  
+  
+  "datePublished": "2014-04-02T04:00:00&#43;00:00",
+  
+  
+  "dateModified": "2014-04-02T04:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "hateoas,http,ironman,web services,rest"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/rest-roa-and-hateoas-often-leads-to-bad-webservice-design/">
+
+    <title>REST, ROA, and HATEOAS often leads to bad webservice design | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/rest-roa-and-hateoas-often-leads-to-bad-webservice-design/">REST, ROA, and HATEOAS often leads to bad webservice design</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-04-02T04:00:00Z">Wed Apr 2, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/hateoas" rel="tag">hateoas</a>, <a href="/tags/http" rel="tag">http</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/web-services" rel="tag">web services</a>, <a href="/tags/rest" rel="tag">rest</a>
+
+</p>
+  </header>
+  <p><p>This is not to say that they are bad, but I find that all too frequently the resulting API&rsquo;s are poorly designed due to forgetting one thing, RPC (Remote Procedure Call) is expensive. Now by RPC, I do not mean custom messaging formats such as SOAP, or XML-RPC, I mean calling a method on a remote server. Do not think that just because you are using HTTP as the message format with something like XML or JSON, that calling <code>GET /resource</code>, is significantly all that different from calling get_resource in a SOAP call. The frequent idempotence also does not mean that you&rsquo;re not actually doing RPC as often good method design server side also implies idempotence, e.g. adding an object to a Set in Java will not result in the object being added twice if you add it twice. All calls to a remote is a form of RPC. The most expensive part of RPC is creating a new connection, just how depends on the protocol. This is why web sockets, for instance, is much cheaper than repeated calls (there are other reasons and expenses too, like maintaining many connections). </p><p>I&rsquo;ve worked with a few Resource Oriented Architecture (ROA) web services, and they each suffered from the same flawed design, an excessive number of RPC calls was required to do seemingly simple tasks. This is caused by the, misguided, belief that every single aggregate should be it&rsquo;s own resource and that components of the aggregate should also have it&rsquo;s own resource, and that those should be the only access to the underlying aggregate. In one case working with an ROA we had to do about 5 RPC calls for every single product we wanted to create, and we were bulk creating. This problem was aggravated by the lack of an idempotent PUT for most resources. </p><p>The reality is, with a good API design we could have created all, of the objects we needed with a single API call to a bulk interface. I&rsquo;m talking the RESTful equivalent to a <a href="http://download.java.net/jdk8/docs/api/java/util/Collection.html#addAll-java.util.Collection-">Java <code>Collection.addAll( objs[] )</code></a>. In fact if you use addAll on a Set, the result of multiple same calls is idempotent, the same object will not be added twice. It would be really easy to write this given a good ORM, and a good interface so that you could do a <code>POST</code> or <code>PUT</code> to <code>/entities</code>.  this is a significant improvement to a design where you&rsquo;d have to do a PUT or POST for every single item you wanted to create. <code>DELETE</code> may be the only place where I&rsquo;d consider not doing a bulk request, and it is generally able to be completed asynchronously. You may of course consider limiting the number of entities acted on in a request, so if you need to create 1000 entities, it might take 10 requests doing 100 at a time, this is still better for both the client and the server than doing 1000 requests. </p><p>The choice between <code>PUT</code> and <code>POST</code> depends on whether you believe that the call to <code>GET</code> must return the exact same view as <code>PUT</code>, meaning that a <code>PUT</code> would delete resources not included (for a single aggregate that&rsquo;s probably true), or should the behavior be equivalent to addAll or replacing the reference to the collection with a new one. Remember <code>PUT</code> must be idempotent, this <em>only</em> means that subsequent calls using the exact same arguments should result in the exact same result. You may want to consider using a different URI for manipulating your entity collections in these ways. </p><p>Another problem that was encountered with a web service we encountered is it had sub resources, that had to exist prior to creating the resource we needed to create, akin to tags. Not having a idempotent put to that resource meant we were doing create on exception update. But given the simplicity of this resource it would have been even better to just allow the api to take the final object representation of that resource, instead of requiring the id, and done a lookup by name, or a create or update, under the hood. Doing this is more difficult logic wise, and impossible if there&rsquo;s no natural key (because you can&rsquo;t look it up). </p><p>You probably are asking yourself, but how do I handle errors for these things. Well, the way I see it you have three options. One requests are a transaction, so you wrap your database code with a transaction, and it either succeeds or fails, you can return a 200 on success, ensure HATEOAS, with links to any new resources in the response. Two, you could allow partial success, and return the successful objects. Three you could return a custom message envelope payload, this isn&rsquo;t very RESTful because it&rsquo;s a protocol on top of HTTP (it&rsquo;s more like SOAP). <p>I&rsquo;m currently working on designing a new REST Web Service, and I&rsquo;ve decided that no page load, or &ldquo;single conceptual action&rdquo; should take more than 6 API requests. This number is not arbitrary, it&rsquo;s the <a href="http://www.browserscope.org/?category=network">median concurrent connection amount, per host name, for consumer web browsers</a>. Even that number is too many, but I felt that I needed to alot more than one request allowed due to some completely different actions that may need to occur on a page load. </p><p>Keep on with the Resource Oriented REST with HATEOAS, just try to think of how to minify the number of calls you make by designing less granular resources</p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2frest-roa-and-hateoas-often-leads-to-bad-webservice-design%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2frest-roa-and-hateoas-often-leads-to-bad-webservice-design%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2frest-roa-and-hateoas-often-leads-to-bad-webservice-design%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2frest-roa-and-hateoas-often-leads-to-bad-webservice-design%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

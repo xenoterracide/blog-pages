@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Adding a new group to an open shell without logging in and out" />
+<meta property="og:description" content="Most Unix users believe it&rsquo;s impossible to add a group that was recently added to your user account without logging in and logging out. If you&rsquo;re running X and need to give your gui new permissions (like dolphin/konqueoror) this may be true, for the most part. I don&rsquo;t know how to change it for those processes. However, if you need to change it for a shell prompt it&rsquo;s easy. You merely execute the command newgrp  in an open shell prompt and that prompt will now be loaded with the new group." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/adding-a-new-group-to-an-open-shell-without-logging-in-and-out/" />
+
+
+
+<meta property="article:published_time" content="2009-08-23T01:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-08-23T01:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Adding a new group to an open shell without logging in and out"/>
+<meta name="twitter:title" content="Adding a new group to an open shell without logging in and out"/>
+<meta name="twitter:description" content="Most Unix users believe it&rsquo;s impossible to add a group that was recently added to your user account without logging in and logging out. If you&rsquo;re running X and need to give your gui new permissions (like dolphin/konqueoror) this may be true, for the most part. I don&rsquo;t know how to change it for those processes. However, if you need to change it for a shell prompt it&rsquo;s easy. You merely execute the command newgrp  in an open shell prompt and that prompt will now be loaded with the new group."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Adding a new group to an open shell without logging in and out",
+  "url": "http://blog.xenoterracide.com/post/adding-a-new-group-to-an-open-shell-without-logging-in-and-out/",
+  "wordCount": "156",
+  
+  
+  "datePublished": "2009-08-23T01:00:00&#43;00:00",
+  
+  
+  "dateModified": "2009-08-23T01:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "tutorial,Linux,security,tips,unix,shell,commands"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/adding-a-new-group-to-an-open-shell-without-logging-in-and-out/">
+
+    <title>Adding a new group to an open shell without logging in and out | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/adding-a-new-group-to-an-open-shell-without-logging-in-and-out/">Adding a new group to an open shell without logging in and out</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-08-23T01:00:00Z">Sun Aug 23, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/tutorial" rel="tag">tutorial</a>, <a href="/tags/linux" rel="tag">Linux</a>, <a href="/tags/security" rel="tag">security</a>, <a href="/tags/tips" rel="tag">tips</a>, <a href="/tags/unix" rel="tag">unix</a>, <a href="/tags/shell" rel="tag">shell</a>, <a href="/tags/commands" rel="tag">commands</a>
+
+</p>
+  </header>
+  <p>Most Unix users believe it&rsquo;s impossible to add a group that was recently added to your user account without logging in and logging out. If you&rsquo;re running X and need to give your gui new permissions (like dolphin/konqueoror) this may be true, for the most part. I don&rsquo;t know how to change it for those processes. However, if you need to change it for a shell prompt it&rsquo;s easy. You merely execute the command <code>newgrp <newgroupname></code> in an open shell prompt and that prompt will now be loaded with the new group. I believe it also changes the default group that shell is running as. So if you run <code>newgrp http; touch test.txt</code> your file will be created with the group http instead of whatever your default is. You can change your group back to the default by using the <code>sg</code> command.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadding-a-new-group-to-an-open-shell-without-logging-in-and-out%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadding-a-new-group-to-an-open-shell-without-logging-in-and-out%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadding-a-new-group-to-an-open-shell-without-logging-in-and-out%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadding-a-new-group-to-an-open-shell-without-logging-in-and-out%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

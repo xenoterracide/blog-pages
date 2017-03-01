@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="More Security = Better. Wrong!" />
+<meta property="og:description" content="So I just had a discussion on #ubuntu-server on freenode about why my not having a password to connect to postgresql via a socket (read local cli) is insecure. So I asked them, how exactly is it that someone is going to get this access? The answer &ldquo;there are bad people on the Internet&rdquo;. I&rsquo;m sure many people right now are agreeing with them and thinking I&rsquo;m crazy. Let&rsquo;s discuss my setup though shall we." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/more-security--better.-wrong/" />
+
+
+
+<meta property="article:published_time" content="2009-08-22T19:54:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-08-22T19:54:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="More Security = Better. Wrong!"/>
+<meta name="twitter:title" content="More Security = Better. Wrong!"/>
+<meta name="twitter:description" content="So I just had a discussion on #ubuntu-server on freenode about why my not having a password to connect to postgresql via a socket (read local cli) is insecure. So I asked them, how exactly is it that someone is going to get this access? The answer &ldquo;there are bad people on the Internet&rdquo;. I&rsquo;m sure many people right now are agreeing with them and thinking I&rsquo;m crazy. Let&rsquo;s discuss my setup though shall we."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "More Security = Better. Wrong!",
+  "url": "http://blog.xenoterracide.com/post/more-security--better.-wrong/",
+  "wordCount": "538",
+  
+  
+  "datePublished": "2009-08-22T19:54:00&#43;00:00",
+  
+  
+  "dateModified": "2009-08-22T19:54:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "security,authentication,passwords,postgresql,hall of shame"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/more-security--better.-wrong/">
+
+    <title>More Security = Better. Wrong! | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/more-security--better.-wrong/">More Security = Better. Wrong!</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-08-22T19:54:00Z">Sat Aug 22, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/security" rel="tag">security</a>, <a href="/tags/authentication" rel="tag">authentication</a>, <a href="/tags/passwords" rel="tag">passwords</a>, <a href="/tags/postgresql" rel="tag">postgresql</a>, <a href="/tags/hall-of-shame" rel="tag">hall of shame</a>
+
+</p>
+  </header>
+  <p>So I just had a discussion on <a href="irc://chat.freenode.net/ubuntu-server">#ubuntu-server on freenode</a> about why my not having a password to connect to postgresql via a socket (read local cli) is insecure. So I asked them, how exactly is it that someone is going to get this access? The answer &ldquo;there are bad people on the Internet&rdquo;. I&rsquo;m sure many people right now are agreeing with them and thinking I&rsquo;m crazy. Let&rsquo;s discuss my setup though shall we.<br /><br />Postgres: I&rsquo;m using Ident, and not just sameuser ident. no I had to set a custom rule in the pg_ident.conf file for this user to access because the systemuser != the db user. so just typing psql at the command line should you get access still won&rsquo;t get you into the db. you have to know which user/database to connect to. But that&rsquo;s not that hard right? in fact it&rsquo;s trivial.In addition you have to be a certain systemuser, only one works.<br /><br />User Access: There is only one user account on the system that can be logged into (it&rsquo;s not root or a generic name). Only 2 people have the credentials to get shell access. One is my host, who happens to have physical and kvm access. The other is me who has ssh access.<br /><br />SSH: I have ssh on a high port with no password authentication, or root, allowed.<br /><br />So in order to passwordlessly access the database you would have to ssh into the system from a remote location or find an exploitable bug in apache (the only other service listening, or the kernel) that allows you to switch to my non apache user (meaning root access).<br /><br />In addition, this system user had rw access to the entire website which includes a file containing the password to the database in plain text. So let&rsquo;s say I created a .pgpass file or variables? what exactly is it that would keep anyone who has access to this account from gaining access to the database? in fact wouldn&rsquo;t it just make it easier, since pgpass has a known location and contains all connection info including the username/dbname string? <br /><br />But why do I need passwordless access anyways? I wrote a script that dumps the db every hour to a git repo and then pushes that to a remote.<br /><br />Could I secure it further? yeah I could. I could make the script run as a user who can&rsquo;t log in at all and then put a pgpass in that users account. I&rsquo;d have to properly ACL the webroot to give the correct write and read access. But is all this really necessary? maybe and I might do it, but at this point it&rsquo;s not nearly as important as it was for me to get backups up and running, because regardless of all the security I implement, if I have no backup and someone finds that loophole in one of the pieces of software and uses it, I might just be screwed. At least now I can restore the site if it gets attacked.<br /><br />P.S. I was having a problem with my backup not being run by cron, never did figure out why.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmore-security--better.-wrong%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmore-security--better.-wrong%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmore-security--better.-wrong%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmore-security--better.-wrong%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

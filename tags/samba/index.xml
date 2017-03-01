@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Samba on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/samba/index.xml</link>
+    <description>Recent content in Samba on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/samba/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>iptables browsing samba shares</title>
+      <link>http://blog.xenoterracide.com/post/iptables-browsing-samba-shares/</link>
+      <pubDate>Sat, 16 May 2009 00:37:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/iptables-browsing-samba-shares/</guid>
+      <description>&lt;p&gt;NOTE: this assumes that you&amp;rsquo;ve read my previous post on &lt;a href=&#34;http://xenoterracide.blogspot.com/2008/04/iptables-for-average-desktop-user.html&#34;&gt;basic iptables setup on the desktop&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;So I just spent the longest time trying to determine what ports I needed to browse and use samba shares. The sad answer is it&amp;rsquo;s just one.&lt;br /&gt;&lt;br /&gt;&lt;code&gt;&lt;br /&gt;iptables -A INPUT -p udp &amp;ndash;sport 137 -j ACCEPT&lt;br /&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;the catch with all the information I found with google was that most of it was for samba servers. I didn&amp;rsquo;t want that. I just want to be able to browse my roommates network shares, and download from them. None of the information google provided suggested I need to allow the source port on the other end.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

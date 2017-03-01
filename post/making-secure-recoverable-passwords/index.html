@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Making secure recoverable passwords" />
+<meta property="og:description" content="For the basic you need a calculator with a decimal to hex function. Your OS should have one built in (scientific mode), many calculator&rsquo;s do to. For advanced you&rsquo;ll need special hashing software, suggestions for it can be found below.
+
+
+Windows
+HashCalc
+
+
+Macintosh
+MacHash
+
+
+Linux/(nix)
+Gnu Coreutils
+
+
+Now that we have the software we need. You&rsquo;ll need an 8 digit (minimum) number that you won&rsquo;t forget." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords/" />
+
+
+
+<meta property="article:published_time" content="2008-04-27T14:08:00&#43;00:00"/>
+<meta property="article:modified_time" content="2008-04-27T14:08:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Making secure recoverable passwords"/>
+<meta name="twitter:title" content="Making secure recoverable passwords"/>
+<meta name="twitter:description" content="For the basic you need a calculator with a decimal to hex function. Your OS should have one built in (scientific mode), many calculator&rsquo;s do to. For advanced you&rsquo;ll need special hashing software, suggestions for it can be found below.
+
+
+Windows
+HashCalc
+
+
+Macintosh
+MacHash
+
+
+Linux/(nix)
+Gnu Coreutils
+
+
+Now that we have the software we need. You&rsquo;ll need an 8 digit (minimum) number that you won&rsquo;t forget."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Making secure recoverable passwords",
+  "url": "http://blog.xenoterracide.com/post/making-secure-recoverable-passwords/",
+  "wordCount": "723",
+  
+  
+  "datePublished": "2008-04-27T14:08:00&#43;00:00",
+  
+  
+  "dateModified": "2008-04-27T14:08:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "security,passwords,tips"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords/">
+
+    <title>Making secure recoverable passwords | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords/">Making secure recoverable passwords</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-04-27T14:08:00Z">Sun Apr 27, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/security" rel="tag">security</a>, <a href="/tags/passwords" rel="tag">passwords</a>, <a href="/tags/tips" rel="tag">tips</a>
+
+</p>
+  </header>
+  <p><p>For the basic you need a calculator with a decimal to hex function. Your OS should have one built in (scientific mode), many calculator&rsquo;s do to. For advanced you&rsquo;ll need special hashing software, suggestions for it can be found below.</p><br /><table><br />  <tr><br />    <th>Windows</th><br />    <td><a href="http://www.slavasoft.com/hashcalc/index.htm">HashCalc</a></td><br />  </tr><br />  <tr><br />    <th>Macintosh</th><br />    <td><a href="http://sourceforge.net/projects/machash">MacHash</a></td><br />  </tr><br />  <tr><br />    <th>Linux/(<em>nix)</th><br />    <td><a href="http://www.gnu.org/software/coreutils/">Gnu Coreutils</a></td><br />  </tr><br /></table><br /><br />Now that we have the software we need. You&rsquo;ll need an 8 digit (minimum) number that you won&rsquo;t forget. Guess what numbers fit the bill perfectly. Dates. All date&rsquo;s can be expressed in 8 digits, but they require a year. The date we&rsquo;ll use (for example) is Linux&rsquo;s Birthday. August 25, 1991 (I recommend something more personal like your anniversary or birthday).<br /><br />So we are going to write down the date we picked for the password (note we aren&rsquo;t done yet).<br /><br />something like<br /><br /><code>Linux BDay</code><br /><br />Date&rsquo;s can be <a href="http://en.wikipedia.org/wiki/Calendar_date">formatted</a> in several ways, Just make sure to remember the numeric format you use. For our example we&rsquo;ll use the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> standard. Which leaves our example date in format, YYYYMMDD, looking like 19910825.<br /><br />So let&rsquo;s make a note of the format (to throw people off use a diff format say DDMMYYYY).<br /><br /><code>Linux Bday ISO</code><br /><br />whatever you do make sure YOU understand your note, but that it isn&rsquo;t easily understandable by OTHERS.<br /><br />alright&hellip; now we&rsquo;re going to take our number and make it hex. So open your calculator enter 19910825, then use the convert to hex function and you should have this 12FD0A9 (if you aren&rsquo;t using our example you may have a different &lsquo;number&rsquo;, or it may not be displayed exactly like this, display&rsquo;s vary between calculators). This is your first basic password. you can use it as is, or you can make it a bit more secure by using one of the <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadecimal notations</a>. example: 0x12FD0A9. You can add a word or funny characters to either side of it to make it stronger too, just make sure to note anything you add to it.<br /><br />Due to a <a href="http://en.wikipedia.org/wiki/Rainbow_table">Rainbow Table</a> database you should make sure your password is at least 8 characters but I would recommend no less than 9.<br /><br /><strong>But your hex number is less than 9 and what do the programs you listed have to do with this?</strong><br /><br />good point&hellip; let&rsquo;s make something a bit more crypto and less predictable.<br /><br />Take the same date and plug it in to your hash creator, I&rsquo;m going to use an md5sum for my first example.<br /><br />if you put 19910825 into md5sum you get 6f9822851dfc6c1045c6fef827e5d729 (for you nix people enter the number like this &lsquo;echo -n &ldquo;19910825&rdquo; | md5sum&rsquo;<br />on the cli otherwise you might end up with newline issues because different operating systems use different newlines).<br /><br />so lets say you need an 12 character password you could just use the first 12 characters of your hash, example: 6f9822851dfc if you need an 8, example: 6f982285 ,etc etc.<br /><br />if a stupid &lsquo;cracker&rsquo; or black hat hacker get his hands on your actual password he might think he hasn&rsquo;t decrypted it fully because it&rsquo;ll look like a hash or memory error. want to throw people off even more just remember you aren&rsquo;t using the first 8 but the first 8 after the first 2 example 9822851d.<br /><br />Or use a different has like sha1 or sha512.<br /><br />Ultimately you could make your note to yourself like this<br /><br /><code>Sha1LinuxBDayISO</code> to a non IT person this will look like a random password as is.<br /><br />Also the cryptographic hashes take words too. So you could do your name. Caleb into an md5sum is<br /><br />9ced73b8525de1db8e232ad575baa9dd<br /><br />but it&rsquo;s different if I use caleb.<br /><br />2f0154d7db348840676529dd72f1c034<br /><br />if you always enter them the same you will always get the same result back. I guarantee after a couple days typing your new password you won&rsquo;t need to have it written down. If you work at a place that requires things like monthly changes.. just put the date you changed it on in to create the hash. Just make sure no one knows but the number/word(s) you used and the hash you used or they will be able to duplicate your password. Of course you&rsquo;re smart and you added somthing to it right? like a symbol (!@#$%^</em>{}|:&rdquo;&lt;&gt;?[]\;&lsquo;,./) will all work find if the auth methods allow it.<br /><br />have fun never having a hard time creating passwords again.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

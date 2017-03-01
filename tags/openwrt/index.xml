@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openwrt on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/openwrt/index.xml</link>
+    <description>Recent content in Openwrt on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/openwrt/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Port forwarding in OpenWRT</title>
+      <link>http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/</link>
+      <pubDate>Sat, 03 Oct 2009 19:34:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/port-forwarding-in-openwrt/</guid>
+      <description>&lt;p&gt;So you need the outside world to have access to some box&amp;rsquo;s on your internal network. first you should use &lt;a href=&#34;http://xenoterracide.blogspot.com/2009/07/openwrt-static-dhcp.html&#34;&gt;Static DHCP&lt;/a&gt; to tell static the IP&amp;rsquo;s of the computer you&amp;rsquo;re routing to. Then you of course need to know the inbound from the outside world and the port on the computer you are forwarding too. For this example we&amp;rsquo;ll forward WAN (Wide Area Network (or (probably) the Internet)) port 8080  to a local dev box running Apache on httpd (we assume you know how to set apache up and make sure it&amp;rsquo;s working on the LAN(Local Area Network)).&lt;br /&gt;&lt;br /&gt;edit &lt;code&gt;/etc/config/firewall&lt;/code&gt;. note: /etc/firewall.user is for manual iptables commands and is basically a shell script. I only recommend this if /etc/config/firewall doesn&amp;rsquo;t do what you want (like multiport).&lt;br /&gt;&lt;code&gt;&lt;pre&gt;config redirect&lt;br /&gt;        option src              wan&lt;br /&gt;        option src_dport        8080&lt;br /&gt;        option dest             lan&lt;br /&gt;        option dest_ip          192.168.1.3&lt;br /&gt;        option dest_port        80&lt;br /&gt;        option proto            tcp&lt;br /&gt;&lt;/pre&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;So options src and dest merely define the too and from interfaces (to be honest I&amp;rsquo;m not sure they actually do anything. as I&amp;rsquo;m not seeing any changes to what&amp;rsquo;s in iptables). src_dport is what external port you want to listen on. dest_port is what you want it to go to. dest_ip is what ip you want it to go to and proto is the protocol it listens on (yes you have to specify separately for udp if what you&amp;rsquo;re forwarding uses both tcp and udp).&lt;br /&gt;&lt;br /&gt;After you&amp;rsquo;ve edited and saved the file to fit your case run &lt;code&gt;/etc/init.d/firewall restart&lt;/code&gt; and it should work&lt;br /&gt;&lt;br /&gt;IMPORTANT: there&amp;rsquo;s a bug in 7.x and pre 8.09.2 with 2.4-bcrm kernels and netfilter code&amp;hellip; it &amp;lsquo;causes port drift. if the bug is affecting you. (it did me) reboot the system. you will be able to see it with a -j LOG iptables rule. the output was thus for me &lt;code&gt;&lt;br /&gt;IN=eth0.1 OUT=br-lan SRC=66.98.131.131 DST=192.168.1.3 LEN=44 TOS=0x00 PREC=0x20 TTL=47 ID=63450 DF PROTO=TCP SPT=54402 DPT=82 WINDOW=5840 RES=0x00 SYN URGP=0&lt;/code&gt; as you can see the destination port(DPT) is 82 instead of 80 like it&amp;rsquo;s supposed to be. 8.09.2 should be out in a few weeks it&amp;rsquo;s currently at rc2.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenWRT static DHCP</title>
+      <link>http://blog.xenoterracide.com/post/openwrt-static-dhcp/</link>
+      <pubDate>Mon, 06 Jul 2009 02:47:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/openwrt-static-dhcp/</guid>
+      <description>&lt;p&gt;I use OpenWRT on my Linksys WRT54GL, all shell, no web interface. My basic problem is that both me and my roomate need ports forwarded from the internet to our systems. This means NAT, for nat you need to know the IP address that you&amp;rsquo;re forwarding too. I could just &amp;lsquo;static&amp;rsquo; the IP on our boxes and then set up the NAT. This is not the correct way to do things, as it would be much more difficult to keep track of who uses what IP and make sure that dnsmasq doesn&amp;rsquo;t give out our static-ed IP&amp;rsquo;s. Also when you static an IP on the client side that usually means setting dns, and remembering to unstatic it when you move. So we really want our dhcp server to give out the same IP address to a given mac address. to do this in OpenWRT you need to edit &lt;code&gt;/etc/ethers.local&lt;/code&gt; the syntax of that file is basically &lt;br /&gt;&lt;code&gt;&lt;br /&gt;mac ip&lt;br /&gt;mac ip&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;mine currently looks like this.&lt;br /&gt;&lt;br /&gt;&lt;code&gt;00:1e:8c:09:e7:13 192.168.1.2&lt;br /&gt;00:21:9b:06:4c:c9 192.168.1.3&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;These 2 computers will always get the same IP address while any other computer on the network may get a random IP address. After editing this file you need to run &lt;code&gt;/etc/init.d/luci_ethers start&lt;/code&gt; which will then generate &lt;code&gt;/etc/ethers&lt;/code&gt; which is what is actually used. You could also reboot the router but that is unnecessary.&lt;br /&gt;&lt;br /&gt;&lt;i&gt;update: it appears this has changed in OpenWRT 10.03 Backfire&lt;/i&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

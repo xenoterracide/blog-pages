@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="10 ways of implementing Polymorphism" />
+<meta property="og:description" content="Firstly what is Polymorphism and why is it so important? Polymorphism is the ability to have a many implementations of a behavior that conform to a single interface. Put in perhaps slightly better, pragmatic terms, you have one implementations of a caller, that can operate on many implementations of a &ldquo;parameter&rdquo;, without conditionals, or changing the callers code. For instance the following, pseudo?, Perl 6-ism method handler( $obj ) { $obj." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/" />
+
+
+
+<meta property="article:published_time" content="2014-10-07T04:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-10-07T04:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="10 ways of implementing Polymorphism"/>
+<meta name="twitter:title" content="10 ways of implementing Polymorphism"/>
+<meta name="twitter:description" content="Firstly what is Polymorphism and why is it so important? Polymorphism is the ability to have a many implementations of a behavior that conform to a single interface. Put in perhaps slightly better, pragmatic terms, you have one implementations of a caller, that can operate on many implementations of a &ldquo;parameter&rdquo;, without conditionals, or changing the callers code. For instance the following, pseudo?, Perl 6-ism method handler( $obj ) { $obj."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "10 ways of implementing Polymorphism",
+  "url": "http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/",
+  "wordCount": "665",
+  
+  
+  "datePublished": "2014-10-07T04:00:00&#43;00:00",
+  
+  
+  "dateModified": "2014-10-07T04:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "object oriented design,ironman,perl,polymorphism,java"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/">
+
+    <title>10 ways of implementing Polymorphism | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/">10 ways of implementing Polymorphism</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-10-07T04:00:00Z">Tue Oct 7, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/polymorphism" rel="tag">polymorphism</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  <p><p>Firstly what is Polymorphism and why is it so important? Polymorphism is the ability to have a many implementations of a behavior that conform to a single interface. Put in perhaps slightly better, pragmatic terms, you have one implementations of a caller, that can operate on many implementations of a &ldquo;parameter&rdquo;, without conditionals, or changing the callers code. For instance the following, pseudo?, Perl 6-ism <code>method handler( $obj ) { $obj.execute() }</code>. As you can imagine <code>$obj</code> can be anything that has an execute method. For this Article I&rsquo;ll give you two implementations and one caller, in either Perl <sup>5</sup>&frasl;<sub>6</sub> or Java <sup>7</sup>&frasl;<sub>8</sub>, boilerplate will be excluded for brevity.</p><h1>Inheritance</h1><h2>Single Inheritance</h2><p>Single inheritance is the most simple and well understood form of Polymorphism. <script src="https://gist.github.com/xenoterracide/1e5c4cc8cb9f156594a6.js"></script></p><h2>Multiple Inheritance</h2><p>Multiple inheritance is often considered dangerous, is unavailable in Java and suffers from the <a href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">The diamond problem</a>. You should really only use this with a <a href="https://en.wikipedia.org/wiki/C3_linearization">C3 MRO</a>. <h1>Flat Composition</h1><h2>Interfaces</h2><p>Interfaces are probably the third most common form of Polymorhism, they are essentially codified contracts. <script src="https://gist.github.com/xenoterracide/22661c96ec03bdc5416d.js"></script></p><h2>Traits</h2><p>These are just the same as Interfaces in Java 8 you say? well yes, that&rsquo;s what Java 8 calls them, <a href="https://en.wikipedia.org/wiki/Trait_(computer_programming)">Traits are a list of methods flattened into a class, but they cannot access state</a>. This basically describes what Java 8 is doing, as you can&rsquo;t access properties from within the interface, well.. at least not unless you do what I show here, which is basically access state through getters and setters. <script src="https://gist.github.com/xenoterracide/3bc3898ba2c0481d82a1.js"></script></p><h2>Mixins</h2><p>Mixins are basically traits that can access state, though some mixins (AFAIK Ruby) are implemented sneakily as multiple inheritance, rather than flat list composition. IMHO, Mixins should be implemented using flat list composition. <script src="https://gist.github.com/xenoterracide/7cf9a94e953a7226b929.js"></script></p><h1>Typeless</h1><h2>Duck Typing</h2><p>The <code>has $!log</code> in the Mixin is actually a pretty good example of duck typing, we don&rsquo;t check for debug we are just calling it. Java is basically incapable of doing this, except, you can treat everything as an Object (if that&rsquo;s all you need).</p><h2>Function References</h2><p>references to functions may or may not be allowed to have varied signatures depending on the language, but so long as they have the same signature they are interchangeable, and thus polymorphic. So why aren&rsquo;t normal functions (procedures), for example, Polymormphic, the problem with procedures is that you have to import the implementation from outside the file, where with polymorphic code, you can create your instance outside the file, pass it into code that&rsquo;s in the file, without changing the code, pass in a different implementation, and it&rsquo;ll continue to work. To modify procedural code, you&rsquo;d have to modify at least the import, and in compiled code that means a rebuild. It&rsquo;s worth noting these aren&rsquo;t so much typeless as their is only one type to be concerned with, a function. <script src="https://gist.github.com/xenoterracide/0205464271096e6c97a2.js"></script></p><h1>Miscellaneous</h1><p>I&rsquo;m personally skeptical of whether these actually fit the definition of Polymorphism, but they sort of do, just in completely different ways from the above</p><h2>Method Overloading</h2><p>Method overloading is <a href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)">called ad hoc polymorphism</a> and is kind of weird in that what it&rsquo;s really doing is hiding the type change from the programmer. Reality is you&rsquo;re kind of asking for different behavior, but you want to hide that it&rsquo;s different in the caller. However since it means you wouldn&rsquo;t have to change the caller, it counts. <script src="https://gist.github.com/xenoterracide/fe557d67b981888efb1f.js"></script></p> <h2>Generics</h2><p>I describe generics as class templates, because they remind me of having an HTML template, and then filling in the blanks by passing in variables, the variable happens to be a Type. Perl doesn&rsquo;t have Generics, and I&rsquo;m not aware of plans for it in Perl 6.<script src="https://gist.github.com/xenoterracide/173c9c178dc903ced098.js"></script></p><h2>Reflection</h2><p>Reflection is sort of polymorphic in that you can essentially treat all objects the same, via a single standard API. I don&rsquo;t know that I want to show the kind of Reflective code because it get&rsquo;s real complicated fast, but for example, <code>@Inject</code> can be annotated in systems with CDI compliant injector, they will reflectivly treat all objects with this the same, and then set the annotated property.</p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f10-ways-of-implementing-polymorphism%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f10-ways-of-implementing-polymorphism%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f10-ways-of-implementing-polymorphism%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2f10-ways-of-implementing-polymorphism%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

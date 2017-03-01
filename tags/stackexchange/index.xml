@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stackexchange on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/stackexchange/index.xml</link>
+    <description>Recent content in Stackexchange on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/stackexchange/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu isn&#39;t Linux, What&#39;s a Beginner anyways?</title>
+      <link>http://blog.xenoterracide.com/post/ubuntu-isnt-linux-whats-a-beginner-anyways/</link>
+      <pubDate>Thu, 02 Sep 2010 16:45:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/ubuntu-isnt-linux-whats-a-beginner-anyways/</guid>
+      <description>&lt;p&gt;Today Joel Spolsky &lt;a href=&#34;http://blog.stackoverflow.com/2010/09/fork-it/&#34;&gt;announced The results&lt;/a&gt; of &lt;a href=&#34;http://blog.stackoverflow.com/2010/08/should-unix-linux-and-ubuntu-be-merged-vote/&#34;&gt;the poll&lt;/a&gt; of whether &lt;a href=&#34;http://ubuntu.stackexchange.com/&#34;&gt;ubuntu SE&lt;/a&gt; and &lt;a href=&#34;http://unix.stackexchange.com/&#34;&gt;unix SE&lt;/a&gt; would be merged, they won&amp;rsquo;t. In short the Unix community was in favor of it but the Ubuntu community was not. Joel had this to say: &lt;blockquote&gt;So, Ubuntu, Linux, I get it, it’s clearly not the same thing. If you love Ubuntu, we have a site for you. If you love Linux and Unix, we have a site for you. A Stack Exchange can’t work without a community that loves a subject, and love is very… specific. Fighting human nature is hard: the factionalism and fork-happiness of the Unix world has been a hallmark of that community ever since BSD vs. System V, and Stack Exchange can no more bridge that gap than we can unite the Judean resistance.&lt;/blockquote&gt;&lt;br /&gt;I am horribly disappointed in this decision, this factionalism doesn&amp;rsquo;t help the cause, this set&amp;rsquo;s precedence that it&amp;rsquo;s ok in the StackExchange community to be a separatist. Arch Linux&amp;rsquo;s bash must not be the same as Ubuntu&amp;rsquo;s or Fedora&amp;rsquo;s, and of course they&amp;rsquo;ve made so many changes to upstream Gnome as to be unrecognizable as such.&lt;br /&gt;&lt;br /&gt;The main argument in favor of this separatist movement is that Ubuntu is for beginners, if that&amp;rsquo;s so then why isn&amp;rsquo;t it beginner.unix SE? What&amp;rsquo;s a beginner anyways?&lt;br /&gt;&lt;br /&gt;I&amp;rsquo;d dare wager that 99.999% (POOMA) of all Linux users are windows Power users, veterans, and refugees. So what&amp;rsquo;s a beginner? someone that doesn&amp;rsquo;t know what Firefox is? No they probably do. Maybe they don&amp;rsquo;t know where it is in the menu? I can see that&amp;hellip; but I don&amp;rsquo;t see how that can&amp;rsquo;t be answered with a Screenshot and a Ubuntu tag on Unix SE. Maybe it&amp;rsquo;s someone who doesn&amp;rsquo;t know how to use the CLI? Well where do you define beginner from advanced? I realize someone reading there first shell programming Tut/Book/etc is a beginner, but are they no longer a beginner after that? how do you know you&amp;rsquo;re not a beginner anymore? When you choose to move beyond Ubuntu? If I&amp;rsquo;ve been using Linux for 5 years and I choose to move to FreeBSD am I a Beginner?&lt;br /&gt;&lt;br /&gt;Why is that the answer to a beginner from an advanced user isn&amp;rsquo;t welcome? Is it good that beginner are exclusively answering other beginner questions?&lt;br /&gt;&lt;br /&gt;In other news it looks like I may become a moderator ( temporary at least ) for unix SE.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Some Stack Exchange site&#39;s I&#39;d like to see come to fruition</title>
+      <link>http://blog.xenoterracide.com/post/some-stack-exchange-sites-id-like-to-see-come-to-fruition/</link>
+      <pubDate>Tue, 03 Aug 2010 12:20:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/some-stack-exchange-sites-id-like-to-see-come-to-fruition/</guid>
+      <description>&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://area51.stackexchange.com/proposals/3924/unix-linux?referrer=s0g13y0qpO1HCU3O7ctt0A2&#34;&gt;Unix &amp;amp; Linux&lt;/a&gt;: I think it&amp;rsquo;d be more used than Super User and ServerFault for some questions.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://area51.stackexchange.com/proposals/4260/outer-join?referrer=A71RjNgv6G65LIh8JGLLjA2&#34;&gt;Outer Join&lt;/a&gt;: A place to ask questions about databases and queries&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://area51.stackexchange.com/proposals/5728/user-interface?referrer=BeMOftH0UvJjQjB3FEO2qg2&#34;&gt;User Interface&lt;/a&gt;: because this is something we could all do better with.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;Please consider following/committing. esp the unix/linux one (since I don&amp;rsquo;t think Ubuntu should get to have its own, while leaving the rest of us in the cold.)&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

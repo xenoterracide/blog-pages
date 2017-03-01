@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Portage" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/tags/portage/" />
+
+
+
+<meta property="og:updated_time" content="2009-03-07T20:18:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/tags/portage/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2009-03-07T20:18:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/tags/portage/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/tags/portage/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/sync_method/">SYNC_METHOD</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-03-07T20:18:00Z">Sat Mar 7, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  I&rsquo;m going to be pushing out an new feature to portage today, since testing has gone well.
+SYNC_METHOD is a new portage variable, I&rsquo;ve also gone to the trouble of defining it in make.globals. The default for Regen2. is git, however, rsync and cvs have also been defined although not tested.
+the main benefit of SYNC_METHOD is to use one way of detecting the program you should use to detect the tree.
+  <a href='http://blog.xenoterracide.com/post/sync_method/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/split-package.mask/">split package.mask</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-02-21T23:30:00Z">Sat Feb 21, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/tree" rel="tag">tree</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  There&rsquo;s been a problem with ${PORTDIR}/profiles/package.mask since I added sunrise, I didn&rsquo;t realize at the time the problem wouldn&rsquo;t be adding atoms, it would be keeping track of when they should be removed. I&rsquo;ve decided that the best way to do it is to use portages &lsquo;directory concatenation&rsquo; feature, I turned package.mask into a directory, it now contains a file for each overlay that has a package.mask, and one for gentoo.
+  <a href='http://blog.xenoterracide.com/post/split-package.mask/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/">USE=&ldquo;experimental-git&rdquo; sys-apps/portage</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-02-19T23:14:00Z">Thu Feb 19, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  drobbins recent tip made me think, that maybe I should point out that his solution to the problem is an annoying work around. I had this problem for a while, it was caused by my having autocrlf = input in my .gitconfig settings. Several people have told me that they have this problem without changing their crlf settings for git. After a while I decided that Funtoo/Gentoo&rsquo;s git handling patches were incomplete at best and unfriendly at worst.
+  <a href='http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/sync-target-support/">sync target support</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T17:40:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/pms" rel="tag">pms</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  Here I explain why emerge &ndash;sync should return to it&rsquo;s original sync form.
+I think emerge sync should have the ability to have a target. Currently emerge &ndash;sync has a target of the SYNC variable in make.conf or the default hardcoded. However, git support is being added to portage. git is a very powerful tool, and the Funtoo project uses it to manage it&rsquo;s full portage tree. git doesn&rsquo;t work like rsync, it&rsquo;s not so straight forward as rsync uri, which is effectively what emerge sync is doing.
+  <a href='http://blog.xenoterracide.com/post/sync-target-support/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/--sync-should-be-sync/">&ndash;sync should be sync</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-21T15:32:00Z">Sun Dec 21, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  emerge sync never should have become emerge &ndash;sync, of course 2 years ago I thought it was the right thing, it isn&rsquo;t though, live and learn. sync is currently an argument with the syntax of an option.
+What&rsquo;s the difference?
+An argument is what the command, or executable operates on. Some examples
+cp file0 file1 copies file0 to file1.
+ls list the current working directory
+ls dir0 lists directory dir0
+  <a href='http://blog.xenoterracide.com/post/--sync-should-be-sync/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/types-of-use-flags/">types of use flags</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-19T15:03:00Z">Fri Dec 19, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/emerge-ng" rel="tag">emerge-ng</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  Ok so I have yet another idea for portage and other portage like package managers. actually this is probably more aimed at EAPI. Different types of USE flags. The 2 I&rsquo;m thinking of off the top of my head could be described as volatile and non-volatile. Basically a use flag marked volatile means a package needs to be recompiled if it gets changed one marked non-volatile most likely just pulls in another dependency or copies files such as documentation.
+  <a href='http://blog.xenoterracide.com/post/types-of-use-flags/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/">Regen2 development has officially begun</a></h2>
+    <p class="blog-post-meta"><time datetime="2008-12-11T04:30:00Z">Thu Dec 11, 2008</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/linux" rel="tag">Linux</a>, <a href="/tags/gentoo" rel="tag">Gentoo</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  That&rsquo;s right I&rsquo;m putting my money where my mouth is. It&rsquo;s small but the first 2 packages when into the regen2 tree this morning. They are MySQL 5.1.30 which was added because the gentoo maintainer refused to add it do to instability. I agree that it is unstable, but we have ~M Hard Masked packages for that reason. It has been added as ~M. The other app added is qsynergy, the ebuild was already on portage and I know it to be good so I added it to the tree, I&rsquo;ll probably stabilize it in a few weeks.
+  <a href='http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

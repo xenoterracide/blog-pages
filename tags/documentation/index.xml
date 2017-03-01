@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/documentation/index.xml</link>
+    <description>Recent content in Documentation on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Unix Toolbox</title>
+      <link>http://blog.xenoterracide.com/post/unix-toolbox/</link>
+      <pubDate>Mon, 24 Mar 2008 17:49:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/unix-toolbox/</guid>
+      <description>&lt;p&gt;Found this &lt;a href=&#34;http://cb.vu/unixtoolbox.xhtml&#34;&gt;Unix Toolbox&lt;/a&gt; on  &lt;a href=&#34;http://digg.com/technology&#34;&gt;Digg&lt;/a&gt; today. Most complete list of commands for Linux/BSD/UNIX that I&amp;rsquo;ve ever seen. I could only think of one missing off the top of my head. ionice.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

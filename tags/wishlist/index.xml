@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wishlist on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/wishlist/index.xml</link>
+    <description>Recent content in Wishlist on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/wishlist/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>I wish my would go away</title>
+      <link>http://blog.xenoterracide.com/post/i-wish-my-would-go-away/</link>
+      <pubDate>Sat, 10 Jul 2010 21:53:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/i-wish-my-would-go-away/</guid>
+      <description>&lt;p&gt;I been thinking about it for a few days, and of course consider I know nothing about grammar parsing or how any of this works. I wish the &lt;code&gt;my $var;&lt;/code&gt; syntax would go away&amp;hellip; or at least be less necessary. In almost all cases you want a lexical variable and &lt;code&gt;use strict;&lt;/code&gt; doesn&amp;rsquo;t allow you to use &lt;code&gt;$var&lt;/code&gt; anyways. So what&amp;rsquo;d I&amp;rsquo;d like to see is &lt;code&gt;my&lt;/code&gt; become a mostly unnecessary reserved word, make &lt;code&gt;$var&lt;/code&gt; a lexical variable by default, e.g. &lt;code&gt;my $var;&lt;/code&gt; be the same as &lt;code&gt;$var&lt;/code&gt;. &lt;code&gt;my&lt;/code&gt; would only be needed for redeclaration&amp;rsquo;s and back compat. It could be enabled with a pragma or something like &lt;code&gt;use feature &amp;lsquo;lexical&amp;rsquo;;&lt;/code&gt;. There might be some reason I&amp;rsquo;m completely wrong or stupid, but this doesn&amp;rsquo;t seem like a bad idea, and of course &lt;code&gt;our, state, local&lt;/code&gt; would still need to exist.&lt;br /&gt;&lt;br /&gt;UPDATE: the point  of this would be to make variables lexically scoped by default as opposed to there current global default.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

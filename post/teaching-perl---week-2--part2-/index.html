@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Teaching Perl - Week 2 ( part2 )" />
+<meta property="og:description" content="This part2 was prompted by Chromatic&rsquo;s post on state. I&rsquo;d never heard of state before, and it&rsquo;s documentation is poor. Let&rsquo;s take a look at how state could affect our game.use strict;
+use warnings;
+use feature qw( say state switch );
+say &lsquo;welcome&rsquo;;
+# generate the winning number between 1 and 10
+# see perlfaq4 for algorithm details
+my $winning_num = 1 &#43; int( rand( (10-1)&#43;1 ) );
+until ( $winningnum == state $guess ) {" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/teaching-perl---week-2--part2-/" />
+
+
+
+<meta property="article:published_time" content="2010-04-25T18:41:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-04-25T18:41:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Teaching Perl - Week 2 ( part2 )"/>
+<meta name="twitter:title" content="Teaching Perl - Week 2 ( part2 )"/>
+<meta name="twitter:description" content="This part2 was prompted by Chromatic&rsquo;s post on state. I&rsquo;d never heard of state before, and it&rsquo;s documentation is poor. Let&rsquo;s take a look at how state could affect our game.use strict;
+use warnings;
+use feature qw( say state switch );
+say &lsquo;welcome&rsquo;;
+# generate the winning number between 1 and 10
+# see perlfaq4 for algorithm details
+my $winning_num = 1 &#43; int( rand( (10-1)&#43;1 ) );
+until ( $winningnum == state $guess ) {"/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Teaching Perl - Week 2 ( part2 )",
+  "url": "http://blog.xenoterracide.com/post/teaching-perl---week-2--part2-/",
+  "wordCount": "655",
+  
+  
+  "datePublished": "2010-04-25T18:41:00&#43;00:00",
+  
+  
+  "dateModified": "2010-04-25T18:41:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "question,ironman,perl,teaching perl,curriculum"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/teaching-perl---week-2--part2-/">
+
+    <title>Teaching Perl - Week 2 ( part2 ) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/teaching-perl---week-2--part2-/">Teaching Perl - Week 2 ( part2 )</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-04-25T18:41:00Z">Sun Apr 25, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/question" rel="tag">question</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/teaching-perl" rel="tag">teaching perl</a>, <a href="/tags/curriculum" rel="tag">curriculum</a>
+
+</p>
+  </header>
+  <p>This part2 was prompted by <a href="http://www.modernperlbooks.com/mt/2010/04/state-and-the-syntax-of-encapsulation.html">Chromatic&rsquo;s post on state</a>. I&rsquo;d never heard of <code>state</code> before, and it&rsquo;s <a href="http://perldoc.perl.org/functions/state.html">documentation</a> is poor. Let&rsquo;s take a look at how <code>state</code> could affect our game.<script src="http://gist.github.com/378758.js"></script><noscript><pre><code>use strict;<br />use warnings;<br />use feature qw( say state switch );<br /><br />say &lsquo;welcome&rsquo;;<br /><br /># generate the winning number between 1 and 10<br /># see perlfaq4 for algorithm details<br />my $winning_num = 1 + int( rand( (10-1)+1 ) );<br /><br />until ( $winning<em>num == state $guess ) {<br />    say &lsquo;Guess a number between 1 and 10: &lsquo;;<br />    $guess = readline(*STDIN);<br /><br />    # check to see if we have a winner, or the guess is to high, or low.<br />    given( $guess ) {<br />        when ( $</em> &gt; $winning<em>num ) {<br />            say &lsquo;Too high&rsquo;;<br />        }<br />        when ( $</em> &lt; $winning_num ) {<br />            say &lsquo;Too low&rsquo;;<br />        }<br />        when ( $winning_num ) {<br />            say &lsquo;You Win!&rsquo;;<br />        }<br />    }<br />}<br />say &lsquo;Game over!&rsquo;;</code></pre></noscript>As you can see this allows us to make our $guess variable lexically scoped, meaning it&rsquo;s contained within the loop. This however generates some warnings: <code>Use of uninitialized value $guess in numeric eq (==) at ./game.pl line 14.</code> and if you enter non-numeric input <code>Argument &ldquo;l\n&rdquo; isn&rsquo;t numeric in numeric eq (==) at ./game.pl line 14, <stdin> line 1.</code>. Both are completely fixable, but lets fix the uninitialized first.<br /><br /><script src="http://gist.github.com/378763.js"></script><noscript><pre><code>use strict;<br />use warnings;<br />use feature qw( say state switch );<br /><br />say &lsquo;welcome&rsquo;;<br /><br /># generate the winning number between 1 and 10<br /># see perlfaq4 for algorithm details<br />my $winning_num = 1 + int( rand( (10-1)+1 ) );<br /><br />until ( $winning<em>num == ( state $guess = 0 ) ) {<br />    say &lsquo;Guess a number between 1 and 10: &lsquo;;<br />    $guess = readline(*STDIN);<br /><br />    # check to see if we have a winner, or the guess is to high, or low.<br />    given( $guess ) {<br />        when ( $</em> &gt; $winning<em>num ) {<br />            say &lsquo;Too high&rsquo;;<br />        }<br />        when ( $</em> &lt; $winning_num ) {<br />            say &lsquo;Too low&rsquo;;<br />        }<br />        when ( $winning_num ) {<br />            say &lsquo;You Win!&rsquo;;<br />        }<br />    }<br />}<br />say &lsquo;Game over!&rsquo;;</code></pre></noscript> So all we&rsquo;ve had to change is adding parenthesis around <code>state</code> and assign it to a value. If we had used a <code>my</code> declaration it would reassign to 0 every time and we&rsquo;d never match the <code>$winning_num</code>. But since <code>state</code> will only ever initialize once we don&rsquo;t have that problem. We still have our problem if we enter a character though, let&rsquo;s sanitize that input.<script src="http://gist.github.com/378768.js"></script><noscript><pre><code>use strict;<br />use warnings;<br />use feature qw( say state switch );<br /><br />say &lsquo;welcome&rsquo;;<br /><br /># generate the winning number between 1 and 10<br /># see perlfaq4 for algorithm details<br />my $winning_num = 1 + int( rand( (10-1)+1 ) );<br /><br />until ( $winning<em>num == ( state $guess = 0 ) ) {<br />    say &lsquo;Guess a number between 1 and 10: &lsquo;;<br />    $guess = readline(*STDIN);<br /><br />    # check to see if we have a winner, or the guess is to high, or low.<br />    given( $guess ) {<br />        # sanitize input<br />        # this must be first otherwise it won&rsquo;t work right<br />        when ( $</em> !~ /[[:digit:]]/ ) {<br />            say &lsquo;not a number&rsquo;;<br />            # set $guess to 0 so we don&rsquo;t have a numerical comparison warning<br />            $guess = 0;<br />        }<br />        when ( $_ &gt; $winning<em>num ) {<br />            say &lsquo;Too high&rsquo;;<br />        }<br />        when ( $</em> &lt; $winning_num ) {<br />            say &lsquo;Too low&rsquo;;<br />        }<br />        when ( $winning_num ) {<br />            say &lsquo;You Win!&rsquo;;<br />        }<br />    }<br />}<br />say &lsquo;Game over!&rsquo;;</code></pre></noscript><br />So in order to fix the &lsquo;not a numerical comparison&rsquo; issue we check <code>$guess</code> to see if it&rsquo;s a digit with a regular expression. If it isn&rsquo;t a digit we set it to 0 which is an invalid guess anyways, but fixes the warning. This actually fixes two bugs. Before if you entered a letter it would tell you that it was too low (which I don&rsquo;t actually understand, because aren&rsquo;t characters &gt; numbers? if someone on Iron Man could explain it in a comment.)<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2--part2-%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2--part2-%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2--part2-%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-2--part2-%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

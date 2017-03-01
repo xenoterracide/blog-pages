@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Example on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/code-example/index.xml</link>
+    <description>Recent content in Code Example on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/code-example/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Quick sha1sum with Crypto&#43;&#43;</title>
+      <link>http://blog.xenoterracide.com/post/quick-sha1sum-with-crypto/</link>
+      <pubDate>Tue, 22 Sep 2009 01:59:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/quick-sha1sum-with-crypto/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been working on &lt;a href=&#34;http://github.com/xenoterracide/korama&#34;&gt;Korama&lt;/a&gt;. I was originally planning on hashing each music file and using the sha1 for the track primary key. However, after benchmarking an actual implementation. I&amp;rsquo;ve decided that it&amp;rsquo;s too slow, 20 minutes for 3k+ tracks, also my program was about 5 minutes slower than &lt;code&gt;find &amp;hellip; -exec sha1sum&lt;/code&gt; not sure on the reason why. However, since I had problems figuring out how to do it I figure I&amp;rsquo;ll post a basic sha1sum program that I made with the help of people on the &lt;a href=&#34;http://www.cryptopp.com/&#34;&gt;Crypto++&lt;/a&gt; Mailing List.&lt;br /&gt;&lt;br /&gt;Include&amp;rsquo;s are mangled due to blogger filtering&lt;br /&gt;&lt;code&gt;&lt;pre&gt;&lt;br /&gt;#include &amp;lt; cryptopp/sha.h &amp;gt;&lt;br /&gt;#include &amp;lt; cryptopp/hex.h &amp;gt;&lt;br /&gt;#include &amp;lt; cryptopp/files.h &amp;gt;&lt;br /&gt;#include &amp;lt; string &amp;gt;&lt;br /&gt;#include &amp;lt; iostream &amp;gt;&lt;br /&gt;&lt;br /&gt;using namespace std;&lt;br /&gt;&lt;br /&gt;int main(int argc, char *argv[])&lt;br /&gt;{&lt;br /&gt;    char *file = argv[1];&lt;br /&gt;    string result;&lt;br /&gt;    CryptoPP::SHA1 hash;&lt;br /&gt;&lt;br /&gt;    CryptoPP::FileSource( ( file ),true,&lt;br /&gt;        new CryptoPP::HashFilter(&lt;br /&gt;            hash, new CryptoPP::HexEncoder(&lt;br /&gt;                new CryptoPP::StringSink(result), false)&lt;br /&gt;        )&lt;br /&gt;    );&lt;br /&gt;    cout &amp;lt;&amp;lt; result &amp;lt;&amp;lt; endl;&lt;br /&gt;    return 0;&lt;br /&gt;}&lt;br /&gt;&lt;/pre&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;it can be built with.&lt;br /&gt;&lt;br /&gt;&lt;code&gt;g++ sha1.cpp -lcryptopp -o sha1sum&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;and tested with&lt;br /&gt;&lt;br /&gt;&lt;code&gt;./sha1sum filename&lt;/code&gt;&lt;br /&gt;It&amp;rsquo;s not meant to be a exactly compatible implementation of sha1sum. it doesn&amp;rsquo;t output the filename, it isn&amp;rsquo;t capable of handling more than one file argument, and if no argument is provided it crashes. I know I haven&amp;rsquo;t actually explained how the crypo++ code works, but I hope just posting this here will help someone in the future.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

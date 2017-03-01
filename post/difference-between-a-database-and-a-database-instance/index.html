@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Difference Between a Database and a Database Instance" />
+<meta property="og:description" content="I was prowling StackOverflow today and the question was asked when you would use 2 databases. I&rsquo;m amazed at the number of answers of replication and sharding (some under the guise of some other description). The only answer I can think of to be correct is Different Applications/Services (shared hosting probably falls under those 2 in a weird way). I&rsquo;m going to explain why a replicated database and/or a sharded database are not multiple databases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/difference-between-a-database-and-a-database-instance/" />
+
+
+
+<meta property="article:published_time" content="2009-11-10T15:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-11-10T15:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Difference Between a Database and a Database Instance"/>
+<meta name="twitter:title" content="Difference Between a Database and a Database Instance"/>
+<meta name="twitter:description" content="I was prowling StackOverflow today and the question was asked when you would use 2 databases. I&rsquo;m amazed at the number of answers of replication and sharding (some under the guise of some other description). The only answer I can think of to be correct is Different Applications/Services (shared hosting probably falls under those 2 in a weird way). I&rsquo;m going to explain why a replicated database and/or a sharded database are not multiple databases."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Difference Between a Database and a Database Instance",
+  "url": "http://blog.xenoterracide.com/post/difference-between-a-database-and-a-database-instance/",
+  "wordCount": "719",
+  
+  
+  "datePublished": "2009-11-10T15:00:00&#43;00:00",
+  
+  
+  "dateModified": "2009-11-10T15:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "database,example,concepts,analogy"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/difference-between-a-database-and-a-database-instance/">
+
+    <title>Difference Between a Database and a Database Instance | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/difference-between-a-database-and-a-database-instance/">Difference Between a Database and a Database Instance</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-11-10T15:00:00Z">Tue Nov 10, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/database" rel="tag">database</a>, <a href="/tags/example" rel="tag">example</a>, <a href="/tags/concepts" rel="tag">concepts</a>, <a href="/tags/analogy" rel="tag">analogy</a>
+
+</p>
+  </header>
+  <p>I was prowling <a href="http://stackoverflow.com">StackOverflow</a> today and <a href="http://stackoverflow.com/questions/1705381/is-there-a-reason-to-use-two-databases/">the question</a> was asked when you would use 2 databases. I&rsquo;m amazed at the number of answers of replication and sharding (some under the guise of some other description). The only answer I can think of to be correct is Different Applications/Services (shared hosting probably falls under those 2 in a weird way). I&rsquo;m going to explain why a replicated database and/or a sharded database are not multiple databases.<br /><br />Firstly, we must understand what a database is and is not. A database is not a computer program that runs and stores data, this is DBMS (Database Management System). A database simply is a collection of data. A database is an organized collection of data. Many Definitions of a Database include computers, however not all do, in fact Joe Celko argues that first database were precursors to written language in the Middle East (see <a href="http://www.amazon.com/Joe-Celkos-Data-Databases-Management/dp/1558604324/ref=pd_sim_b_6">Data and Databases</a> Chapter 1). It may be true that database are organized for quick retrieval of information in a certain way, however they are not necessarily designed for quick retrieval of all information, in any way.<br /><br />So what are some example&rsquo;s of a Non Computer Database? A phone book is a good example of a database. It&rsquo;s really fast to look someone up if you know there last name, but not if all you have is their phone number and you want their address. You&rsquo;ll Also note that it&rsquo;s got various ways of searching if you&rsquo;re looking for businesses. It is not a good example of a normalized database, but I&rsquo;m not sure that&rsquo;s possible with a paper database that allows you to find the same information in multiple ways. A phone book is simply a collection of Names, Addresses, and Phone Numbers, and Categories (tags).<br /><br />So wouldn&rsquo;t two phone books be two databases? well if they are published by different vendors, or at different times, then yes. However, if you have two copies of the same phone book, then you have two instances of that database, that have been &lsquo;replicated&rsquo; from a &lsquo;master&rsquo; copy. You can&rsquo;t update one of these &lsquo;slave&rsquo; copy&rsquo;s and expect them to replicate, you must update the &lsquo;master&rsquo; and publish the updates. Unlike computer Phone books are extremely slow to push updates. Let&rsquo;s say you want to call a friend, Steven, over for pizza, and your roommate, John, wants to try a new pizza place. John can look at one copy of the phone book to look up the addresses and phone numbers of  to the new pizza places you haven&rsquo;t tried, while you look up Steven&rsquo;s number in your copy of the book. This is exactly what happens with replication, different requesters doing lookups from different databases.<br /><br />Now let&rsquo;s talk sharding, phone books aren&rsquo;t sharded right? wrong! they are phone books are sharded by location. The entire phone book database for even 1 state would be too big for them to distribute, so they split it up into smaller regions. Only the phone book company has the entire list. So that makes it kind of a bad example. Let&rsquo;s talk about encyclopedia&rsquo;s instead. They are a much better example since you don&rsquo;t generally buy one encyclopedia, you buy the whole set (which is also replicated and you can think of it&rsquo;s replication in the same way as phone books). Each encyclopedia volume tells on the side which letters it contains, so when you open it you know you&rsquo;re in the right vicinity. This is how a shard works, your database got too big an unmanageable as a whole so you split it up into &lsquo;shards&rsquo; or &lsquo;partitions&rsquo; to make it faster to search and easier to handle and store.<br /><br />Now to clarify my answer to that original question. You wouldn&rsquo;t put a phone number (phone entry not included) in an encyclopedia even though I&rsquo;m sure Bill Clinton has one, you might list it in the phone book though. So now you see when you would use a different database. Very clearly you would use one when the type of data is different enough, when it&rsquo;s for different organizations, or when it&rsquo;s for kind of shared service.<br /><br />I hope these analogies to computer databases have helped explain the concepts.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fdifference-between-a-database-and-a-database-instance%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fdifference-between-a-database-and-a-database-instance%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fdifference-between-a-database-and-a-database-instance%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fdifference-between-a-database-and-a-database-instance%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

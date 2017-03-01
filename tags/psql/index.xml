@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Psql on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/psql/index.xml</link>
+    <description>Recent content in Psql on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/psql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PostgreSQL \edit and Syntax Highlighting</title>
+      <link>http://blog.xenoterracide.com/post/postgresql-edit-and-syntax-highlighting/</link>
+      <pubDate>Sat, 29 Nov 2008 10:35:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/postgresql-edit-and-syntax-highlighting/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve ever used \edit with PostgreSQL you&amp;rsquo;ve probably noticed that it&amp;rsquo;s not using syntax highlighting that your favorite editor most likely supports. I&amp;rsquo;ve wondered why this is for a while, Postgres uses vim on my system which supports robust highlighting among other things.&lt;br /&gt;&lt;br /&gt;I had a few things suggested to me, such as setting putting settings in my .vimrc, most of which would have forced filetype=sql on files that weren&amp;rsquo;t sql, and would have been active outside of psql.&lt;br /&gt;&lt;br /&gt;When you have a question what&amp;rsquo;s the first thing you should do? RTFM. The answer was in the man page all along.&lt;br /&gt;&lt;br /&gt;&lt;blockquote&gt;&lt;br /&gt;  Tip:  psql searches the environment variables PSQL_EDITOR,&lt;br /&gt;        EDITOR, and VISUAL (in that order) for an editor  to  use.&lt;br /&gt;        If  all  of  them  are  unset, vi is used on Unix systems,&lt;br /&gt;        notepad.exe on Windows systems.&lt;br /&gt;&lt;/blockquote&gt;&lt;br /&gt;&lt;br /&gt;so how does this solve the problem? well the only program that uses PSQL_EDITOR is Postgres, and most editors allow you to specify options at startup. In the case of vim, if you want to have use filetype=sql for the default filetype for \edit all you have to do is &lt;br /&gt;&lt;br /&gt;&lt;code&gt;&lt;br /&gt;export PSQL_EDITOR=&amp;lsquo;vim -c &amp;ldquo;set ft=sql&amp;rdquo;&amp;rsquo;&lt;br /&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;of course if you don&amp;rsquo;t use vim or you want to set some different options you&amp;rsquo;ll have to read the documentation for your editor, or operating system.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

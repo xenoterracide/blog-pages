@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openid on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/openid/index.xml</link>
+    <description>Recent content in Openid on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/openid/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Can&#39;t Find Google&#39;s OpenID</title>
+      <link>http://blog.xenoterracide.com/post/cant-find-googles-openid/</link>
+      <pubDate>Sun, 14 Feb 2010 12:48:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/cant-find-googles-openid/</guid>
+      <description>&lt;p&gt;I think that Google&amp;rsquo;s (not Blogger&amp;rsquo;s) OpenID is a failure. It&amp;rsquo;s not memorable and you can&amp;rsquo;t find it. I&amp;rsquo;ve been trying to figure out where google has my OpenID listed for 30 minutes now. This is not the first time I&amp;rsquo;ve had to do this. I usually use Blogger&amp;rsquo;s because it uses my blog&amp;rsquo;s url, but it&amp;rsquo;s currently error-ing with a typepad blog. Why can&amp;rsquo;t google use something like google.com/username ? something we could remember. Why isn&amp;rsquo;t it listed in an obvious place in my account details? Why is it when I search &amp;ldquo;google openid&amp;rdquo; it talks about the announcements all over the place, but never how to find out what your url is.&lt;br /&gt;&lt;br /&gt;UPDATE:&lt;br /&gt;Found it on &lt;a href=&#34;http://lenni.info/blog/2009/12/whats-my-google-openid-url/&#34;&gt;lenni.info&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;UPDATE:&lt;br /&gt;it&amp;rsquo;s this &lt;code&gt;&lt;a href=&#34;https://www.google.com/accounts/o8/id&#34;&gt;https://www.google.com/accounts/o8/id&lt;/a&gt;&lt;/code&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

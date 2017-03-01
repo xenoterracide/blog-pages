@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Perl 5.12" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/tags/perl-5/index.12/" />
+
+
+
+<meta property="og:updated_time" content="2010-06-16T04:23:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/tags/perl-5/index.12/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2010-06-16T04:23:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/tags/perl-5/index.12/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/tags/perl-5.12/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/">Test Perl 5.12 on Arch Linux</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-16T04:23:00Z">Wed Jun 16, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/arch-linux" rel="tag">arch linux</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-5.12" rel="tag">perl 5.12</a>
+
+</p>
+  </header>
+  Perl 5.12 has been languishing in the testing repo for a while, there are now several packages that have been rebuilt in testing and community testing. All of the rebuilds I reported have been fixed. If you use arch please make sure you&rsquo;re using their rebuilt packages (and not one you rebuilt because it took like 2 months to do this) if you have any problems file a bug. If you aren&rsquo;t sure which package is really the problem feel free to drop me a line and I&rsquo;ll see if I can help you tack it down.
+  <a href='http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/'>Read more →</a>
+</article> 
+
+
+
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

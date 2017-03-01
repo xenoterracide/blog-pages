@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Texttemplate on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/texttemplate/index.xml</link>
+    <description>Recent content in Texttemplate on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/texttemplate/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Creating new projects with dzil new and templates</title>
+      <link>http://blog.xenoterracide.com/post/creating-new-projects-with-dzil-new-and-templates/</link>
+      <pubDate>Fri, 30 Jul 2010 18:00:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/creating-new-projects-with-dzil-new-and-templates/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://xenoterracide.blogspot.com/2010/06/announcing-distzillaplugincatalyst.html&#34;&gt;Here&lt;/a&gt; I talked about creating a new
+catalyst project using a minting profile for Dist::Zilla. If you don&amp;rsquo;t know how to create a minting profile read that
+first. I&amp;rsquo;m sure once you&amp;rsquo;ve tried that you&amp;rsquo;ll agree that having a little bit more than the basics in a newly minted
+dist would be a good thing.&lt;/p&gt;
+
+&lt;p&gt;first we need to create our profile.ini correctly
+&lt;script src=&#34;http://gist.github.com/487441.js&#34;&gt; &lt;/script&gt;
+(note: if you&amp;rsquo;ve got &lt;code&gt;[DistINI]&lt;/code&gt; plugin loaded you&amp;rsquo;ll probably want to remove it) Now you can put any file in the
+subdirectory repo of your profile (if you leave out &amp;lsquo;include_dotfiles = 1&amp;rsquo; then anything beginning with a . won&amp;rsquo;t be
+included), and it can be a template using &lt;a href=&#34;https://metacpan.org/pod/Text::Template&#34;&gt;Text::Template&lt;/a&gt;. &lt;a href=&#34;https://metacpan.org/pod/Dist::Zilla&#34;&gt;Dist::Zilla&lt;/a&gt; uses
+&lt;code&gt;{{ }}&lt;/code&gt; for &lt;a href=&#34;https://metacpan.org/pod/Text::Template&#34;&gt;Text::Template&lt;/a&gt; Delimiters.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s start with adding a &lt;code&gt;.gitignore&lt;/code&gt; file (if you&amp;rsquo;re using git) we can create&lt;code&gt;{profile}/repo/.gitignore&lt;/code&gt;
+&lt;script src=&#34;http://gist.github.com/487561.js&#34;&gt;&lt;/script&gt;
+the &lt;code&gt;{{$dist-&amp;gt;name}}*&lt;/code&gt; will exclude the directories and archives &lt;code&gt;dzil&lt;/code&gt; creates on release and &lt;code&gt;.build&lt;/code&gt;, will of course,
+ignore the .build dirctory.&lt;/p&gt;
+
+&lt;p&gt;Now for a more complex issue, creating a &lt;code&gt;Changes&lt;/code&gt; file that has the the &lt;code&gt;{{$NEXT}}&lt;/code&gt; variable in it to insert the date
+and such on build. &lt;script src=&#34;http://gist.github.com/487570.js&#34;&gt; &lt;/script&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{$dist-&amp;gt;name}}
+{{ &#39;{{$NEXT}}&#39; }}
+    -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Obviously you can format your &lt;code&gt;Changes&lt;/code&gt; file however you want.&lt;/p&gt;
+
+&lt;p&gt;Now we want to create a much more complicated &lt;code&gt;dist.ini&lt;/code&gt;
+&lt;script src=&#34;http://gist.github.com/487577.js&#34;&gt; &lt;/script&gt;
+All of the stuff between the first set of  &lt;code&gt;{{ }}&lt;/code&gt; is boilerplate mostly taken from the DistINI plugin so that we can
+use our settings from our &lt;code&gt;config.ini&lt;/code&gt;, I really wish there were some convenience accessors for this. I also wish we
+had an arbitrary stash we could use in &lt;code&gt;config.ini&lt;/code&gt; so I wouldn&amp;rsquo;t have had to hardcode my username in this. I think
+it&amp;rsquo;s all fairly self explanatory beyond that. Of course you can set up your &lt;code&gt;dist.ini&lt;/code&gt; anyway you want.
+Also if you use this format you have to have your module&amp;rsquo;s repo name on GitHub in camel case like it is on CPAN.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

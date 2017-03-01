@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yapc on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/yapc/index.xml</link>
+    <description>Recent content in Yapc on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/yapc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Thinking of presenting at YAPC::NA 2014</title>
+      <link>http://blog.xenoterracide.com/post/thinking-of-presenting-at-yapcna-2014/</link>
+      <pubDate>Mon, 02 Sep 2013 04:40:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/thinking-of-presenting-at-yapcna-2014/</guid>
+      <description>&lt;p&gt;So I&amp;rsquo;m thinking of proposing some talks for YAPC::NA Orlando, and/or maybe do some training. Here&amp;rsquo;s my thought on what I could do that would be a contribution and different from other talks. For Training it might just be a combination of all of the concepts I could do as individual talks. Basically the idea is &amp;ldquo;I&amp;rsquo;ve learned Perl and Moo[se], now how do I build a large application&amp;rdquo;.&lt;br /&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;UML&lt;/li&gt;&lt;li&gt;SOLID Object Oriented Design&lt;/li&gt;&lt;li&gt;Design Patterns&lt;/li&gt;&lt;li&gt;Domain Driven Design&lt;/li&gt;&lt;li&gt;Patterns of Application Architecture&lt;/li&gt;&lt;li&gt;Service Oriented Architectures, REST, ROA, RPC (including RESTful RPC and Resource Oriented RPC), and Pub/Sub&lt;/li&gt;&lt;ul&gt;&lt;li&gt;ORM Patterns ( Active Record / Data Mapper / Transaction Script )&lt;/li&gt;&lt;li&gt;MVC&lt;/li&gt;&lt;li&gt;Layered Architecture&lt;/li&gt;&lt;li&gt;Ports and Adapters&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Dependency Injection ( with Bread::Board )&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Let me know your thoughts.&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

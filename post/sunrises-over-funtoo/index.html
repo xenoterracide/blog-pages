@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Sunrise&#39;s over Funtoo" />
+<meta property="og:description" content="Sunrise a Gentoo overlay is being added to Funtoo. So if you&rsquo;ve got layman tracking sunrise and you&rsquo;re using funtoo you&rsquo;ll be able to delete sunrise from your overlays as I&rsquo;ll be merging sunrise&rsquo;s reviewed ebuilds daily.
+The hardest part of the whole process was merging package.mask, use.local.desc and categories. Since this is new be on the lookout for bugs or problems.
+Want to add an overlay to funtoo yourself? First, it&rsquo;ll have to be a git or svn overlay." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/sunrises-over-funtoo/" />
+
+
+
+<meta property="article:published_time" content="2009-01-06T14:49:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-01-06T14:49:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Sunrise&#39;s over Funtoo"/>
+<meta name="twitter:title" content="Sunrise&#39;s over Funtoo"/>
+<meta name="twitter:description" content="Sunrise a Gentoo overlay is being added to Funtoo. So if you&rsquo;ve got layman tracking sunrise and you&rsquo;re using funtoo you&rsquo;ll be able to delete sunrise from your overlays as I&rsquo;ll be merging sunrise&rsquo;s reviewed ebuilds daily.
+The hardest part of the whole process was merging package.mask, use.local.desc and categories. Since this is new be on the lookout for bugs or problems.
+Want to add an overlay to funtoo yourself? First, it&rsquo;ll have to be a git or svn overlay."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Sunrise&#39;s over Funtoo",
+  "url": "http://blog.xenoterracide.com/post/sunrises-over-funtoo/",
+  "wordCount": "296",
+  
+  
+  "datePublished": "2009-01-06T14:49:00&#43;00:00",
+  
+  
+  "dateModified": "2009-01-06T14:49:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Regen2,overlay,Funtoo"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/sunrises-over-funtoo/">
+
+    <title>Sunrise&rsquo;s over Funtoo | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/sunrises-over-funtoo/">Sunrise&rsquo;s over Funtoo</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-01-06T14:49:00Z">Tue Jan 6, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/overlay" rel="tag">overlay</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>
+
+</p>
+  </header>
+  <p><a href="http://www.gentoo.org/proj/en/sunrise/">Sunrise</a> a <a href="http://www.gentoo.org/">Gentoo</a> <a href="http://www.gentoo.org/proj/en/overlays/userguide.xml">overlay</a> is being added to <a href="http://funtoo.org/">Funtoo</a>. So if you&rsquo;ve got layman tracking sunrise and you&rsquo;re using funtoo you&rsquo;ll be able to delete sunrise from your overlays as I&rsquo;ll be merging sunrise&rsquo;s reviewed ebuilds daily.<br /><br />The hardest part of the whole process was merging package.mask, use.local.desc and categories. Since this is new be on the lookout for bugs or problems.<br /><br />Want to add an overlay to funtoo yourself? First, it&rsquo;ll have to  be a git or svn overlay. If it&rsquo;s git you can skip steps involving git svn.<br /><br /><code>git svn clone uri://mysvnuri.tld</code><br /><br />this imports an entire svn repository into git and will take a while, sunrise had import over 7000 commits. Next check to see if any changes need to be made to the structure of the overlay, in sunrise&rsquo;s case it&rsquo;s not branched properly&hellip; they had a subdirectory structure including reviewed and non-reviewed ebuilds, I had to remove that so the top level directory was that of a portdir for merging. if it&rsquo;s already in a nice portdir format move to the next step.<br /><br />start by cd-ing into your funtoo portdir checkout, then run <code>git pull uri://mygit-svn-cloned-repo</code>, this will attempt to merge the 2 and most likely you will have conflicts. Resolve ebuild, and changelog conflicts first, these are easiest with git mergetool, imho, but don&rsquo;t try to use that to merge manifests. Instead of merging manifests just regenerate them with ebuild ebuildWithScrewedManifest digest. once you&rsquo;ve resolved all conflicts run <code>git commit</code>. That&rsquo;s it your done. you&rsquo;ve now merged an overlay into your local funtoo tree. If you&rsquo;d like to see it in funtoo you&rsquo;ll have to talk to Dan Robbins. He&rsquo;s on #funtoo on freenode regularly.<br /><br />Enjoy!<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsunrises-over-funtoo%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsunrises-over-funtoo%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsunrises-over-funtoo%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsunrises-over-funtoo%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

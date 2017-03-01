@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Teaching Perl - Week 1 - ( Part1 )" />
+<meta property="og:description" content="Make sure you&rsquo;ve read Part 0 first.
+As I said before Baker provides a Linux server for the perl class. However, none of the students have had a unix class. So I advise touching on it and giving them a link to these tutorials if they want to use it, and a helping hand. The book also talks about ActiveState but this isn&rsquo;t the recommended way to do perl on windows anymore." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/teaching-perl---week-1----part1-/" />
+
+
+
+<meta property="article:published_time" content="2010-04-13T18:13:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-04-13T18:13:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Teaching Perl - Week 1 - ( Part1 )"/>
+<meta name="twitter:title" content="Teaching Perl - Week 1 - ( Part1 )"/>
+<meta name="twitter:description" content="Make sure you&rsquo;ve read Part 0 first.
+As I said before Baker provides a Linux server for the perl class. However, none of the students have had a unix class. So I advise touching on it and giving them a link to these tutorials if they want to use it, and a helping hand. The book also talks about ActiveState but this isn&rsquo;t the recommended way to do perl on windows anymore."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Teaching Perl - Week 1 - ( Part1 )",
+  "url": "http://blog.xenoterracide.com/post/teaching-perl---week-1----part1-/",
+  "wordCount": "405",
+  
+  
+  "datePublished": "2010-04-13T18:13:00&#43;00:00",
+  
+  
+  "dateModified": "2010-04-13T18:13:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "baker,ironman,perl,teaching perl,curriculum"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/teaching-perl---week-1----part1-/">
+
+    <title>Teaching Perl - Week 1 - ( Part1 ) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/teaching-perl---week-1----part1-/">Teaching Perl - Week 1 - ( Part1 )</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-04-13T18:13:00Z">Tue Apr 13, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/baker" rel="tag">baker</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/teaching-perl" rel="tag">teaching perl</a>, <a href="/tags/curriculum" rel="tag">curriculum</a>
+
+</p>
+  </header>
+  <p>Make sure you&rsquo;ve read <a href="http://xenoterracide.blogspot.com/2010/04/teaching-perl-part-0-preface.html">Part 0</a> first.<br /><br />As I said before Baker provides a Linux server for the perl class. However, none of the students have had a unix class. So I advise touching on it and giving them a link to <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">these tutorials</a> if they want to use it, and a helping hand. The book also talks about ActiveState but this isn&rsquo;t the recommended way to do perl on windows anymore. Avoiding crux will prevent you from wasting a week or more on unix which is not what the class is about (my instructor failed horribly at this, and at knowing unix (or perl for that matter) well enough to cover it).<br /><br /><h2>Strawberry</h2><a href="http://strawberryperl.com/">Strawberry Perl</a> is the recommend open source binaries for windows these days and should work just like the unix ones. You should cover not only normal installation; but installing to their network drives (use portable edition), so they can have strawberry on any baker computer on campus; and to their flash drives (use portable edition), so they can take it with them to any computer running windows.<br /><br /><h2>CPAN</h2>Next you should mention <a href="http://www.cpan.org/">CPAN</a>. CPAN is the #1 resource in perl, if you need to do something, most of the time someone else has done it for you and it&rsquo;s on CPAN. Don&rsquo;t forget to mention <a href="http://search.cpan.org">search.</a> and <a href="kobesearch.cpan.org">kobesearch.</a>cpan.org.<br /><br /><h3>local::lib</h3>After talking about CPAN use it. Help your students <a href="http://www.perladvent.org/2009/3/">install</a> a <a href="http://search.cpan.org/dist/local-lib/lib/local/lib.pm">local::lib</a> esp if you&rsquo;re using the schools linux server which won&rsquo;t allow installs of global CPAN modules.<br /><br /><h3>Task::Kensho</h3>You&rsquo;ll want to recommend that students check out <a href="http://search.cpan.org/dist/Task-Kensho/lib/Task/Kensho.pm">Task::Kensho</a> which a CPAN module that lists all the best modules for common tasks, they may not be the only module for that task but they are the recommended ones. You could have them install them with <code>cpanp -i Task::Kensho</code> at this point or just recommend they look them over to see if they might find them useful. These are all probably ahead of where your students are at, but it never hurts to point useful libraries out early. Just tell them they can get back to them later. Note: local::lib is on Task::Kensho.<br /><br />P.S. Week 1 will be multipart I have to leave now but I want to hit publish. coming next is how to teach them to do their first program the right way so they don&rsquo;t have to learn it twice.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-1----part1-%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-1----part1-%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-1----part1-%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fteaching-perl---week-1----part1-%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

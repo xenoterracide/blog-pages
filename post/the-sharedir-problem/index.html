@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="The ShareDir Problem" />
+<meta property="og:description" content="Some of you may have noticed a while back that converted Pod::Spell to the use of File::ShareDir::ProjectDistDir instead of keeping the wordlist in Pod::Wordlist::DATA. This move was made in conjunction with making Pod::Wordlist an Object, and in preparation for a time when you&rsquo;ll be able to specify your own wordlist file. It was also made so that non technical contributors could more easily update the wordlist without going near anything that looked like code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/the-sharedir-problem/" />
+
+
+
+<meta property="article:published_time" content="2014-02-27T15:47:00&#43;00:00"/>
+<meta property="article:modified_time" content="2014-02-27T15:47:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="The ShareDir Problem"/>
+<meta name="twitter:title" content="The ShareDir Problem"/>
+<meta name="twitter:description" content="Some of you may have noticed a while back that converted Pod::Spell to the use of File::ShareDir::ProjectDistDir instead of keeping the wordlist in Pod::Wordlist::DATA. This move was made in conjunction with making Pod::Wordlist an Object, and in preparation for a time when you&rsquo;ll be able to specify your own wordlist file. It was also made so that non technical contributors could more easily update the wordlist without going near anything that looked like code."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "The ShareDir Problem",
+  "url": "http://blog.xenoterracide.com/post/the-sharedir-problem/",
+  "wordCount": "598",
+  
+  
+  "datePublished": "2014-02-27T15:47:00&#43;00:00",
+  
+  
+  "dateModified": "2014-02-27T15:47:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Pod::Spell,perl"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/the-sharedir-problem/">
+
+    <title>The ShareDir Problem | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/the-sharedir-problem/">The ShareDir Problem</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-02-27T15:47:00Z">Thu Feb 27, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/podspell" rel="tag">Pod::Spell</a>, <a href="/tags/perl" rel="tag">perl</a>
+
+</p>
+  </header>
+  <p><p>Some of you may have noticed a while back that converted <a href="https://metacpan.org/module/Pod::Spell">Pod::Spell</a> to the use of <a href="https://metacpan.org/pod/File::ShareDir::ProjectDistDir">File::ShareDir::ProjectDistDir</a> instead of keeping the wordlist in <a href="https://metacpan.org/module/Pod::Wordlist">Pod::Wordlist::<strong>DATA</strong></a>. This move was made in conjunction with making Pod::Wordlist an Object, and in preparation for a time when you&rsquo;ll be able to specify your own wordlist file. It was also made so that non technical contributors could more easily update the wordlist without going near anything that looked like code. </p><p>So why shouldn&rsquo;t you put them in <code><strong>DATA</strong></code>? According to <a href="https://metacpan.org/pod/File::ShareDir">File::ShareDir</a> <blockquote><p>Quite often you want or need your Perl module (CPAN or otherwise) to have access to a large amount of read-only data that is stored on the file-system at run-time. On a linux-like system, this would be in a place such as /usr/share, however Perl runs on a wide variety of different systems, and so the use of any one location is unreliable. Perl provides a little-known method for doing this, but almost nobody is aware that it exists. As a result, module authors often go through some very strange ways to make the data available to their code.</p><p>The most common of these is to dump the data out to an enormous Perl data structure and save it into the module itself. The result are enormous multi-megabyte .pm files that chew up a lot of memory needlessly.</p><p>Another method is to put the data &ldquo;file&rdquo; after the <strong>DATA</strong> compiler tag and limit yourself to access as a filehandle.</p><p>The problem to solve is really quite simple.</p><pre><br />1. Write the data files to the system at install time.<br /> <br />2. Know where you put them at run-time.</pre></blockquote></p><p>Knowing where you put them at run-time is actually still a problem, because, we don&rsquo;t develop in the same spot that perl installs stuff. The first portion of the problem is, &ldquo;my tests can&rsquo;t find my sharedir file&rdquo;. So <a href="https://metacpan.org/pod/Test::File::ShareDir">Test::File::ShareDir</a>, which overrides the  File::ShareDir method. People say, use Test::File::ShareDir, it solves the pain, well that&rsquo;s not true, they&rsquo;re missing a different pain. What happens if you&rsquo;re trying to run, say <code>bin/podspell</code> from the git directory? oh right now it can&rsquo;t find the sharedir file again. In that case I could probably work around it, but it&rsquo;s a mild symptom of a greater problem I&rsquo;ve encountered, people aren&rsquo;t deploying CPAN modules, they&rsquo;re deploying from git. Now I could say, &ldquo;not supported&rdquo;, but unfortunately I&rsquo;d usually have to say that to my current boss, or coworker, whomever that may be (and I tried it, didn&rsquo;t work). This isn&rsquo;t actually the root of the problem with Pod::Spell, but I guarantee it was a problem with <a href="https://metacpan.org/module/Business::CyberSource">Business::CyberSource</a>. Mostly I feel like leaving Pod::Spell this way is helping to weed out the issues people will have with File::ShareDir::ProjectDistDir</p> <p>So what do I think the solution is? There are obviously numerous &ldquo;social&rdquo; problems here, that I don&rsquo;t think can be easily solved. I&rsquo;m sure that <a href="https://metacpan.org/author/KENTNL">Kent Fredric</a>, has a better grasp than I of the technical solutions. Though I have had one reoccurring idea which is apparently not tangible without significant effort. Have a searchable sharedir path, like in unix <code>PERL5_SHAREDIR=&ldquo;./share:$DETECTED_DEV_DIR:$PERL5_LIB&hellip;&rdquo;</code>, and try looking for the &ldquo;file in the path&rdquo; until you find it, then cache that location in memory so you only have to search once per run. This is probably not a good solution for various reasons, or perhaps it&rsquo;s certainly grossly oversimplified in how it could work.</p> <p>Ultimately, there isn&rsquo;t a good solution right now, and I&rsquo;m not sure we&rsquo;ve actually thought of one.</p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fthe-sharedir-problem%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fthe-sharedir-problem%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fthe-sharedir-problem%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fthe-sharedir-problem%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

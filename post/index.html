@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/" />
+
+
+
+<meta property="og:updated_time" content="2017-02-27T04:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/post/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2017-02-27T04:00:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/log-crlf-injection-with-slf4j/">Log (CRLF) Injection with SLF4J</a></h2>
+    <p class="blog-post-meta"><time datetime="2017-02-27T04:00:00Z">Mon Feb 27, 2017</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/security" rel="tag">security</a>, <a href="/tags/spring-boot" rel="tag">spring boot</a>, <a href="/tags/exploit" rel="tag">exploit</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  At my job we have a CIO installed policy of remediating issues found by a static analysis tool and what it finds are most targeted at finding security issues. Currently this tool is Veracode, and I don&rsquo;t recommend it, it misses more problems than it finds, and what it finds, including this issue, are often false positives. Our most common issue, is CRLF (Carriage Return Line Feed) or other log injection, which we have mitigated in a custom log appender (which Veracode doesn&rsquo;t recognize).
+  <a href='http://blog.xenoterracide.com/post/log-crlf-injection-with-slf4j/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/falsehoods-programmers-believe-about-versions/">Falsehoods programmers believe about versions</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-08-04T10:40:00Z">Tue Aug 4, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>
+
+</p>
+  </header>
+  given Jeff Atwoods recent blog post&nbsp; and an inspiration today for me to write a &ldquo;falsehoods&rdquo; about versions. I&rsquo;ve decided to put mine in a git repository. &nbsp;If you&rsquo;d like to contribute yours please feel free to send me a pull request, it&rsquo;d be greatly appreciated.
+&ndash;
+This work by Caleb Cushing is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+  <a href='http://blog.xenoterracide.com/post/falsehoods-programmers-believe-about-versions/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/single-repository-one-aggregate/">Single Repository, one Aggregate</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-07-02T02:00:00Z">Thu Jul 2, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/spring-boot" rel="tag">spring boot</a>, <a href="/tags/spring-data" rel="tag">spring data</a>, <a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/repository" rel="tag">repository</a>, <a href="/tags/design-patterns" rel="tag">design patterns</a>, <a href="/tags/spring" rel="tag">spring</a>, <a href="/tags/domain-driven-design" rel="tag">domain driven design</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  A Repository as defined in Domain Driven Design&nbsp;manages a single Aggregate. An aggregate may contain many entities, and value objects, but will have a single object as its root. Many of the Dao and even now some of the Repository implementations I see do not follow this, they are more likely to have a Repository per entity, than a Repository per aggregate, and of course in some cases this is required for various reasons.
+  <a href='http://blog.xenoterracide.com/post/single-repository-one-aggregate/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/">Continuous Integration with Wercker and Maven</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-06-20T14:40:00Z">Sat Jun 20, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/wercker" rel="tag">wercker</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/continous-integration" rel="tag">continous integration</a>, <a href="/tags/maven" rel="tag">maven</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  I&rsquo;m going to walk you through getting mvn test running in wercker, on the new docker based api.
+First let&rsquo;s talk about what Wercker &nbsp;is and why you&rsquo;d want to use it. Wercker a continuous integration and deployment web application. It will all you to run any language or stack. It currently is free for both private and public repositories; I am hopeful that once it comes out of beta it will maintain reasonable pricing for small personal private projects (Most CI&rsquo;s are ridiculously priced for hobby projects).
+  <a href='http://blog.xenoterracide.com/post/continuous-integration-with-wercker-and-maven/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/abandoning-all-perl-modules/">Abandoning all Perl modules</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-05-03T15:26:00Z">Sun May 3, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/cpan" rel="tag">cpan</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>
+
+</p>
+  </header>
+  As of today I have decided to remove myself as maintainer/comaintainer of all my Perl modules. Feel free to adopt them.&ndash;
+This work by Caleb Cushing is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+  <a href='http://blog.xenoterracide.com/post/abandoning-all-perl-modules/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/premature-optimization-is-not-evil/">Premature optimization is not evil</a></h2>
+    <p class="blog-post-meta"><time datetime="2015-01-07T20:46:00Z">Wed Jan 7, 2015</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/rant" rel="tag">rant</a>, <a href="/tags/programming" rel="tag">programming</a>, <a href="/tags/ironman" rel="tag">ironman</a>
+
+</p>
+  </header>
+  Or rather people should stop saying this because most of the people that say it don&rsquo;t actually seem to actually know what is meant by &ldquo;Premature Optimization&rdquo; or how to determine when it is evil. I&rsquo;ve heard people say premature optimization is evil to asking. &ldquo;Is there a 3rd party library that does this more efficiently?&rdquo; (knowing if there are better options is premature optimization?), &ldquo;Thinking about architecting your app for horizontal scalability is premature optimization&rdquo; (it is if the design is significantly more complex, but if it&rsquo;s just between using REST and ensuring stateless (which is about the same complexity up front, but it&rsquo;d be harder to convert later)), &ldquo;wanting to do Dependency Injection is.
+  <a href='http://blog.xenoterracide.com/post/premature-optimization-is-not-evil/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/">10 ways of implementing Polymorphism</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-10-07T04:00:00Z">Tue Oct 7, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/object-oriented-design" rel="tag">object oriented design</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/polymorphism" rel="tag">polymorphism</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  Firstly what is Polymorphism and why is it so important? Polymorphism is the ability to have a many implementations of a behavior that conform to a single interface. Put in perhaps slightly better, pragmatic terms, you have one implementations of a caller, that can operate on many implementations of a &ldquo;parameter&rdquo;, without conditionals, or changing the callers code. For instance the following, pseudo?, Perl 6-ism method handler( $obj ) { $obj.
+  <a href='http://blog.xenoterracide.com/post/10-ways-of-implementing-polymorphism/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/celebrity-nude-scandal-on-security-an-analogy/">Celebrity nude scandal, on security, an analogy</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-09-20T11:25:00Z">Sat Sep 20, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/security" rel="tag">security</a>, <a href="/tags/ironman" rel="tag">ironman</a>
+
+</p>
+  </header>
+  Though I won&rsquo;t say they aren&rsquo;t victims of a crime&hellip; What the victims did is fundamentally the equivalent of using skeleton keys in the modern day. What apple did or rather didn&rsquo;t do, is prevent that. Apple could have used a tool like cracklib, and said at the time of password creation, this is too short, this is not random enough, we are refusing to allow you to put this skeleton key lock on your front door.
+  <a href='http://blog.xenoterracide.com/post/celebrity-nude-scandal-on-security-an-analogy/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/using-spring-to-create-a-full-rest-api-in-less-than-60-lines-of-code/">Using Spring to create a full REST API in less than 60 lines of code</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-09-02T22:42:00Z">Tue Sep 2, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/programming" rel="tag">programming</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/spring" rel="tag">spring</a>, <a href="/tags/java" rel="tag">java</a>
+
+</p>
+  </header>
+  Spring with Spring Data is awesome. Seriously, I&rsquo;ve never been able to throw up a full HATEOAS REST web service this fast. To start, I&rsquo;ll admit my headliner lie, I&rsquo;m not counting the pom.xml. 
+
+cloc . slave-vi
+5 text files.
+5 unique files.
+2 files ignored.
+http://cloc.sourceforge.net v 1.62 T=0.04 s (104.8 files/s, 3930.8 lines/s)
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-
+Language files blank comment code
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-
+Maven 1 6 7 65
+Java 3 15 0 57
+  <a href='http://blog.xenoterracide.com/post/using-spring-to-create-a-full-rest-api-in-less-than-60-lines-of-code/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/writing-deprecation-notices-in-perl-optionally-with-moose/">Writing deprecation notices in perl, optionally with Moose</a></h2>
+    <p class="blog-post-meta"><time datetime="2014-07-01T08:49:00Z">Tue Jul 1, 2014</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/deprecation" rel="tag">deprecation</a>, <a href="/tags/moose" rel="tag">Moose</a>
+
+</p>
+  </header>
+  Sometimes you want to remove behavior from your code in a future version, here&rsquo;s the right way to do it. 
+Here&rsquo;s the quick of how it works, the before has to come after attributes because the methods aren&rsquo;t yet created. Using before also means it&rsquo;ll always run with your method, without actually touching your method, insuring no accidental consequences to your method. The @CARP_NOT ensures that the warning thrown doesn&rsquo;t show a line number in your package, or from within where Method Modifiers are actually run.
+  <a href='http://blog.xenoterracide.com/post/writing-deprecation-notices-in-perl-optionally-with-moose/'>Read more →</a>
+</article> 
+
+
+
+
+<nav class="blog-pagination">
+  
+  
+  
+  <a class="btn btn-outline-primary disabled" href="#" role="button" aria-disabled="true">Previous page</a>
+  <a class="btn btn-outline-primary" href="/post/page/2/" role="button">Next page</a>
+  
+</nav>
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

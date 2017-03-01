@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Idea on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/idea/index.xml</link>
+    <description>Recent content in Idea on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/idea/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A page for Perl WebHosts?</title>
+      <link>http://blog.xenoterracide.com/post/a-page-for-perl-webhosts/</link>
+      <pubDate>Fri, 16 Jul 2010 00:09:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/a-page-for-perl-webhosts/</guid>
+      <description>&lt;p&gt;We need a page linked from Perl.org that says &amp;lsquo;Get Hosted&amp;rsquo; (or something like that). The page will have a list of the top 10 Perl friendly web hosts on it. The top 10 will be determined by people with CPAN ID&amp;rsquo;s voting it up or down (the use of CPAN ID&amp;rsquo;s should prevent spammers from gaming the system like digg get&amp;rsquo;s gamed). It could have in the listing, rank, # of positive votes, business name, site uri, technologies supported (e.g. cgi, fastcgi, mod_perl, plack, etc), and maybe starting price. Of course you should have a link to the complete list. Companies should be able to register themselves without getting a CPAN ID.&lt;br /&gt;&lt;br /&gt;Just an idea for making it easier to find great Perl hosting.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Simple scripting CLI with Expect.pm" />
+<meta property="og:description" content="Expect is use primarily for sending Input to Command Line programs that Prompt and wait for input. For starters you&rsquo;ll need an executable script and I&rsquo;ve pasted one that I got elsewhere for a demo. #!/usr/bin/env perl
+# slightly modified from http://www.tizag.com/perlT/perluserinput.php
+use 5.014;;
+use warnings;
+print &ldquo;How old are you?&rdquo;;
+my $age = &lt;&gt;;
+print &ldquo;What is your favorite color?&rdquo;;
+my $color = &lt;&gt;;
+say &ldquo;You are $age, and your favorite color is $color." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/simple-scripting-cli-with-expect.pm/" />
+
+
+
+<meta property="article:published_time" content="2012-03-04T02:04:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-03-04T02:04:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Simple scripting CLI with Expect.pm"/>
+<meta name="twitter:title" content="Simple scripting CLI with Expect.pm"/>
+<meta name="twitter:description" content="Expect is use primarily for sending Input to Command Line programs that Prompt and wait for input. For starters you&rsquo;ll need an executable script and I&rsquo;ve pasted one that I got elsewhere for a demo. #!/usr/bin/env perl
+# slightly modified from http://www.tizag.com/perlT/perluserinput.php
+use 5.014;;
+use warnings;
+print &ldquo;How old are you?&rdquo;;
+my $age = &lt;&gt;;
+print &ldquo;What is your favorite color?&rdquo;;
+my $color = &lt;&gt;;
+say &ldquo;You are $age, and your favorite color is $color."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Simple scripting CLI with Expect.pm",
+  "url": "http://blog.xenoterracide.com/post/simple-scripting-cli-with-expect.pm/",
+  "wordCount": "713",
+  
+  
+  "datePublished": "2012-03-04T02:04:00&#43;00:00",
+  
+  
+  "dateModified": "2012-03-04T02:04:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,perl,expect"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/simple-scripting-cli-with-expect.pm/">
+
+    <title>Simple scripting CLI with Expect.pm | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/simple-scripting-cli-with-expect.pm/">Simple scripting CLI with Expect.pm</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-03-04T02:04:00Z">Sun Mar 4, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/expect" rel="tag">expect</a>
+
+</p>
+  </header>
+  <p><p>Expect is use primarily for sending Input to Command Line programs that Prompt and wait for input. For starters you&rsquo;ll need an executable script and I&rsquo;ve pasted one that I got elsewhere for a demo. <script src="https://gist.github.com/1970845.js?file=agencolor.pl"></script><noscript><pre><code>#!/usr/bin/env perl<br /># slightly modified from <a href="http://www.tizag.com/perlT/perluserinput.php">http://www.tizag.com/perlT/perluserinput.php</a><br />use 5.014;;<br />use warnings;<br /><br /><br />print &ldquo;How old are you?&rdquo;;<br />my $age = &lt;&gt;;<br /><br />print &ldquo;What is your favorite color?&rdquo;;<br />my $color = &lt;&gt;;<br /><br />say &ldquo;You are $age, and your favorite color is $color.&rdquo;;</code></pre></noscript> It&rsquo;s trivial, you should probably run it just to see what it does. Now take a look at our Expect Script.</p> <script src="https://gist.github.com/1970845.js?file=expect.pl"></script><noscript><pre><code>#!/usr/bin/env perl<br />use 5.014;<br />use warnings;<br /><br />use Expect;<br />use List::AllUtils qw( natatime );<br /><br />my @cmd = ( &lsquo;./agencolor.pl&rsquo; ); # spawn takes command plus argumements<br />my @params = ( &lsquo;34&rsquo;, &lsquo;hot pink&rsquo; );<br />my @oparams = ( qw( 43 blue ) );<br /><br />my $param  = natatime 1, @params; # iterator<br />my $oparam = natatime 1, @params; # iterator<br /><br />my $exp = Expect-&gt;new;<br />$exp-&gt;exp_internal( 1 ); # print better debug than -&gt;debug( 3 )<br />$exp-&gt;spawn( @cmd );<br /><br />$exp-&gt;expect(<br /> 1, # timeout in seconds<br /><br /> # both regex&rsquo;s will try to match for every line<br /> [ qr/\?$/, sub { $exp-&gt;send( $param-&gt;() . &ldquo;\n&rdquo; ); exp_continue; }, ],<br /> [ qr/:$/, sub { $exp-&gt;send( $oparam-&gt;() . &ldquo;\n&rdquo; ); exp_continue; }, ],<br /> # the above line will never match<br />);<br /><br />say &lsquo;-&lsquo;x 10;<br />say $exp-&gt;before;</code></pre></noscript> <p>Although you can read the comments yourself, let&rsquo;s go over it anyways. <code>-&gt;spawn</code> takes a list of arguments, with the first being a command, and the rest being any command line arguments, or options passed to said script. I could have easily just put the command in spawn, but I though I&rsquo;d show a more dynamic example. After that you&rsquo;ll notice I&rsquo;ve hard coded 2 sets of params that could possibly be fed into the program. I also have created some 1 at a time iterators, this simply makes it easier to iterate them in expect. Now onto the Expect object itself.</p> <p>If you&rsquo;ve read the documentation you&rsquo;ll notice there are 3 debug settings, with 3 being the most verbose, and some verbose settings. None of this appeared to be as verbose as I could get, however turning on <code>-&gt;exp_internal(1);</code> printed everything I needed to understand expect and debug what I was doing wrong. The <code>-&gt;spawn</code> method of course forks and execs our command, the output of which then gets iterated by <code>-&gt;expect</code>.</p> <p>The first argument to <code>-&gt;expect</code> is the timeout, which is measured in seconds. The timeout is how long expect will wait for the output to match one of the regexes. You could set it to <code>undef</code> if you want to wait forever, or if it&rsquo;s just a program that has some startup time before it prompts set it to a few seconds. The timeout will (by default) be used again in between each prompt.</p> <p>After timeout you can specify a list of array refs, each of which has 2 elements. The first is a regular expression that will allow you to tell expect how to recognize a prompt. The second is a coderef which allows you to tell expect what to do if it&rsquo;s corresponding match is hit. Both regexes will be run against every line, checking to see if they match.</p> <p>Inside of our coderef we can use <code>-&gt;send</code> to send input to the prompt. Remember <code>send</code> doesn&rsquo;t automatically press enter, so be sure to add your newlines. <code>exp_continue</code> means after match continue using this <code>-&gt;expect</code> call to try to match the next line.</p> <p>When running the script you&rsquo;ll notice the second regex never matches, but if reading the &lsquo;internal&rsquo; output you&rsquo;ll see that it is attempting to.</p> <p>The last line is a call to <code>-&gt;before</code> which in this case, not very intuitively prints everything that was in the pty after the last match, or more appropriately, before the program exited. You&rsquo;ll also notice that it collects the thing that you sent to the last match.</p> <p>That&rsquo;s the basics of what I&rsquo;ve discovered, I&rsquo;m not sure I fully understand how it all works yet (which means my explanations might not be 100% correct), but perhaps me writing this will help someone else get started with Expect. Happy Hacking! </p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsimple-scripting-cli-with-expect.pm%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsimple-scripting-cli-with-expect.pm%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsimple-scripting-cli-with-expect.pm%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsimple-scripting-cli-with-expect.pm%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

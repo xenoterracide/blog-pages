@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Bypassing disabled accounts with KDM" />
+<meta property="og:description" content="So the most common way of disabling an account in a unix system is changing the users shell in /etc/passwd to /bin/false or /sbin/nologin. However, I&rsquo;ve discovered on Arch Linux that if I do this only shell login&rsquo;s are disabled, I was still able to log the user in with gui via kdm. I also tried using usermod &ndash;expiredate 1. this was not effective either however. the only way I found to lock the account from kdm login was to do a passwd -l accountname, which only locks password authentication." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/bypassing-disabled-accounts-with-kdm/" />
+
+
+
+<meta property="article:published_time" content="2009-11-16T19:06:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-11-16T19:06:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Bypassing disabled accounts with KDM"/>
+<meta name="twitter:title" content="Bypassing disabled accounts with KDM"/>
+<meta name="twitter:description" content="So the most common way of disabling an account in a unix system is changing the users shell in /etc/passwd to /bin/false or /sbin/nologin. However, I&rsquo;ve discovered on Arch Linux that if I do this only shell login&rsquo;s are disabled, I was still able to log the user in with gui via kdm. I also tried using usermod &ndash;expiredate 1. this was not effective either however. the only way I found to lock the account from kdm login was to do a passwd -l accountname, which only locks password authentication."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Bypassing disabled accounts with KDM",
+  "url": "http://blog.xenoterracide.com/post/bypassing-disabled-accounts-with-kdm/",
+  "wordCount": "237",
+  
+  
+  "datePublished": "2009-11-16T19:06:00&#43;00:00",
+  
+  
+  "dateModified": "2009-11-16T19:06:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Arch,security,authentication,kdm,pam,accounts,hall of shame,kde,kde4"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/bypassing-disabled-accounts-with-kdm/">
+
+    <title>Bypassing disabled accounts with KDM | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/bypassing-disabled-accounts-with-kdm/">Bypassing disabled accounts with KDM</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-11-16T19:06:00Z">Mon Nov 16, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/arch" rel="tag">Arch</a>, <a href="/tags/security" rel="tag">security</a>, <a href="/tags/authentication" rel="tag">authentication</a>, <a href="/tags/kdm" rel="tag">kdm</a>, <a href="/tags/pam" rel="tag">pam</a>, <a href="/tags/accounts" rel="tag">accounts</a>, <a href="/tags/hall-of-shame" rel="tag">hall of shame</a>, <a href="/tags/kde" rel="tag">kde</a>, <a href="/tags/kde4" rel="tag">kde4</a>
+
+</p>
+  </header>
+  <p>So the most common way of disabling an account in a unix system is changing the users shell in /etc/passwd to /bin/false or /sbin/nologin. However, I&rsquo;ve discovered on Arch Linux that if I do this only shell login&rsquo;s are disabled, I was still able to log the user in with gui via kdm. I also tried using usermod &ndash;expiredate 1. this was not effective either however. the only way I found to lock the account from kdm login was to do a passwd -l accountname, which only locks password authentication. This means key and token authentication should still work. My real concern is that if the user was set to login without a password that it would still be bypass-able. My personal opinion is that I shouldn&rsquo;t have to do more than 1 thing  to disable a user account in a 100% effective manner. Currently Arch Linux (and maybe more) fails at this. I&rsquo;ll post a fix later as I investigate further.<br /><br />Bugs I filed are at <a href="https://bugs.kde.org/show_bug.cgi?id=214616">kde</a> and <a href="http://bugs.archlinux.org/task/17157">Arch Linux</a><br /><br />EDIT: expire date worked&hellip; just not immediately, very odd.<br /><br />EDIT: Here&rsquo;s a proper /etc/pam.d/kde<br /><pre><code><br />#%PAM-1.0<br />auth        required    pam_nologin.so<br />auth        required    pam_unix.so nullok<br />auth        required    pam_shells.so<br />auth required pam_tally.so onerr=succeedfile=/var/log/faillog<br />account     required    pam_access.so<br />account     required    pam_time.so<br />account     required    pam_unix.so<br />password    required    pam_unix.so<br />session     required    pam_unix.so<br />session     required    pam_env.so<br />session     required    pam_limits.so<br /></pre></code><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbypassing-disabled-accounts-with-kdm%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbypassing-disabled-accounts-with-kdm%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbypassing-disabled-accounts-with-kdm%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fbypassing-disabled-accounts-with-kdm%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moose on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/moose/index.xml</link>
+    <description>Recent content in Moose on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/moose/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Writing deprecation notices in perl, optionally with Moose</title>
+      <link>http://blog.xenoterracide.com/post/writing-deprecation-notices-in-perl-optionally-with-moose/</link>
+      <pubDate>Tue, 01 Jul 2014 08:49:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/writing-deprecation-notices-in-perl-optionally-with-moose/</guid>
+      <description>&lt;p&gt;&lt;p&gt;Sometimes you want to remove behavior from your code in a future version, here&amp;rsquo;s the right way to do it.  &lt;script src=&#34;https://gist.github.com/xenoterracide/aea326f4ab7f21229576.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;&lt;p&gt;Here&amp;rsquo;s the quick of how it works, the &lt;code&gt;before&lt;/code&gt; has to come after attributes because the methods aren&amp;rsquo;t yet created. Using &lt;code&gt;before&lt;/code&gt; also means it&amp;rsquo;ll always run with your method, without actually touching your method, insuring no accidental consequences to your method. The &lt;code&gt;@CARP_NOT&lt;/code&gt; ensures that the warning thrown doesn&amp;rsquo;t show a line number in your package, or from within where Method Modifiers are actually run. &lt;code&gt;warnings::warnif( &amp;lsquo;deprecated&amp;rsquo;&lt;/code&gt;, ensures that these warnings are only emitted if you have the deprecated category enabled. But what if people don&amp;rsquo;t have warnings enabled? um&amp;hellip; oh well? that&amp;rsquo;s there problem because what if people do and they want to silence these until they can get to them. I highly suggest putting the name of the method being called and it&amp;rsquo;s successor into the message so that people know how to correct their code. &lt;/p&gt;&lt;p&gt;If you don&amp;rsquo;t want Moose, just don&amp;rsquo;t use the method modifier and put &lt;code&gt;warnings:warnif&lt;/code&gt; directly in your code. if you&amp;rsquo;re using a different AOP before, modify &lt;code&gt;@CARP_NOT&lt;/code&gt; to have the correct module. &lt;/p&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Moose Interface Pattern with parameter enforcement</title>
+      <link>http://blog.xenoterracide.com/post/moose-interface-pattern-with-parameter-enforcement/</link>
+      <pubDate>Sat, 25 May 2013 13:29:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/moose-interface-pattern-with-parameter-enforcement/</guid>
+      <description>&lt;p&gt;Moose interfaces are problematic, for 2 reasons.&lt;br /&gt;&lt;br /&gt;1. They are compile time, but runtime features such as attribute delegation could provide the interface (role ordering is the real problem here)&lt;br /&gt;2. They don&amp;rsquo;t ensure anything other than the method name.&lt;br /&gt;&lt;br /&gt;I think this problem can be solved better by using &lt;code&gt;around&lt;/code&gt; instead of &lt;code&gt;requires&lt;/code&gt; &lt;script src=&#34;https://gist.github.com/xenoterracide/5649931.js&#34;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;pre&gt;&lt;code&gt;Package Interface::Create;&lt;br /&gt;use Moose::Role;&lt;br /&gt;use Type::Params    qw( compile       );&lt;br /&gt;use Types::Standard qw( slurpy HashRef);&lt;br /&gt; &lt;br /&gt;around create =&amp;gt; sub {&lt;br /&gt;  my $orig = shift;&lt;br /&gt; my $self = shift;&lt;br /&gt; &lt;br /&gt; state $check = compile( slurpy HashRef );&lt;br /&gt; my ( $obj&lt;em&gt;args ) = $check-&amp;gt;( @&lt;/em&gt; );&lt;br /&gt; &lt;br /&gt; return $self-&amp;gt;$orig( $obj_args );&lt;br /&gt;};&lt;br /&gt;1;&lt;/code&gt;&lt;/pre&gt;&lt;/noscript&gt; Ordering of course still matters here as you can have multiple &lt;code&gt;around&lt;/code&gt; modifiers on a method. This will throw an exception if method is missing or if the types passed in are not correct.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Perl 5.12 on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/perl-5.12/index.xml</link>
+    <description>Recent content in Perl 5.12 on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/perl-5.12/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Test Perl 5.12 on Arch Linux</title>
+      <link>http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/</link>
+      <pubDate>Wed, 16 Jun 2010 04:23:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/</guid>
+      <description>&lt;p&gt;Perl 5.12 has been languishing in the testing repo for a while, there are now several packages that have been rebuilt in testing and community testing. All of the rebuilds I reported have been fixed. If you use arch please make sure you&amp;rsquo;re using their rebuilt packages (and not one you rebuilt because it took like 2 months to do this) if you have any problems file a bug. If you aren&amp;rsquo;t sure which package is really the problem feel free to drop me a line and I&amp;rsquo;ll see if I can help you tack it down. I have over 200 cpan packages on my box right now all of which successfully pass their test suites.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

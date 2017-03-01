@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Semver.org probably not compat with all downstream" />
+<meta property="og:description" content="For those that don&rsquo;t know I currently create packages for AUR, and I used to work on Funtoo, as well as a fork of it Regen2 (which died by my hand). So I&rsquo;ve got some experience working with BSD-ish style distro&rsquo;s. I can&rsquo;t comment on the Debians or Red Hats of the world, other than REPO HELL DRIVES ME NUTS. Now to the topic. Semver seems sane except for 1 thing that it doesn&rsquo;t mention and an example that encourages it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/" />
+
+
+
+<meta property="article:published_time" content="2010-06-13T17:57:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-06-13T17:57:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Semver.org probably not compat with all downstream"/>
+<meta name="twitter:title" content="Semver.org probably not compat with all downstream"/>
+<meta name="twitter:description" content="For those that don&rsquo;t know I currently create packages for AUR, and I used to work on Funtoo, as well as a fork of it Regen2 (which died by my hand). So I&rsquo;ve got some experience working with BSD-ish style distro&rsquo;s. I can&rsquo;t comment on the Debians or Red Hats of the world, other than REPO HELL DRIVES ME NUTS. Now to the topic. Semver seems sane except for 1 thing that it doesn&rsquo;t mention and an example that encourages it."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Semver.org probably not compat with all downstream",
+  "url": "http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/",
+  "wordCount": "502",
+  
+  
+  "datePublished": "2010-06-13T17:57:00&#43;00:00",
+  
+  
+  "dateModified": "2010-06-13T17:57:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "semantic,ironman,versions"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/">
+
+    <title>Semver.org probably not compat with all downstream | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/">Semver.org probably not compat with all downstream</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-13T17:57:00Z">Sun Jun 13, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/semantic" rel="tag">semantic</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/versions" rel="tag">versions</a>
+
+</p>
+  </header>
+  <p>For those that don&rsquo;t know I currently create packages for <a href="http://aur.archlinux.org/packages.php?SeB=m&L=2&K=xenoterracide">AUR</a>, and I used to work on <a href="http://funtoo.org/">Funtoo</a>, as well as a fork of it Regen2 (which died by my hand). So I&rsquo;ve got some experience working with BSD-ish style distro&rsquo;s. I can&rsquo;t comment on the Debians or Red Hats of the world, other than REPO HELL DRIVES ME NUTS. Now to the topic. <a href="http://semver.org/">Semver</a> seems sane except for 1 thing that it doesn&rsquo;t mention and an example that encourages it.<br /><br /><blockquote>A normal version number MUST take the form X.Y.Z where X, Y, and Z are integers. X is the major version, Y is the minor version, and Z is the patch version. Each element MUST increase numerically. For instance: 1.9.0 &lt; 1.10.0 &lt; 1.11.0.</blockquote><br /><br /><br />Not all packaging systems are capable of dealing with multipart as actual multiple parts. Lets give a more complete example to break it down. For instance: <code>1.9.0 &lt; 1.10.0 &lt; 1.11.0 &lt; 2.0.0</code>. That&rsquo;s what&rsquo;s supposed to happen&hellip; but that&rsquo;s not how it works. Arch for example see&rsquo;s versions as strings&hellip; so let me show you what happens.<br /><br /><code><pre>190<br />1100<br />1110<br />200<br /></pre></code><br /><br />This is essentially what you could interpret the &ldquo;.&rdquo;&rsquo;s are essentially ignored ( Ok it&rsquo;s not actually how it works&hellip; juster&rsquo;s comment is more accurate than me but I think it&rsquo;s a good rule of thumb). They don&rsquo;t matter they&rsquo;re like spaces between words, they simply make it easier for a human to read. Never ever, <em>ever</em>, <em><strong>EVER!</strong></em> change the length of your versions to anything BUT larger. You will cause downstream annoyances, sure we&rsquo;ve tools to work around it, but I don&rsquo;t want to and it shouldn&rsquo;t take any extra effort from upstream to make sure this doesn&rsquo;t happen.<br /><br />In order to solve this if you ever need to move anything to double digits just don&rsquo;t go backwards. In other words: <code>1.9.0 &lt; 1.10.0 &lt; 1.11.0 &lt; 2.00.0</code> would actually evaluate properly. I find it more likely that in an X.Y.Z schema that you will need X.Y.ZZ though, and maybe X.YY.ZZ. For a project More than 10 years old XX.YY.ZZ could happen. Anything more is probably ridiculous. If you find yourself hitting 99 slow your roll before you reach it by moving to a time based release, no more than once a month for example.<br /><br />Some people will say that Arch doesn&rsquo;t have a sane internal representation. Keep in mind that maintain over 300 package now for arch&hellip; of those 300 maybe 10 have ever caused me to create a workaround because of this issue. It&rsquo;s not difficult, so please just be considerate of downstream, it&rsquo;s a lot easier to acknowledge and be mindful of this than it is to fix downstream in a way that would work for all upstream packages (e.g. we&rsquo;ve got more to consider that just your package).<br /><br />UPDATE: Read juster&rsquo;s comment if you want more information on actual implementation and how I&rsquo;m slightly wrong.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsemver.org-probably-not-compat-with-all-downstream%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsemver.org-probably-not-compat-with-all-downstream%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsemver.org-probably-not-compat-with-all-downstream%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fsemver.org-probably-not-compat-with-all-downstream%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

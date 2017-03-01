@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gentoo on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/gentoo/index.xml</link>
+    <description>Recent content in Gentoo on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/gentoo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>to Gentoo dev or not to Gentoo dev</title>
+      <link>http://blog.xenoterracide.com/post/to-gentoo-dev-or-not-to-gentoo-dev/</link>
+      <pubDate>Wed, 04 Mar 2009 18:15:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/to-gentoo-dev-or-not-to-gentoo-dev/</guid>
+      <description>&lt;p&gt;So after a little post about Regen2 on the Gentoo-dev mailing list. I&amp;rsquo;ve been offered mentoring to become an official gentoo dev. I&amp;rsquo;m conflicted, my main reason for saying yes would be to learn stuff that I can&amp;rsquo;t learn on my own. But I&amp;rsquo;m not sure I really want to be a gentoo-dev this means doing these other time consuming things, and I wouldn&amp;rsquo;t be able to do nearly enough from the inside. I still have to proceed with regen2&amp;hellip; as I don&amp;rsquo;t believe gentoo (in spirit) can be saved from within. So should I work to become an offical gentoo dev?&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Funtoo News</title>
+      <link>http://blog.xenoterracide.com/post/funtoo-news/</link>
+      <pubDate>Fri, 23 Jan 2009 14:18:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/funtoo-news/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve decided I&amp;rsquo;m going to start posting a sort of weekly newsletter (I&amp;rsquo;m not committing to weekly though) merely to document anything I feel important that happened, or is about to, but isn&amp;rsquo;t quite important enough for it&amp;rsquo;s own post.&lt;br /&gt;&lt;br /&gt;&lt;a href=&#34;http://ra.fnord.at/&#34;&gt;RA&lt;/a&gt; (ra&amp;ndash; on #funtoo) or &lt;a href=&#34;mailto:r_a@lavabit.com&#34;&gt;r_a@lavabit.com&lt;/a&gt; submitted quite a few patches this week including 1 that fixes many of my major borkage on non-latin1 changelog breaks. He&amp;rsquo;s become a regular contributor and I&amp;rsquo;d like to thank him.&lt;br /&gt;&lt;br /&gt;perl-5.10 will be unmasked this evening, if you haven&amp;rsquo;t read it yet, read my &lt;a href=&#34;http://xenoterracide.blogspot.com/2009/01/funtoo-gets-new-perl.html&#34;&gt;post&lt;/a&gt; on upgrading, you&amp;rsquo;ll need it, because this is more than just an install and forget, other packages need to be rebuilt, and perl-cleaner revdep-rebuild doesn&amp;rsquo;t find them all. Good news is I&amp;rsquo;ve been running 5.10 since the beginning of the month no problems since the beginning.&lt;br /&gt;&lt;br /&gt;I pushed samba 3.2.7 into the tree this week, gentoo&amp;rsquo;s been sitting on it for a while, it&amp;rsquo;s hard masked, but seems to build fine, I don&amp;rsquo;t operate on a windows network though so can&amp;rsquo;t say how well it works.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Funtoo gets the new Perl</title>
+      <link>http://blog.xenoterracide.com/post/funtoo-gets-the-new-perl/</link>
+      <pubDate>Fri, 09 Jan 2009 08:45:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/funtoo-gets-the-new-perl/</guid>
+      <description>&lt;p&gt;Soon, Dan Robbins will be merging my perl-experimental branch which contains the perl-experimental overlay. This overlay contains a handful of packages, the most important of which is perl-5.10.0 which has been out for about a year now and Gentoo still hasn&amp;rsquo;t put in portage. One nuisance of the perl-experimental overlay is they don&amp;rsquo;t use changelogs which means if you want to know what&amp;rsquo;s going on with a package from this you&amp;rsquo;ll have to check out git log as well as the changelog. I feel this is a minor issue, in the long run we should migrate all package logs to git&amp;rsquo;s internal logging facility.&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;I&amp;rsquo;ve been testing perl-5.10.0 for a week or so now with few problems, and none which I&amp;rsquo;ve found to be un-resolvable. It&amp;rsquo;s entirely possible that there are packages I don&amp;rsquo;t use that will break on 5.10. When we merge perl-experimental it will be hardmasked at first, and we&amp;rsquo;re looking for people to test for a couple of weeks before we move it to the testing branch, so we can iron out any problems which we weren&amp;rsquo;t able to account for.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;upgrading to perl-5.10&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;So, in theory, all you have to do is run&lt;br /&gt;&lt;br /&gt;&lt;code&gt;perl-cleaner all&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;after unmasking and emerging dev-lang/perl and sys-devel/libperl. In practice however, I found this didn&amp;rsquo;t work. it seemed to only find packages in world which needed upgrading, so between me and one other person, we came up with this little one liner to fix packages were built against perl-5.8&lt;br /&gt;&lt;br /&gt;&lt;code&gt;locate 5.8.8 | grep ^/usr/ | grep -v ^/usr/portage | xargs equery belongs | uniq | sed -e s/^/\=/ | xargs emerge &amp;ndash;oneshot&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;once you&amp;rsquo;ve run perl-cleaner and the one-liner, you should be completely upgraded.&lt;br /&gt;&lt;br /&gt;Issues specific to perl-5.10 can be reported on the Gentoo bugtracker, in the &lt;a href=&#34;http://bugs.gentoo.org/show_bug.cgi?id=206455&#34;&gt;perl 5.10 bug&lt;/a&gt; or to us on #funtoo.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regen2 development has officially begun</title>
+      <link>http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/</link>
+      <pubDate>Thu, 11 Dec 2008 04:30:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/regen2-development-has-officially-begun/</guid>
+      <description>&lt;p&gt;That&amp;rsquo;s right I&amp;rsquo;m putting my money where my mouth is. It&amp;rsquo;s small but the first 2 packages when into the &lt;a href=&#34;http://github.com/xenoterracide/portage/tree/regen2&#34;&gt;regen2 tree&lt;/a&gt; this morning. They are MySQL 5.1.30 which was added because the gentoo maintainer refused to add it do to instability. I agree that it is unstable, but we have ~M Hard Masked packages for that reason. It has been added as ~M. The other app added is qsynergy, the ebuild was already on portage and I know it to be good so I added it to the tree, I&amp;rsquo;ll probably stabilize it in a few weeks.&lt;br /&gt;&lt;br /&gt;Since Regen2 is a fork of &lt;a href=&#34;http://funtoo.org&#34;&gt;Funtoo&lt;/a&gt; you can enjoy all the benefits of Funtoo&amp;rsquo;s changes in my tree, and I will try to get mine accepted into Funtoo.&lt;br /&gt;&lt;br /&gt;In the future I will be building stable Regen2 tarballs, although only stage3&amp;rsquo;s.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ReGen2 Linux</title>
+      <link>http://blog.xenoterracide.com/post/regen2-linux/</link>
+      <pubDate>Wed, 26 Mar 2008 22:33:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/regen2-linux/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m starting a blog for my thoughts on forking Gentoo Linux &lt;a href=&#34;http://regen2.blogspot.com/&#34;&gt;here&lt;/a&gt;&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

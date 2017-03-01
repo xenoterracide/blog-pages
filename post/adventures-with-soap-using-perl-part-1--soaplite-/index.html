@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Adventures with SOAP using Perl: Part 1 ( SOAP::Lite )" />
+<meta property="og:description" content="The most prevalent of SOAP libraries for Perl is&nbsp;SOAP::Lite&nbsp;it is the oldest and most documented. Though for all of its documentation it can be quite painful to figure out how to use it.
+First make sure you&rsquo;ve read&nbsp;Part 0&nbsp;to set up the server. Once that&rsquo;s done let&rsquo;s look at the most simple way to interface with this server.
+In our first example we need to send a request to getCountries, which is a method provided by the API." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-1--soaplite-/" />
+
+
+
+<meta property="article:published_time" content="2011-10-22T15:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2011-10-22T15:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Adventures with SOAP using Perl: Part 1 ( SOAP::Lite )"/>
+<meta name="twitter:title" content="Adventures with SOAP using Perl: Part 1 ( SOAP::Lite )"/>
+<meta name="twitter:description" content="The most prevalent of SOAP libraries for Perl is&nbsp;SOAP::Lite&nbsp;it is the oldest and most documented. Though for all of its documentation it can be quite painful to figure out how to use it.
+First make sure you&rsquo;ve read&nbsp;Part 0&nbsp;to set up the server. Once that&rsquo;s done let&rsquo;s look at the most simple way to interface with this server.
+In our first example we need to send a request to getCountries, which is a method provided by the API."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Adventures with SOAP using Perl: Part 1 ( SOAP::Lite )",
+  "url": "http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-1--soaplite-/",
+  "wordCount": "811",
+  
+  
+  "datePublished": "2011-10-22T15:00:00&#43;00:00",
+  
+  
+  "dateModified": "2011-10-22T15:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "SOAP,SOAP::Lite,ironman,perl"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-1--soaplite-/">
+
+    <title>Adventures with SOAP using Perl: Part 1 ( SOAP::Lite ) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/adventures-with-soap-using-perl-part-1--soaplite-/">Adventures with SOAP using Perl: Part 1 ( SOAP::Lite )</a></h2>
+    <p class="blog-post-meta"><time datetime="2011-10-22T15:00:00Z">Sat Oct 22, 2011</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/soap" rel="tag">SOAP</a>, <a href="/tags/soaplite" rel="tag">SOAP::Lite</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>
+
+</p>
+  </header>
+  <p>The most prevalent of SOAP libraries for Perl is&nbsp;<a href="https://metacpan.org/module/SOAP::Lite">SOAP::Lite</a>&nbsp;it is the oldest and most documented. Though for all of its documentation it can be quite painful to figure out how to use it.<br /><br />First make sure you&rsquo;ve read&nbsp;<a href="http://www.xenoterracide.com/2011/10/adventures-with-soap-using-perl-part-0.html">Part 0</a>&nbsp;to set up the server. Once that&rsquo;s done let&rsquo;s look at the most simple way to interface with this server.<br /><br />In our first example we need to send a request to <code>getCountries</code>, which is a method provided by the API. You can determine this by reading <code>namesservice.wsdl</code> and looking for the <code>operation</code>s to see what&rsquo;s available. Essentially this means we need to send SOAP request with a Body of <code>&lt;getCountries /&gt;</code>. First we need to import SOAP::Lite.<br /><noscript><a href="https://gist.github.com/1285860">https://gist.github.com/1285860</a></noscript><script src="https://gist.github.com/1285860.js"></script>If you look at our SOAP::Lite import you&rsquo;ll notice that were are passing the arguments <code>+trace =&gt; [ &lsquo;debug&rsquo; ]</code>. There are various levels and options for +trace, but this turns on full debug printing which will be sent to stderr. You don&rsquo;t normally want to have debug running in production code, but it will be useful to illustrate our examples and the request they send and receive.<br /><br />Now let&rsquo;s look at creating an actual SOAP::Lite request object. <noscript><a href="https://gist.github.com/1285987">https://gist.github.com/1285987</a></noscript><script src="https://gist.github.com/1285987.js">  </script>The first option we pass in is <code>readable =&gt; 1</code>, adds whitespace to the request sent so that it&rsquo;s easier to read when you&rsquo;re looking at the debug output, you should not enable this in production, as it makes the request bigger, and I believe it is not considered correct SOAP as I&rsquo;ve been told something about extra whitespace in SOAP being considered invalid. The second option is <code>proxy =&gt; &lsquo;<a href="http://localhost:8877'">http://localhost:8877'</a></code> This specifies the hostname and port that the HTTP request is sent to. <code>ns =&gt; &lsquo;<a href="http://namesservice.thomas_bayer.com/'">http://namesservice.thomas_bayer.com/'</a></code> is the namespace, which you can find by looking for namespace in the <code>namesservice.wsdl</code>.  <br /><br />Now we need to actually create and send an actual request. <noscript><a href="https://gist.github.com/1286050">https://gist.github.com/1286050</a></noscript><script src="https://gist.github.com/1286050.js">  </script> For this trivial request we simply need to call the method that we need on the remote server and then return the object. You can see that SOAP::Lite is generating a namespace for your request to use with the XML <code>&lt;namesp1:getCountries xsi:nil=&ldquo;true&rdquo;&gt;</code>, which is just fine in this case.<br /><br />Of course we want to do something with our response. Please note that I&rsquo;ve modified the code to use 5.10, but if you want to use print instead of say this code will work fine on 5.6 and up.<noscript><a href="https://gist.github.com/1286109">https://gist.github.com/1286109</a></noscript><script src="https://gist.github.com/1286109.js">  </script> <code>valueof</code>, which is documented in <a href="https://metacpan.org/module/SOAP::SOM#ACCESSING-ELEMENT-VALUES">SOAP::SOM</a>, returns the first element in scalar context, and an array in array context. So in my code I&rsquo;ve shown both. The syntax used in the parameters to <code>valueof</code> is <a href="http://www.w3schools.com/xpath/xpath_syntax.asp">XPath</a>, so an even simpler way to call it in this case would be <code>$res-&gt;valueof(//country);</code> and it would do the same thing with this XML. <br /><br />Next let&rsquo;s look at the <code>getNameInfo</code> method, it&rsquo;s a bit more complex so let&rsquo;s look at the XML in the XSD. Here&rsquo;s the snippet that is really important. <script src="https://gist.github.com/1300052.js">  </script>This means that we need to send a request with a body that looks like <script src="https://gist.github.com/1300074.js">  </script> <em>( note: you can look at the sample data in <code>MyExampleData.pm</code> for other names. )</em> Set let&rsquo;s take a stab at writing some Perl.<script src="https://gist.github.com/1300131.js">  </script> There are some important differences to note from our previous script. You&rsquo;ll notice that I call <code>-&gt;getNameInfo()</code> directly on the request object, instead of passing it as a parameter to <code>-&gt;call</code>. This functions basically the same as <code>call</code> and it will end up making the first tag inside of body. We could have doen this in our first example as <code>$req-&gt;getCountries;</code> and that would have been it. Now that we&rsquo;ve covered the slight differences in calls, let&rsquo;s go over the completely new things.<br /><br /><a href="https://metacpan.org/module/SOAP::Data">SOAP::Data</a> objects are used to create any further data structures. Obviously the hash key of <code>name</code> defines the element name, and <code>value</code> defines what you want to go into it, here I have hardcoded &ldquo;Mark&rdquo;.<br /><br /><br />If you run this code you&rsquo;ll notice that it returns a faultstring (among other fault properties) &ldquo;operation getNameInfo for SOAP11 called with invalid data&rdquo;, and details the error as &ldquo;element `c-gensym3&rsquo; not processed at {<a href="http://namesservice.thomas_bayer.com/}getNameInfo&quot;">http://namesservice.thomas_bayer.com/}getNameInfo&quot;</a>. Now go back and look at the request, you&rsquo;ll see a <code>c-gensym3</code> element, where did that come from? Well, SOAP::Lite will generate elements for anonymous elements but we can fix this. <script src="https://gist.github.com/1300304.js">  </script><br /><br />The only difference between this and the previous code is that we aren&rsquo;t putting a <code>&lt;/code&gt; in front of <code>SOAP::Data</code>. I wrote it the first way because I had seen examples of that all over the place, and could not find a solution to getting rid of the gensyms until I asked <a href="http://stackoverflow.com/q/6986679/206466">this question on stackoverflow</a>.<br /><br />&nbsp;Unfortunately this is the most complex example that our server API has implemented. As an exercise to the reader I suggest Implementing a request for the method <code>getNamesInCountry</code>, which is no more complex but available.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-1--soaplite-%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-1--soaplite-%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-1--soaplite-%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fadventures-with-soap-using-perl-part-1--soaplite-%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

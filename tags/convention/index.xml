@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Convention on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/convention/index.xml</link>
+    <description>Recent content in Convention on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/convention/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>my git remote</title>
+      <link>http://blog.xenoterracide.com/post/my-git-remote/</link>
+      <pubDate>Wed, 24 Mar 2010 03:12:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/my-git-remote/</guid>
+      <description>&lt;p&gt;So occasionally I like to fork a project on &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt; well the proper way to do it is to use GitHub&amp;rsquo;s fork button which then clone&amp;rsquo;s the repo into your account. this is great! I can than clone that locally develop it an push to it. Usually I do this push with &lt;code&gt;git push origin&lt;/code&gt;. I can then ask the owner of the original repo that I forked from to &amp;lsquo;pull&amp;rsquo; my changes in. Wait did I just say original? why am I calling my repo on github origin? it&amp;rsquo;s probably not the origin repo&amp;hellip; it&amp;rsquo;s not the primary project repo&amp;hellip; so I decided I needed a new convention. I now do &lt;code&gt;git remote add my uri://&amp;hellip;&lt;/code&gt; for my repo&amp;rsquo;s on github and &lt;code&gt;git remote add origin uri://&lt;/code&gt; for the projects authoritative repo. This also helps when I need to update my repo from the origin and then push them to my public forks.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Warranty on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/warranty/index.xml</link>
+    <description>Recent content in Warranty on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/warranty/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Warranties, what do they have to do with anything?</title>
+      <link>http://blog.xenoterracide.com/post/warranties-what-do-they-have-to-do-with-anything/</link>
+      <pubDate>Fri, 21 May 2010 02:11:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/warranties-what-do-they-have-to-do-with-anything/</guid>
+      <description>&lt;p&gt;so the whole &amp;lsquo;open source&amp;rsquo; has no warranty thing keeps coming up as a defensible reason that I&amp;rsquo;m wrong.&lt;br /&gt;&lt;br /&gt;Microsoft offers a 90 day limited warranty that the software will work to some degree or another as advertised or some such. If you really want to consider what they&amp;rsquo;re saying&amp;hellip; it should work if it doesn&amp;rsquo;t we can send you another disk or you can return for refund. which really is what you could have done at the store anyways. I suppose it also means it won&amp;rsquo;t fry your hardware, does anyone know any stable open source software that does that? I suppose a few things could if tweaked right..&lt;br /&gt;&lt;br /&gt;Open Source generally doesn&amp;rsquo;t distribute a physical medium, or fry peoples boxen, so what would we even use a warranty for? oh right&amp;hellip; a CYA. We really don&amp;rsquo;t want to be sued because someone downloaded our software and it didn&amp;rsquo;t work or broke something of theirs.&lt;br /&gt;&lt;br /&gt;Generally your software warranty doesn&amp;rsquo;t really cover support, and if it does it&amp;rsquo;s for a very limited time, and very limited support. Warranties are more for physical medium. For example my Dell came with a 1 year warranty, but because I ordered it with Ubuntu they would provide hardware support only.&lt;br /&gt;&lt;br /&gt;The point is that if you&amp;rsquo;re claiming we shouldn&amp;rsquo;t support our software because it is without warranty&amp;hellip; the warranty as far as I can  tell doesn&amp;rsquo;t have much to do with the software and everything to do with the medium.&lt;br /&gt;&lt;br /&gt;Really, the CYA is a good thing. I don&amp;rsquo;t disagree with it&amp;hellip; however, it shouldn&amp;rsquo;t be used as an excuse to do nothing. It just means you can&amp;rsquo;t be legally harmed if you do nothing.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

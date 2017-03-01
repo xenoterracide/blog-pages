@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="USE=&#34;experimental-git&#34; sys-apps/portage" />
+<meta property="og:description" content="drobbins recent tip made me think, that maybe I should point out that his solution to the problem is an annoying work around. I had this problem for a while, it was caused by my having autocrlf = input in my .gitconfig settings. Several people have told me that they have this problem without changing their crlf settings for git. After a while I decided that Funtoo/Gentoo&rsquo;s git handling patches were incomplete at best and unfriendly at worst." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/" />
+
+
+
+<meta property="article:published_time" content="2009-02-19T23:14:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-02-19T23:14:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="USE=&#34;experimental-git&#34; sys-apps/portage"/>
+<meta name="twitter:title" content="USE=&#34;experimental-git&#34; sys-apps/portage"/>
+<meta name="twitter:description" content="drobbins recent tip made me think, that maybe I should point out that his solution to the problem is an annoying work around. I had this problem for a while, it was caused by my having autocrlf = input in my .gitconfig settings. Several people have told me that they have this problem without changing their crlf settings for git. After a while I decided that Funtoo/Gentoo&rsquo;s git handling patches were incomplete at best and unfriendly at worst."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "USE=&#34;experimental-git&#34; sys-apps/portage",
+  "url": "http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/",
+  "wordCount": "489",
+  
+  
+  "datePublished": "2009-02-19T23:14:00&#43;00:00",
+  
+  
+  "dateModified": "2009-02-19T23:14:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "Regen2,Funtoo,Portage"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/">
+
+    <title>USE=&ldquo;experimental-git&rdquo; sys-apps/portage | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/useexperimental-git-sys-appsportage/">USE=&ldquo;experimental-git&rdquo; sys-apps/portage</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-02-19T23:14:00Z">Thu Feb 19, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>, <a href="/tags/portage" rel="tag">Portage</a>
+
+</p>
+  </header>
+  <p>drobbins recent <a href="http://blog.funtoo.org/2009/02/moving-stuff-around-and-tip.html">tip</a> made me think, that maybe I should point out that his solution to the problem is an annoying work around. I had this problem for a while, it was caused by my having autocrlf = input in my .gitconfig settings. Several people have told me that they have this problem without changing their crlf settings for git. After a while I decided that Funtoo/Gentoo&rsquo;s git handling patches were incomplete at best and unfriendly at worst. So I wrote a patch that brings complete git handling to portage.<br /><br />Why is it experimental? well it hasn&rsquo;t been officially accepted into portage, and as far as I know I&rsquo;m the only one using it. One of the reason&rsquo;s it&rsquo;s not officially accepted is I haven&rsquo;t documented it. <br /><br />WARNING: enabling it will cause auto git detection to fail, so if you don&rsquo;t finish setting it up portage will default to rsync.<br /><br />So first you need to be using my regen2 tree, or get the ebuild and the patch from my tree, and enable the experimental-git flag for sys-apps/portage.<br /><br />Now, like all the other protocols portage supports you need to set the SYNC variable in /etc/make.conf.<br /><br /><code>SYNC=&ldquo;git://github.com/regen2/portage.git&rdquo;</code><br /><br />the first 6 characters need to be git:// for git to work.<br /><br />if you don&rsquo;t already have a git repository then sync will clone the repository at this url, in fact you may need to delete your portage and do a fresh clone for things to work in certain situations. I never discerned the reason for this.<br /><br />now you need to set your method the most reliable, yet slowest is checkout.<br /><br /><code>PORTAGE_GIT_METHOD=&ldquo;checkout&rdquo;</code><br /><br />I believe this method will never experience the problem that drobbins was referring to.<br /><br />for checkout you also need to set the remote branch you want to run off.<br /><br /><code>PORTAGE_GIT_REMOTE=&ldquo;origin/regen2.org&rdquo;</code> changing this variable and resyncing will allow you to change branches. checkout is even immune to upstreams forced updates, which is why I prefer to use it myself as sometimes I force updates on my development branch.<br /><br /><code>PORTAGE_GIT_LOCAL=&ldquo;regen2.org&rdquo;</code> is also a valid variable, however checkout doesn&rsquo;t use it. It&rsquo;s used by the methods rebase, which will run the git rebase command, this is recommended for people who don&rsquo;t run their own remote repo yet have there own custom git patches.<br /><br />The final method available is merge, it works similar to the current pull behavior of portage, except it will actually merge from whatever remote you have specified into whatever local you have specified.<br /><br />all methods use git remote update to avoid problems figuring out where to get updates from. I had problems with git knowing what to do with pull, when my origin was my personal repo on github and where I really needed to be updating from was funtoo not origin.<br /><br />WARNING: git-experimental will probably be where I merge patches such as the upcoming manifest patch.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fuseexperimental-git-sys-appsportage%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fuseexperimental-git-sys-appsportage%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fuseexperimental-git-sys-appsportage%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fuseexperimental-git-sys-appsportage%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

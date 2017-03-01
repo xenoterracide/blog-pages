@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="My new Love/Hate Relationship with Dist::Zilla" />
+<meta property="og:description" content="Dist::Zilla is a great release tool, code generator, and it just plain takes the boring part of doing a release away from you.That having been said, it does, imo, horrible things to your source repository. &ldquo;But, Caleb, it cleans up your source repository you can remove a lot of excess stuff you don&rsquo;t really need to be storing there&rdquo;. Well&hellip; I disagree, to the point that I&rsquo;ve used every explicative in the book to express my displeasure." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/my-new-lovehate-relationship-with-distzilla/" />
+
+
+
+<meta property="article:published_time" content="2010-04-27T08:30:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-04-27T08:30:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="My new Love/Hate Relationship with Dist::Zilla"/>
+<meta name="twitter:title" content="My new Love/Hate Relationship with Dist::Zilla"/>
+<meta name="twitter:description" content="Dist::Zilla is a great release tool, code generator, and it just plain takes the boring part of doing a release away from you.That having been said, it does, imo, horrible things to your source repository. &ldquo;But, Caleb, it cleans up your source repository you can remove a lot of excess stuff you don&rsquo;t really need to be storing there&rdquo;. Well&hellip; I disagree, to the point that I&rsquo;ve used every explicative in the book to express my displeasure."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "My new Love/Hate Relationship with Dist::Zilla",
+  "url": "http://blog.xenoterracide.com/post/my-new-lovehate-relationship-with-distzilla/",
+  "wordCount": "688",
+  
+  
+  "datePublished": "2010-04-27T08:30:00&#43;00:00",
+  
+  
+  "dateModified": "2010-04-27T08:30:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,perl,review,Dist::Zilla"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/my-new-lovehate-relationship-with-distzilla/">
+
+    <title>My new Love/Hate Relationship with Dist::Zilla | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/my-new-lovehate-relationship-with-distzilla/">My new Love/Hate Relationship with Dist::Zilla</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-04-27T08:30:00Z">Tue Apr 27, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/review" rel="tag">review</a>, <a href="/tags/distzilla" rel="tag">Dist::Zilla</a>
+
+</p>
+  </header>
+  <p><a href="http://search.cpan.org/dist/Dist-Zilla/">Dist::Zilla</a> is a great release tool, code generator, and it just plain takes the boring part of doing a release away from you.That having been said, it does, imo, horrible things to your source repository. &ldquo;But, Caleb, it cleans up your source repository you can remove a lot of excess stuff you don&rsquo;t really need to be storing there&rdquo;. Well&hellip; I disagree, to the point that I&rsquo;ve used every explicative in the book to express my displeasure. Let me explain why I disagree.<br /><br />First let me explain my use cases. I have only one package on CPAN, <a href="http://search.cpan.org/dist/Template-ShowStartStop/lib/Template/ShowStartStop.pm">Template::ShowStartStop</a> and it&rsquo;s relatively simple to the point that Dist::Zilla is almost overkill (but I still find it nice). I also maintain a sizeable portion of CPAN on Arch Linux&rsquo;s <a href=" http://aur.archlinux.org/packages.php?SeB=m&L=2&K=xenoterracide">AUR</a>. In addition to standard CPAN Packaging for my own package I created a <a href="http://aur.archlinux.org/packages.php?ID=35120">-git package</a> which allows me to install directly from my source repository on <a href="http://github.com/xenoterracide/Template-ShowStartStop">Github</a>. That worked wonderfully well until I started using Dist::Zilla (note: I haven&rsquo;t gotten a poorly working (read hack that&rsquo;s buggy) version now).<br /><br />So Dist::Zilla is great for CPAN, no problem for normal downstream packages, but makes things more painful for Version Control Users. &ldquo;But Caleb, it does nice things for me for version control&rdquo;. Yes it does, but I think it also has some consequences that people don&rsquo;t realize. If you know how Dist::Zilla works pretend that you don&rsquo;t.<br /><br />Look at my <a href="http://github.com/xenoterracide/Template-ShowStartStop">repo</a> What License is my code licensed under? usually this is in the COPYING file. There&rsquo;s no COPYING file there. How do I install it? No README either, oh and the module isn&rsquo;t complete as is things like version are stripped so Dist::Zilla can generate them for me. This list goes on and on all basically leading back to my issue. Why does Dist::Zilla have to take these things out of my source repository?<br /><br />The answer was&hellip; you wouldn&rsquo;t store .o files in your repository would you? why would you store these generated files&hellip; oh I dunno&hellip; because someone shouldn&rsquo;t have to install Dist::Zilla just to use my latest git? and they aren&rsquo;t like .o files because those are binarily specific to a lot of things and won&rsquo;t be useful on most other machines, unlike these files.<br /><br />Let&rsquo;s say Dist::Zilla has a bug in what they generate for code. They fix it, I update, all is good for me. Someone else who hasn&rsquo;t updated Dist::Zilla downloads the code and builds and hits the bug&hellip; they complain to me. I explain it to them, they update Dist::Zilla, they&rsquo;re happy, I&rsquo;m happy. But we could have avoided this, if I stored all the output in my repo they&rsquo;d never have to worry about Dist::Zilla.<br /><br />So I&rsquo;ve been told this will never be fixed because they don&rsquo;t want to clobber the existing files, plus the whole&hellip; these are like .o files, thing. Ok, clobber == bad. So how could we fix it so I&rsquo;m happy? and everyones happy. We should a directory <code>src</code> shall be the source of all non generated code. Much like when working with compiled code you have a <code>src</code> directory for source files and a directory for output. the lib that&rsquo;s still here will be the final generated lib. All the top level files will also be generated. Only the stuff in <code>src</code> is what should be worked on. And the generated README will give all these wonderful instructions that will now be presented to users visiting the github repo. And when I&rsquo;m writing a -git package I won&rsquo;t have to include any dzil instructions because I don&rsquo;t need to generate this code all the time.<br /><br />and you know what? if people don&rsquo;t want to store generated files in there vcs they can always use something like .gitignore. So everybody should be happy.<br /><br />For backcompat just make it a configuration in dist.ini. We can have a [src] dir which could be . for those who want it the way it works now. and an [output] dir.<br /><br />Will Dist::Zilla be worth this pain? I&rsquo;m not sure.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-new-lovehate-relationship-with-distzilla%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-new-lovehate-relationship-with-distzilla%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-new-lovehate-relationship-with-distzilla%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-new-lovehate-relationship-with-distzilla%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

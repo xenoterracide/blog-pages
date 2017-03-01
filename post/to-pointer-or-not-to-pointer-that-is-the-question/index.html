@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="To pointer, or not to pointer: That is the question" />
+<meta property="og:description" content="For a very long time now I&rsquo;ve been looking for good explanations of pointers, and how the varying kinds differ.I&rsquo;ve finally found a book that does a good job of explaining what they are and how they differ. The book is by Bjarne Stroustrup (the creator of C&#43;&#43;) it&rsquo;s called Programming: Principles and Practice Using C&#43;&#43;. The book is supposed to teach you how to program (become a good programmer) using C&#43;&#43; not teach the C&#43;&#43; language." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/to-pointer-or-not-to-pointer-that-is-the-question/" />
+
+
+
+<meta property="article:published_time" content="2009-06-27T17:53:00&#43;00:00"/>
+<meta property="article:modified_time" content="2009-06-27T17:53:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="To pointer, or not to pointer: That is the question"/>
+<meta name="twitter:title" content="To pointer, or not to pointer: That is the question"/>
+<meta name="twitter:description" content="For a very long time now I&rsquo;ve been looking for good explanations of pointers, and how the varying kinds differ.I&rsquo;ve finally found a book that does a good job of explaining what they are and how they differ. The book is by Bjarne Stroustrup (the creator of C&#43;&#43;) it&rsquo;s called Programming: Principles and Practice Using C&#43;&#43;. The book is supposed to teach you how to program (become a good programmer) using C&#43;&#43; not teach the C&#43;&#43; language."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "To pointer, or not to pointer: That is the question",
+  "url": "http://blog.xenoterracide.com/post/to-pointer-or-not-to-pointer-that-is-the-question/",
+  "wordCount": "391",
+  
+  
+  "datePublished": "2009-06-27T17:53:00&#43;00:00",
+  
+  
+  "dateModified": "2009-06-27T17:53:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "C&#43;&#43;,programming,C,pointers"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/to-pointer-or-not-to-pointer-that-is-the-question/">
+
+    <title>To pointer, or not to pointer: That is the question | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/to-pointer-or-not-to-pointer-that-is-the-question/">To pointer, or not to pointer: That is the question</a></h2>
+    <p class="blog-post-meta"><time datetime="2009-06-27T17:53:00Z">Sat Jun 27, 2009</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;" rel="tag">C&#43;&#43;</a>, <a href="/tags/programming" rel="tag">programming</a>, <a href="/tags/c" rel="tag">C</a>, <a href="/tags/pointers" rel="tag">pointers</a>
+
+</p>
+  </header>
+  <p>For a very long time now I&rsquo;ve been looking for good explanations of pointers, and how the varying kinds differ.I&rsquo;ve finally found a book that does a good job of explaining what they are and how they differ. The book is by Bjarne Stroustrup (the creator of C++) it&rsquo;s called <a target="_blank"  href="http://www.amazon.com/Programming-Principles-Practice-Using-C/dp/0321543726?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Programming: Principles and Practice Using C++</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0321543726" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" />. The book is supposed to teach you how to program (become a good programmer) using C++ not teach the C++ language. The question that Stroustrup poses is <cite>How do we choose between using a reference argument and using a pointer argument?</cite> his answer to the question is quite in depth, however I&rsquo;ll reiterate his summary here in the hopes that it&rsquo;s useful for someone. <blockquote>So, the real answer is: &ldquo;The choice depends on the nature of the the function&rdquo;:<br /><ul><li>For tiny objects prefer pass-by-value.</li><li>For functions where &ldquo;no object&rdquo; (represented by a 0) is a valid argument use a pointer parameter (and remember to test for 0).</li><li>Otherwise, use a reference parameter.</li></ul></blockquote>Ok, that alone seems a little confusing. I&rsquo;m just going to use function declarations to denote the differences in code.<br /><br />According to him, pass by value is the least error prone, but it copies memory and is therefore more expensive. To do this you&rsquo;d declare a function like <code>int func_name(int x);</code>.<br /><br />&ldquo;No object&rdquo; in my quote is another term for &ldquo;Null pointer&rdquo; which he defined previous to this but wasn&rsquo;t in my quote. If no argument to the function is valid you&rsquo;d use that. It&rsquo;s declared like <code>int func_name(int* x);</code><br /><br />The last option is to use a reference pointer. these are declared as <code>int func_name(int&amp; x)</code>.<br /><br />I still have some trouble with the what/why/when to use pointers, but I&rsquo;ll probably just go back through this a few times. Stroustrup&rsquo;s explanation is still the best I&rsquo;ve seen. I&rsquo;d suggest his book to any novice programmer. I&rsquo;m not sure if it&rsquo;s the best for someone who&rsquo;s never seen any code as it goes quite fast. It doesn&rsquo;t spend hardly any time at all on language constructs, which most books do. I don&rsquo;t think so fast that you couldn&rsquo;t use it as a &lsquo;first programming book&rsquo; but it might be good to have a book that covers the constructs (like for loop) in depth.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fto-pointer-or-not-to-pointer-that-is-the-question%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fto-pointer-or-not-to-pointer-that-is-the-question%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fto-pointer-or-not-to-pointer-that-is-the-question%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fto-pointer-or-not-to-pointer-that-is-the-question%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

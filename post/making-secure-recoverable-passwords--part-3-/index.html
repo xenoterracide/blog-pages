@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Making Secure Recoverable Passwords ( part 3 )" />
+<meta property="og:description" content="If you haven&rsquo;t read Part 1 please do so.
+Although the criticism of Part 2 should be taken with a grain of XKCD Salt, and even the primary plaintiff admitted that it would take him 2 months to crack the final salted sha512. Usually your attacker shouldn&rsquo;t have your shadow file, and having stored them as anything less is just plain not secure. I will acknowledge it has some merit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords--part-3-/" />
+
+
+
+<meta property="article:published_time" content="2010-11-03T08:12:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-11-03T08:12:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Making Secure Recoverable Passwords ( part 3 )"/>
+<meta name="twitter:title" content="Making Secure Recoverable Passwords ( part 3 )"/>
+<meta name="twitter:description" content="If you haven&rsquo;t read Part 1 please do so.
+Although the criticism of Part 2 should be taken with a grain of XKCD Salt, and even the primary plaintiff admitted that it would take him 2 months to crack the final salted sha512. Usually your attacker shouldn&rsquo;t have your shadow file, and having stored them as anything less is just plain not secure. I will acknowledge it has some merit."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Making Secure Recoverable Passwords ( part 3 )",
+  "url": "http://blog.xenoterracide.com/post/making-secure-recoverable-passwords--part-3-/",
+  "wordCount": "268",
+  
+  
+  "datePublished": "2010-11-03T08:12:00&#43;00:00",
+  
+  
+  "dateModified": "2010-11-03T08:12:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "security,passwords,cryptography"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords--part-3-/">
+
+    <title>Making Secure Recoverable Passwords ( part 3 ) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/making-secure-recoverable-passwords--part-3-/">Making Secure Recoverable Passwords ( part 3 )</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-11-03T08:12:00Z">Wed Nov 3, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/security" rel="tag">security</a>, <a href="/tags/passwords" rel="tag">passwords</a>, <a href="/tags/cryptography" rel="tag">cryptography</a>
+
+</p>
+  </header>
+  <p>If you haven&rsquo;t read <a href="http://www.xenoterracide.com/2008/04/making-secure-recoverable-passwords.html">Part 1</a> please do so.<br /><br />Although the criticism of <a href="http://www.xenoterracide.com/2010/07/making-secure-recoverable-passwords.html">Part 2</a> should be taken with a grain of <a href="http://xkcd.com/538/">XKCD Salt</a>, and even the primary plaintiff admitted that it would take him 2 months to crack the final salted sha512. Usually your attacker shouldn&rsquo;t have your shadow file, and having stored them as anything less is just plain not secure. I will acknowledge it has some merit.<br /><br />Doing a base64 transformation on hex only digits is a bad, idea, and does not have nearly enough possible combinations. Nothing is going to be more secure than random, but random isn&rsquo;t really recoverable, if you lose it. That&rsquo;s why I do some kind of transformation.<br /><br />I believe that somewhere someone suggested that it would be better to convert from the binary digest into base64 as it would be more random than from hex. I believe this is accurate, but the method suggested was in Perl, which is kind of messy, and more importantly hard to remember. So <a href="http://unix.stackexchange.com/questions/3675/how-can-i-get-a-base64-encoded-shax-on-the-cli">I asked, on unix.stackexchange.com, how I could do this on the command line</a>. Here&rsquo;s the answer I decided to accept:<br /><br /><code>echo -n <code>date</code> | openssl dgst -binary -sha512 | base64</code><br /><br />Remember you should slightly modify the result in a way that you can remember in your head to make it random, and probably use something in place of the &ldquo;date&rdquo; command, since it&rsquo;s not reproduce-able.<br /><br />Again: this is not meant to be as secure as random passwords, just secure enough compared to <i>non random</i> alternatives.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords--part-3-%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords--part-3-%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords--part-3-%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmaking-secure-recoverable-passwords--part-3-%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

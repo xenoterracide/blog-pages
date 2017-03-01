@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Downtime on Caleb Cushing&#39;s blog</title>
+    <link>http://blog.xenoterracide.com/tags/downtime/index.xml</link>
+    <description>Recent content in Downtime on Caleb Cushing&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://blog.xenoterracide.com/tags/downtime/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tree hasn&#39;t been updated - why</title>
+      <link>http://blog.xenoterracide.com/post/tree-hasnt-been-updated---why/</link>
+      <pubDate>Thu, 12 Mar 2009 12:54:00 +0000</pubDate>
+      
+      <guid>http://blog.xenoterracide.com/post/tree-hasnt-been-updated---why/</guid>
+      <description>&lt;p&gt;So 2 days ago, when I went to sync to gentoo I didn&amp;rsquo;t get any updates. I&amp;rsquo;m not really sure why as the process seemed to go alright. It could have something to do with the next bit.&lt;br /&gt;&lt;br /&gt;My System appeared to have been compromised. Syslog-ng was disabled and all logs post dec 30 2008 were removed. So i&amp;rsquo;ve spent the better part of yesterday/today reinstalling my system. Tree should be synced and merged tonight.&lt;div class=&#34;blogger-post-footer&#34;&gt;&lt;br /&gt;&amp;ndash;&lt;br /&gt;
+This &lt;span xmlns:dc=&#34;http://purl.org/dc/elements/1.1/&#34; href=&#34;http://purl.org/dc/dcmitype/Text&#34; rel=&#34;dc:type&#34;&gt;work&lt;/span&gt; by &lt;a xmlns:cc=&#34;http://creativecommons.org/ns#&#34; href=&#34;http://www.xenoterracide.com&#34; property=&#34;cc:attributionName&#34; rel=&#34;cc:attributionURL&#34;&gt;Caleb Cushing&lt;/a&gt; is licensed under a &lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

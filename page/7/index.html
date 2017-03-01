@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Caleb Cushing&#39;s blog" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://blog.xenoterracide.com/" />
+
+
+
+<meta property="og:updated_time" content="2010-06-19T02:05:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  
+  "headline": "Caleb Cushing&#39;s blog",
+  "url" : "http://blog.xenoterracide.com/",
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  },
+  
+  
+  "dateModified": "2010-06-19T02:05:00&#43;00:00",
+  
+  
+  
+  "keywords": "0.9.1.0,accounts,adobe,aggregator,analogy,anti-competetive,arch,arch-linux,aur,authentication,baker,bash,blogger,books,breadboard,bugs,business,businesscybersource,c,c&#43;&#43;,catalyst-framework,cell-provider,cfug,cgi,code-example,commands,community,composite,concepts,constraints,continous-integration,convention,cpan,cpanplus,cpanplusdistarch,cryptography,curriculum,data-transfer-object,database,dependency-injection,deprecation,design-patterns,develrepl,dhcp,distzilla,distzillatester,dns,documentation,domain-driven-design,downtime,emerge-ng,entrepreneurship,example,exceptions,expect,exploit,features,filechmod,flash,forums,functions,funtoo,funtoo-newsletter,gentoo,git,github,global,google,gpl,guide,hall-of-shame,haml,hardware,hateoas,help,howto,http,idea,install,intel,interfaces,inversion-of-control,iptables,ironman,java,kde,kde4,kdm,konsole,language-design,linux,linuxtips,maintainance-required,maven,modern-perl,moose,movie,name,networking,object-oriented-design,open-source,openid,openwrt,opinion,osi,overlay,packages,paludis,pam,passwords,patches,perl,perl-5.12,perl-syntax-wishlist,pkgcore,plesk,pms,pod,podspell,pointers,policy,polymorphism,portage,postgresql,presentation,procedures,programming,provider-pattern,psql,python,qa,question,rant,regen2,regexp,release,remote-facade,repository,rest,review,router,rt,safaribooksonline,samba,school,screenname,security,selinux,semantic,service-locator-pattern,sh,shell,soap,soapdatabuilder,soaplite,software-license,solid,spring,spring-boot,spring-data,sql,sql-server,stackexchange,support,t-mobile,tabs,tabs-vs-spaces,tdd,teaching-perl,template-toolkit,templatepluginhaml,templates,templateshowstartstop,test,testversion,texttemplate,tips,translation,tree,tt,tutorial,typepad,uml,unix,unpopular-opinion,user-interface,users,versions,video-games,vim,warranty,web-services,wercker,who-am-i,windows,wishlist,xenoterracide,xmlcompilesoap,yapc,zsh,"
+  
+}
+</script>
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/">
+
+    <title>Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+    <!-- RSS 2.0 feed -->
+    <link href="http://blog.xenoterracide.com/index.xml" rel="alternate" type="application/rss+xml" title="Caleb Cushing&#39;s blog" />
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link active" href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/please-dont-use-distzillapluginbundleusername/">please don&rsquo;t use Dist::Zilla::PluginBundle::USERNAME</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-19T02:05:00Z">Sat Jun 19, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/rant" rel="tag">rant</a>, <a href="/tags/cpan" rel="tag">cpan</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/distzilla" rel="tag">Dist::Zilla</a>, <a href="/tags/unpopular-opinion" rel="tag">unpopular opinion</a>
+
+</p>
+  </header>
+  or create them. Here&rsquo;s the problem&hellip;. (short version is Don&rsquo;t put PodSpellingTests in them)
+normally you&rsquo;d have
+[pluginA]
+[pluginB]
+[pluginC]
+[pluginXTests]
+[pluginYTests]
+[pluginZTests]
+
+and one of them doesn&rsquo;t work on your system (for whatever reason), well you can just do this.
+[pluginA]
+[pluginB]
+[pluginC]
+;[pluginXTests]
+[pluginYTests]
+[pluginZTests]
+
+the ; is a comment in ini, now dzil won&rsquo;t use that plugin. But people will say well you don&rsquo;t want to do that of course I want that plugin enabled.
+  <a href='http://blog.xenoterracide.com/post/please-dont-use-distzillapluginbundleusername/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/rt-git-workflow/">RT git workflow</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-17T20:16:00Z">Thu Jun 17, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/bugs" rel="tag">bugs</a>, <a href="/tags/rt" rel="tag">RT</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/git" rel="tag">git</a>, <a href="/tags/patches" rel="tag">patches</a>
+
+</p>
+  </header>
+  git was designed to be very flexible in its workflow. One of the things it was designed to do was handle email patches, since there are a lot of patches sent to and from the mailing list. This is a good thing, even if you don&rsquo;t have a mailing list, or you have your own bug tracker (in addition to RT), you can use RT to receive email patches from git.
+  <a href='http://blog.xenoterracide.com/post/rt-git-workflow/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/">Test Perl 5.12 on Arch Linux</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-16T04:23:00Z">Wed Jun 16, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/arch-linux" rel="tag">arch linux</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/perl-5.12" rel="tag">perl 5.12</a>
+
+</p>
+  </header>
+  Perl 5.12 has been languishing in the testing repo for a while, there are now several packages that have been rebuilt in testing and community testing. All of the rebuilds I reported have been fixed. If you use arch please make sure you&rsquo;re using their rebuilt packages (and not one you rebuilt because it took like 2 months to do this) if you have any problems file a bug. If you aren&rsquo;t sure which package is really the problem feel free to drop me a line and I&rsquo;ll see if I can help you tack it down.
+  <a href='http://blog.xenoterracide.com/post/test-perl-5.12-on-arch-linux/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/github-renders-pod/">github renders POD</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-14T02:33:00Z">Mon Jun 14, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/pod" rel="tag">pod</a>
+
+</p>
+  </header>
+  Not much to say here, but if you didn&rsquo;t know it if you put a file.pod in your github repo it will be parsed and formatted, here&rsquo;s an example:=pod
+=head1 HELLO
+world
+=cut Unfortunately you have to actually visit the GIST to see it rendered.&ndash;
+This work by Caleb Cushing is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+  <a href='http://blog.xenoterracide.com/post/github-renders-pod/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/">Semver.org probably not compat with all downstream</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-13T17:57:00Z">Sun Jun 13, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/semantic" rel="tag">semantic</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/versions" rel="tag">versions</a>
+
+</p>
+  </header>
+  For those that don&rsquo;t know I currently create packages for AUR, and I used to work on Funtoo, as well as a fork of it Regen2 (which died by my hand). So I&rsquo;ve got some experience working with BSD-ish style distro&rsquo;s. I can&rsquo;t comment on the Debians or Red Hats of the world, other than REPO HELL DRIVES ME NUTS. Now to the topic. Semver seems sane except for 1 thing that it doesn&rsquo;t mention and an example that encourages it.
+  <a href='http://blog.xenoterracide.com/post/semver.org-probably-not-compat-with-all-downstream/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/selling-open-source-software-specifically-games/">Selling Open Source Software (specifically games)</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-13T01:13:00Z">Sun Jun 13, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/open-source" rel="tag">Open Source</a>, <a href="/tags/entrepreneurship" rel="tag">entrepreneurship</a>, <a href="/tags/unpopular-opinion" rel="tag">unpopular opinion</a>
+
+</p>
+  </header>
+  This is a pseudo reply to Jason Calacanis for what he said about using an Open Source game engine to build a game in This Week in Startups #54, Ask Jason segment. watch on youtube. For more shows ThisWeekIn.com.
+I believe Jason is implying that you can&rsquo;t make money with open source software(that&rsquo;s not a support contract variant) directly, but it&rsquo;s a good resume builder. True there aren&rsquo;t any big billion dollar open source companies, and companies like Red Hat make money off support, but I don&rsquo;t believe he&rsquo;s correct.
+  <a href='http://blog.xenoterracide.com/post/selling-open-source-software-specifically-games/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/i-am-a-explicitive-or-formal-apology-to-rjbs/">I am a $explicitive, or Formal Apology to RJBS</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-11T16:23:00Z">Fri Jun 11, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>
+
+</p>
+  </header>
+  A lot of people think I&rsquo;m a $explicative (insert your favorite one there). I&rsquo;ve said some things that I shouldn&rsquo;t have because I was pissed at the Person(s) at the moment. I would like to formally apologize to RJBS for the negative things that I said, about him. He&rsquo;s been nothing but kind to me and is a great contributor to the perl community (and maybe others?). I greatly disrespected RJBS and I actually do regret it.
+  <a href='http://blog.xenoterracide.com/post/i-am-a-explicitive-or-formal-apology-to-rjbs/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/using-ref-to-fix-5-year-old-bug/">Using ref to fix 5 year old bug</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-04T12:00:00Z">Fri Jun 4, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/templateshowstartstop" rel="tag">Template::ShowStartStop</a>, <a href="/tags/tt" rel="tag">TT</a>, <a href="/tags/template-toolkit" rel="tag">Template Toolkit</a>
+
+</p>
+  </header>
+  So I haven&rsquo;t been hacking perl for 5 (or more) years but I forked Template::ShowStartStop from Template::Timer which is that old. since I forked it this test has bugged me since I didn&rsquo;t really understand the test, the section of code it referred to or the actual problem.
+This is an approximation of the error you&rsquo;d get.
+Couldn&rsquo;t render template &ldquo;undef error - Can&rsquo;t call method &ldquo;name&rdquo; on
+unblessed reference at /usr/lib/perl5/site_perl/5.
+  <a href='http://blog.xenoterracide.com/post/using-ref-to-fix-5-year-old-bug/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/testing-tt-templates/">Testing TT Template&rsquo;s</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-03T21:18:00Z">Thu Jun 3, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/tdd" rel="tag">TDD</a>, <a href="/tags/test" rel="tag">test</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/tt" rel="tag">TT</a>, <a href="/tags/template-toolkit" rel="tag">Template Toolkit</a>
+
+</p>
+  </header>
+  So the poorly made patch the other day converted my Test::More test to use Template::Test which removed quite a bit of code from the test itself. I hadn&rsquo;t seen Template::Test beforehand.
+Here&rsquo;s a very simple example of a test you could write to make sure a template is being output ok.#!perl
+use strict;
+use warnings;
+use Template::Test;
+my $tt = Template-&gt;new();
+my $vars = {
+var =&gt; &lsquo;world&rsquo;,
+};
+test_expect(*DATA, $tt, $vars);
+  <a href='http://blog.xenoterracide.com/post/testing-tt-templates/'>Read more →</a>
+</article> 
+
+
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/submittingpatches-is-better-than-patches-welcome/">Submitting Patches is better than &ldquo;Patches Welcome&rdquo;</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-05-28T18:47:00Z">Fri May 28, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/regen2" rel="tag">Regen2</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/policy" rel="tag">policy</a>, <a href="/tags/funtoo" rel="tag">Funtoo</a>
+
+</p>
+  </header>
+  So I received my first patch for Perl code a week ago. Amazingly I didn&rsquo;t have to tell the person patches were welcome, they must have assumed so because my project was licensed under an OSI approved license. Also amazingly I&rsquo;ve applied the patch even though it didn&rsquo;t meet my quality standards. I figure that&rsquo;s my fault though because no where did I document what those were.
+Back when I forked Regen2 from Funtoo one of the first things I did (and a reason for the fork) was create a policy for patch submission.
+  <a href='http://blog.xenoterracide.com/post/submittingpatches-is-better-than-patches-welcome/'>Read more →</a>
+</article> 
+
+
+
+
+<nav class="blog-pagination">
+  
+  <a class="btn btn-outline-primary" href="/page/6/" role="button">Previous page</a>
+  <a class="btn btn-outline-primary" href="/page/8/" role="button">Next page</a>
+  
+  
+  
+</nav>
+
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

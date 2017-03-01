@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="New Module: MooseX::RemoteHelper (RFC)" />
+<meta property="og:description" content="BackgroundI have spent much of the last year writing and refining Remote Facades. At this point I&rsquo;ve worked with SOAP, REST/JSON, and RPC url-form-encoded API&rsquo;s. One of the hardest parts I&rsquo;ve found is dealing with the serialization of a Data Transfer Object with a Perl interface into whatever the remote is expecting. When I started I didn&rsquo;t know of these patterns, or really anything about these patterns. I highly recommend reading Patterns of Enterprise Application Architecture) if you want to know more about these patterns or things like Active Record and MVC." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/new-module-moosexremotehelper-rfc/" />
+
+
+
+<meta property="article:published_time" content="2012-06-04T06:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2012-06-04T06:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="New Module: MooseX::RemoteHelper (RFC)"/>
+<meta name="twitter:title" content="New Module: MooseX::RemoteHelper (RFC)"/>
+<meta name="twitter:description" content="BackgroundI have spent much of the last year writing and refining Remote Facades. At this point I&rsquo;ve worked with SOAP, REST/JSON, and RPC url-form-encoded API&rsquo;s. One of the hardest parts I&rsquo;ve found is dealing with the serialization of a Data Transfer Object with a Perl interface into whatever the remote is expecting. When I started I didn&rsquo;t know of these patterns, or really anything about these patterns. I highly recommend reading Patterns of Enterprise Application Architecture) if you want to know more about these patterns or things like Active Record and MVC."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "New Module: MooseX::RemoteHelper (RFC)",
+  "url": "http://blog.xenoterracide.com/post/new-module-moosexremotehelper-rfc/",
+  "wordCount": "991",
+  
+  
+  "datePublished": "2012-06-04T06:00:00&#43;00:00",
+  
+  
+  "dateModified": "2012-06-04T06:00:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "SOAP::Lite,data transfer object,ironman,perl,design patterns,remote facade,XML::Compile::SOAP,composite"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/new-module-moosexremotehelper-rfc/">
+
+    <title>New Module: MooseX::RemoteHelper (RFC) | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/new-module-moosexremotehelper-rfc/">New Module: MooseX::RemoteHelper (RFC)</a></h2>
+    <p class="blog-post-meta"><time datetime="2012-06-04T06:00:00Z">Mon Jun 4, 2012</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/soaplite" rel="tag">SOAP::Lite</a>, <a href="/tags/data-transfer-object" rel="tag">data transfer object</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/design-patterns" rel="tag">design patterns</a>, <a href="/tags/remote-facade" rel="tag">remote facade</a>, <a href="/tags/xmlcompilesoap" rel="tag">XML::Compile::SOAP</a>, <a href="/tags/composite" rel="tag">composite</a>
+
+</p>
+  </header>
+  <p><h2>Background</h2><p>I have spent much of the last year writing and refining <a href="http://martinfowler.com/eaaCatalog/remoteFacade.html">Remote Facades</a>. At this point I&rsquo;ve worked with SOAP, REST/JSON, and RPC url-form-encoded API&rsquo;s. One of the hardest parts I&rsquo;ve found is dealing with the serialization of a <a href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">Data Transfer Object</a> with a Perl interface into whatever the remote is expecting. When I started I didn&rsquo;t know of these patterns, or really anything about these patterns. I highly recommend reading <a href="http://www.amazon.com/gp/product/0321127420/ref=as_li_ss_tl?ie=UTF8&tag=xenotsblog-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321127420">Patterns of Enterprise Application Architecture</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=as2&o=1&a=0321127420" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />) if you want to know more about these patterns or things like Active Record and MVC.</p><h3>problem</h3><p>The problems I&rsquo;ve encountered are many, including the fact most remotes are buggy or have a cludgy interface. Though there&rsquo;s nothing you can do about a remote api that you don&rsquo;t control, you can make your local API much cleaner and more native. Doing this however comes with a few challenges. One is that you have to map a local attribute name to a remote attribute name, because Perl uses underscores, and Java uses camel case, e.g <code>postal_code and postalCode</code>. The second problem is that many times the value of the attribute in its perl native form is not what the remote wants, e.g. perl boolean &ldquo;1&rdquo; remote &ldquo;Y&rdquo;, or a <a href="https://metacpan.org/module/DateTime">DateTime</a> object to W3C formatting. This second is not quite the same as mapping, because mapping is one to one, this translation could be turning an array into a comma separated string. The third problem, I didn&rsquo;t run into until after I &ldquo;solved&rdquo; the first , is how should I deal with nested complex objects (one&rsquo;s that can&rsquo;t be just converted to just a string). </p><p>My first naive remote facade was very procedural and simply assembled top to bottom, in part because it was based on <a href="https://metacpan/module/SOAP::Lite">SOAP::Lite</a>, and in part because I had yet to figure out a better way. This resulted in a giant unwieldy if/then chain. Obviously my translations were just inline too. </p><p>The next thing I tried was using triggers to construct a request hash to pass to <a href="https://metacpan/module/XML::Compile::SOAP">XML::Compile::SOAP</a>. This worked better as the hash constructing code was kept right next to the attribute, so if I needed to modify the local or remote attribute, I could just go look at the attribute and the trigger tied to it. </p><p>After that I tried to use a <a href="http://perldoc.perl.org/functions/map.html">map</a> to translate from the native attribute name to the remote attribute name. This may have been more successful had it worked more like the <a href="http://martinfowler.com/eaaCatalog/remoteFacade.html">Assembler in the Remote Facade</a>. But ult imately since we were developing a rapidly changing API it seemed to bog me down, this is because I was changing the attributes on both sides of the mapping and thus the mapping at the same time (so at least 3 places). Here I was just manually dealing with the translation from a W3C DateTime format to the object I needed. </p><h2>a solution</h2><p>When I got assigned to yet another API and found myself doing yet another mapping and translation I decided that I needed to solve the problem. Enter the first iteration of <a href="https://metacpan.org/module/MooseX::RemoteHelper">MooseX::RemoteHelper</a>. The first tie I used it with the form-url-encoded API so it was only needed for a single level of key, value pairs. .</p><script src="https://gist.github.com/2822416.js"> </script><noscript><pre><code><br />package MessagePart {<br />    use Moose 2;<br />    use MooseX::RemoteHelper;<br />    with &lsquo;MooseX::RemoteHelper::CompositeSerialization&rsquo;;<br /><br />    has array =&gt; (<br />        remote<em>name =&gt; &lsquo;SomeColonDelimitedArray&rsquo;,<br />        isa        =&gt; &lsquo;ArrayRef&rsquo;,<br />        is         =&gt; &lsquo;ro&rsquo;,<br />        serializer =&gt; sub {<br />            my ( $attr, $instance ) = @</em>;<br />            return join( &lsquo;:&lsquo;, @{ $attr-&gt;get_value( $instance ) } );<br />        },<br />    );<br /><br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /></code><br /></pre></noscript><p>Once I determined how to create MX::RemoteHelper it was simply a matter of using <a href="https://metacpan.org/module/Class::MOP::Class">Class::MOP::Class</a> API&rsquo;s to iterate all the attributes.  The source of <a href="https://github.com/xenoterracide/MooseX-RemoteHelper/blob/master/lib/MooseX/RemoteHelper/CompositeSerialization.pm">CompositeSerialization</a> will give you some idea of how I did this. </p><p>Then I went back to apply this to a previous module, because the technique appears to be cleaner. Unfortunately I ran into a problem, this other API was a complex data structure, and how best to provide nested hashrefs and arrayrefs. Though I was now armed with Patterns I didn&rsquo;t know of one that would solve the problem. Fortunately a quick flip through the <a href="http://www.amazon.com/gp/product/0201633612/ref=as_li_ss_tl?ie=UTF8&tag=xenotsblog-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0201633612">Gang of Four</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=as2&o=1&a=0201633612" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> brought me to the <a href="http://en.wikipedia.org/wiki/Composite_pattern">Composite Pattern</a>. I used this to write the recursive <a href="https://github.com/xenoterracide/MooseX-RemoteHelper/blob/master/lib/MooseX/RemoteHelper/CompositeSerialization.pm">CompositeSerialization</a> so that if I had a sufficiently complex nested structure I could simply create another object to deal with that. Here&rsquo;s a full example: <script src="https://gist.github.com/2822109.js"> </script><noscript><pre><code>use 5.014;<br />use warnings;<br />use Data::Dumper;<br /><br />package MessagePart {<br />    use Moose;<br />    use MooseX::RemoteHelper;<br />    with &lsquo;MooseX::RemoteHelper::CompositeSerialization&rsquo;;<br /><br />    has array =&gt; (<br />        remote<em>name =&gt; &lsquo;SomeColonDelimitedArray&rsquo;,<br />        isa      =&gt; &lsquo;ArrayRef&rsquo;,<br />        is        =&gt; &lsquo;ro&rsquo;,<br />        serializer =&gt; sub {<br />            my ( $attr, $instance ) = @</em>;<br />            return join( &lsquo;:&lsquo;, @{ $attr-&gt;get_value( $instance ) } );<br />        },<br />    );<br /><br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br />    <br />package Message {<br />    use Moose;<br />    use MooseX::RemoteHelper;<br /><br />    with &lsquo;MooseX::RemoteHelper::CompositeSerialization&rsquo;;<br /><br />    has bool =&gt; (<br />        remote<em>name =&gt; &lsquo;Boolean&rsquo;,<br />        isa      =&gt; &lsquo;Bool&rsquo;,<br />        is        =&gt; &lsquo;ro&rsquo;,<br />        serializer =&gt; sub {<br />            my ( $attr, $instance ) = @</em>;<br />            return $attr-&gt;get_value( $instance ) ? &lsquo;Y&rsquo; : &lsquo;N&rsquo;;<br />        },<br /><br />    );<br /><br />    has foo_bar =&gt; (<br />        remote_name =&gt; &lsquo;FooBar&rsquo;,<br />        isa      =&gt; &lsquo;Str&rsquo;,<br />        is        =&gt; &lsquo;ro&rsquo;,<br />    );<br /><br />    has part =&gt; (<br />        isa      =&gt; &lsquo;MessagePart&rsquo;,<br />        remote_name =&gt; &lsquo;MyMessagePart&rsquo;,<br />        is        =&gt; &lsquo;ro&rsquo;,<br />    );<br /><br />    <strong>PACKAGE</strong>-&gt;meta-&gt;make_immutable;<br />}<br /><br />my $message<br />= Message-&gt;new({<br />    bool    =&gt; 0,<br />    foo_bar =&gt; &lsquo;Baz&rsquo;,<br />    part    =&gt; MessagePart-&gt;new({ array =&gt; [ qw( 1 2 3 4 ) ] }),<br />});<br /><br />say Dumper $message-&gt;serialize<br /></code><br /></pre></noscript>Which should give you this data structure: <script src="https://gist.github.com/2822552.js"> </script><noscript><pre><code>{<br />  Boolean =&gt; &ldquo;N&rdquo;,<br />  FooBar =&gt; &ldquo;Baz&rdquo;,<br />  MyMessagePart =&gt; {<br />    SomeColonDelimitedArray =&gt; &ldquo;1:2:3:4&rdquo;<br />  }<br />}<br /></code><br /></pre></noscript></p><h2>Request For Comment</h2><p>I&rsquo;ve recently released a <a href="http://search.cpan.org/~xeno/MooseX-RemoteHelper-0.001010-TRIAL/lib/MooseX/RemoteHelper.pm">Trial version of MooseX::RemoteHelper</a> to CPAN. I&rsquo;m currently refactoring <a href="https://metacpan.org/module/Business::CyberSource">Business::CyberSource</a> to use it, and it appears to be solid. What I&rsquo;d like to know what people think of the module names, method names and any other comments they might have. I haven&rsquo;t been entirely sure that I&rsquo;ve been naming things correctly while writing this, or that the code couldn&rsquo;t be better in other ways. If there&rsquo;s functionality you wish it had but doesn&rsquo;t let me know. </p><div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fnew-module-moosexremotehelper-rfc%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fnew-module-moosexremotehelper-rfc%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fnew-module-moosexremotehelper-rfc%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fnew-module-moosexremotehelper-rfc%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

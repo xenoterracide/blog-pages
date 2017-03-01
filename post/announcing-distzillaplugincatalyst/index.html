@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="Announcing Dist::Zilla::Plugin::Catalyst" />
+<meta property="og:description" content="So I just recently finished reading Restful Web Servicesand decided I wanted to go back and play with Catalyst and REST some.
+The original way to create a Catalyst skeleton is to run catalyst.pl MyApp. This creates a lot of nice files to get you started. dzil new basically does the same thing for a generic cpan module. Honestly, without any plugins dzil new isn&rsquo;t that useful. However, once you add Git::Init , you remove several steps from the creation of a new module and repository." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/announcing-distzillaplugincatalyst/" />
+
+
+
+<meta property="article:published_time" content="2010-06-27T21:37:00&#43;00:00"/>
+<meta property="article:modified_time" content="2010-06-27T21:37:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Announcing Dist::Zilla::Plugin::Catalyst"/>
+<meta name="twitter:title" content="Announcing Dist::Zilla::Plugin::Catalyst"/>
+<meta name="twitter:description" content="So I just recently finished reading Restful Web Servicesand decided I wanted to go back and play with Catalyst and REST some.
+The original way to create a Catalyst skeleton is to run catalyst.pl MyApp. This creates a lot of nice files to get you started. dzil new basically does the same thing for a generic cpan module. Honestly, without any plugins dzil new isn&rsquo;t that useful. However, once you add Git::Init , you remove several steps from the creation of a new module and repository."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "Announcing Dist::Zilla::Plugin::Catalyst",
+  "url": "http://blog.xenoterracide.com/post/announcing-distzillaplugincatalyst/",
+  "wordCount": "437",
+  
+  
+  "datePublished": "2010-06-27T21:37:00&#43;00:00",
+  
+  
+  "dateModified": "2010-06-27T21:37:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "cpan,ironman,perl,Dist::Zilla,Catalyst Framework"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/announcing-distzillaplugincatalyst/">
+
+    <title>Announcing Dist::Zilla::Plugin::Catalyst | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/announcing-distzillaplugincatalyst/">Announcing Dist::Zilla::Plugin::Catalyst</a></h2>
+    <p class="blog-post-meta"><time datetime="2010-06-27T21:37:00Z">Sun Jun 27, 2010</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/cpan" rel="tag">cpan</a>, <a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/perl" rel="tag">perl</a>, <a href="/tags/distzilla" rel="tag">Dist::Zilla</a>, <a href="/tags/catalyst-framework" rel="tag">Catalyst Framework</a>
+
+</p>
+  </header>
+  <p>So I just recently finished reading <a target="_blank"  href="http://www.amazon.com/Restful-Web-Services-Leonard-Richardson/dp/0596529260?ie=UTF8&tag=xenotsblog-20&link_code=btl&camp=213689&creative=392969">Restful Web Services</a><img src="http://www.assoc-amazon.com/e/ir?t=xenotsblog-20&l=btl&camp=213689&creative=392969&o=1&a=0596529260" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important; padding: 0px !important" /> and decided I wanted to go back and play with Catalyst and REST some.<br /><br />The original way to create a Catalyst skeleton is to run <code>catalyst.pl MyApp</code>. This creates a lot of nice files to get you started. <code>dzil new</code> basically does the same thing for a generic cpan module. Honestly, without any plugins <code>dzil new</code> isn&rsquo;t that useful. However, once you add <a href="http://search.cpan.org/dist/Dist-Zilla-Plugin-Git/lib/Dist/Zilla/Plugin/Git/Init.pm">Git::Init</a> , you remove several steps from the creation of a new module and repository. Git::Init also makes your first commit of everything it added. I got to thinking why on earth would I want to do the following to get a cat module going and convert it to dzil.<br /><br /><code><pre>catalyst.pl MyApp &amp;&amp; cd MyApp<br />vi dist.ini # and add numerous lines<br />rm Makefile.PL README t/* # and maybe more since dzil is better at managing these<br />git init<br />git add .<br />git commit<br /></pre></code><br /><br />when I could just be doing this<br /><br /><code><pre>dzil new -p catalyst MyApp<br /></pre></code><br /><br />A lot simpler huh? to get you started you need a few things but then creating cat apps will be easy.<br /><br />first you can run <code><a href="http://rjbs.manxome.org/rubric/entry/1848">dzil setup</a></code> or if your version of dzil doesn&rsquo;t support that yet, you need to create the following <code>~/.dzil/config.ini</code> file by hand<script src="http://gist.github.com/455321.js"></script><noscript><code><pre>[%User]<br />name = Caleb Cushing<br />email = xenoterracide@gmail.com<br /><br />[%Rights]<br />license_class = Artistic_2_0<br />copyright_holder = Caleb Cushing<br /><br />[%PAUSE]<br />username = XENO<br />password = itsagoodone</pre></code></noscript> obviously fill in your own credentials and license preferences. This file is pretty much needed for any <code>dzil new</code> operations.<br /><br />Next you need to create a minting profile (not necessary for barebones doesn&rsquo;t do much for you). run <code>mkdir -p ~/.dzil/profiles/catalyst/</code> (note: catalyst is arbitrary, it can be anything). now create a <code>profile.ini</code> in that directory.<script src="http://gist.github.com/455327.js"></script><noscript><code><pre>[DistINI]<br />[Catalyst::New / :DefaultModuleMaker]<br />[Git::Init]</pre></code></noscript> The only mandatory line in this file for this to work is the [Catalyst &hellip;] one, I think you&rsquo;ll want the other two however. You also want to set <code>AUTHOR=&ldquo;your name youremail@example.com</code> since that&rsquo;s how <a href="http://search.cpan.org/dist/Catalyst-Devel/lib/Catalyst/Helper.pm">Catalyst::Helper</a> inserts it into its files (I&rsquo;ll probably work on fixing helper later).<br /><br />Now you can just run <code>dzil new -p catalyst MyApp</code>. Hopefully, this simplifies your catalyst app creation a little bit.<br /><br />Good patches are welcome, so are feature suggestions and bug reports. Also I registered it as <a href="http://search.cpan.org/dist/Dist-Zilla-Plugin-Catalyst/">Dist::Zilla::Plugin::Catalyst</a> So if there are any other plugins that you think could be useful that are specific to Catalyst I&rsquo;d be willing to add them.<br /><br />Special thanks to Tomas Doran who helped me (ok&hellip; he wrote most of it) create this module.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fannouncing-distzillaplugincatalyst%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fannouncing-distzillaplugincatalyst%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fannouncing-distzillaplugincatalyst%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fannouncing-distzillaplugincatalyst%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>

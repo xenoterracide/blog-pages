@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta property="og:title" content="My solution to not using PluginBundle:AUTHOR for dzil is git" />
+<meta property="og:description" content="I am now tired of updating my dist.ini&rsquo;s for my Dist::Zilla projects. For many people this is when they start using a PluginBundle with their authorname. I discussed why you shouldn&rsquo;t do this a year ago. Now that I&rsquo;m tired of managing my dist.ini&rsquo;s on an individual basis I&rsquo;m going to show you how I&rsquo;m going to solve the same problem everyone else is, which is getting tired of updating your dzil configuration for all of your projects." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.xenoterracide.com/post/my-solution-to-not-using-pluginbundleauthor-for-dzil-is-git/" />
+
+
+
+<meta property="article:published_time" content="2011-06-05T15:24:00&#43;00:00"/>
+<meta property="article:modified_time" content="2011-06-05T15:24:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="My solution to not using PluginBundle:AUTHOR for dzil is git"/>
+<meta name="twitter:title" content="My solution to not using PluginBundle:AUTHOR for dzil is git"/>
+<meta name="twitter:description" content="I am now tired of updating my dist.ini&rsquo;s for my Dist::Zilla projects. For many people this is when they start using a PluginBundle with their authorname. I discussed why you shouldn&rsquo;t do this a year ago. Now that I&rsquo;m tired of managing my dist.ini&rsquo;s on an individual basis I&rsquo;m going to show you how I&rsquo;m going to solve the same problem everyone else is, which is getting tired of updating your dzil configuration for all of your projects."/>
+
+<meta name="generator" content="Hugo 0.19" />
+
+
+    
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  
+  "headline": "My solution to not using PluginBundle:AUTHOR for dzil is git",
+  "url": "http://blog.xenoterracide.com/post/my-solution-to-not-using-pluginbundleauthor-for-dzil-is-git/",
+  "wordCount": "532",
+  
+  
+  "datePublished": "2011-06-05T15:24:00&#43;00:00",
+  
+  
+  "dateModified": "2011-06-05T15:24:00&#43;00:00",
+  
+  
+  "author": {
+    "@type": "Person",
+    "name": "Caleb Cushing"
+  }
+  
+  ,
+  "keywords": "ironman,git,Dist::Zilla"
+  
+}
+</script>
+
+
+
+    <link rel="canonical" href="http://blog.xenoterracide.com/post/my-solution-to-not-using-pluginbundleauthor-for-dzil-is-git/">
+
+    <title>My solution to not using PluginBundle:AUTHOR for dzil is git | Caleb Cushing&#39;s blog</title>
+
+    <!-- combined, minified CSS -->
+    <link href="http://blog.xenoterracide.com/css/style.css" rel="stylesheet" integrity="sha384-Cdt2yG10w21pA8DMpImJIvsLOME686p75OYD9jGCZVWvOol9zkEsaF3ctGEuBXK6" crossorigin="anonymous">
+
+    
+
+    
+
+    
+
+    
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link " href="http://blog.xenoterracide.com/">Home</a>
+          
+          
+          
+        </nav>
+      </div>
+    </div>
+
+    <header class="blog-header">
+      <div class="container">
+        <h1 class="blog-title"><a href="http://blog.xenoterracide.com/" rel="home">Caleb Cushing's blog</a></h1>
+        
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+
+          
+
+
+<article class="blog-post">
+  <header>
+    <h2 class="blog-post-title"><a href="http://blog.xenoterracide.com/post/my-solution-to-not-using-pluginbundleauthor-for-dzil-is-git/">My solution to not using PluginBundle:AUTHOR for dzil is git</a></h2>
+    <p class="blog-post-meta"><time datetime="2011-06-05T15:24:00Z">Sun Jun 5, 2011</time> by Caleb Cushing in 
+
+<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<a href="/tags/ironman" rel="tag">ironman</a>, <a href="/tags/git" rel="tag">git</a>, <a href="/tags/distzilla" rel="tag">Dist::Zilla</a>
+
+</p>
+  </header>
+  <p>I am now tired of updating my <code>dist.ini</code>&rsquo;s for my <a href="http://dzil.org">Dist::Zilla</a> projects. For many people this is when they start using a PluginBundle with their authorname. I <a href="http://www.xenoterracide.com/2010/06/please-dont-use-distzillapluginbundleus.html">discussed why you shouldn&rsquo;t do this a year ago</a>. Now that I&rsquo;m tired of managing my dist.ini&rsquo;s on an individual basis I&rsquo;m going to show you how I&rsquo;m going to solve the same problem everyone else is, which is getting tired of updating your dzil configuration for all of your projects. I&rsquo;m using git to do it. You probably haven&rsquo;t considered this, or am thinking I&rsquo;m wrong because you believe that git can&rsquo;t merge branches without a common history, which is not true. I did it with Regen2, Funtoo, Portage, and Sunrise, which have way more files than any perl repo, including Perl.<br /><br /><br />First let&rsquo;s talk about the advantages and disadvantages of doing this with git.<br /><br />I&rsquo;ll start with the disadvantages. You&rsquo;ll have another repository to manage. Git isn&rsquo;t completely automatic, you&rsquo;ll have to remember to merge your changes. You&rsquo;ll also have to add the repository to your existing repositories. You will have to resolve merge conflicts at least once, and probably occasionally more, though most should be fast-forwards.<br /><br />The advantages are&hellip; now the changes to your dist.ini are getting recorded in your history. You can now have a master dist.ini, but remove items without filters in your individual modules. You can share even more configuration as merged differences allow you to maintain differences in downstream commits. It doesn&rsquo;t automatically update all of your modules. Wait didn&rsquo;t I list that last one in disadvantages? Yep, it&rsquo;s an advantage because what if you update your PluginBundle and that update breaks one of your modules, but you don&rsquo;t know it because you haven&rsquo;t worked on that module in a while. You can use this for more than just dist.ini.<br /><br />Ok so the first thing you you want to do is create your master dzil repo. This is not a <a href="http://git-scm.com/documentation">git</a> or <a href="http://dzil.org/">dzil</a> tutorial so go do that. I did it by creating a <code>dzil new project</code> and removing the files I couldn&rsquo;t use and making a few tweaks and amending all of those changes to the initial commit. Check out <a href="https://github.com/xenoterracide/dzil-base">my repo</a> for inspiration. Remember the directory structure has to be the same as a dzil repo structure for any common files.<br /><br />Now add a remote from your new repo to an existing dzil project. Next you need to merge the branch from the remote into your project. The first time you do this you&rsquo;ll have to resolve conflicts. If they&rsquo;re like <a href="https://github.com/xenoterracide/Test-Version/commit/89ea6813da279ff74f87b0628db492fc1451e526">mine</a> then they&rsquo;ll be easy and obvious. Once that&rsquo;s done future changes will be fast-forwards unless you change something in your perl module repo, then you might end up with a simple merge conflict. One thing to remember NEVER EVER try to merge from your module repo to your dzil repo, it will cause you extreme pain in the future. cherry-picking that direction is possible but not merging.<br /><br />After that, all that is left to do is run your dzil tests and fix any breakage in your module. Happy merging.<div class="blogger-post-footer"><br />&ndash;<br />
+This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.xenoterracide.com" property="cc:attributionName" rel="cc:attributionURL">Caleb Cushing</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</div></p>
+
+
+  
+
+  
+  <hr>
+  <footer>
+
+  
+    <section>
+    <h4>Share</h4>
+    <nav class="nav sharing-icons">
+      <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-solution-to-not-using-pluginbundleauthor-for-dzil-is-git%2f" title="Share on Facebook"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-solution-to-not-using-pluginbundleauthor-for-dzil-is-git%2f" title="Share on Google+"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-solution-to-not-using-pluginbundleauthor-for-dzil-is-git%2f" title="Share on LinkedIn"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+      <a class="nav-item" href="https://twitter.com/home?status=http%3a%2f%2fblog.xenoterracide.com%2fpost%2fmy-solution-to-not-using-pluginbundleauthor-for-dzil-is-git%2f" title="Tweet this"><span class="fa fa-twitter fa-2x"></span></a>
+    </nav>
+  </section>
+
+  
+
+  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+  
+  
+  if (window.location.hostname == "localhost")
+    return;
+
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'xenoterracide';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+  
+  </footer>
+  
+
+</article> 
+
+
+
+        </div> <!-- /.blog-main -->
+
+        <aside class="col-sm-3 offset-sm-1 blog-sidebar">
+  
+
+  
+
+  
+</aside>
+
+
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+      
+      Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+      
+      </p>
+      <p>
+      <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+
+</html>
